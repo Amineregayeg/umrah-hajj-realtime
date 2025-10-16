@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import { ConfigService } from '@nestjs/config';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { WsAdapter } from '@nestjs/platform-ws';
 import { MetricsService } from './metrics/metrics.service';
 import { MetricsMiddleware } from './metrics/metrics.middleware';
 import { SecurityConfigService } from './security/security-config.service';
@@ -12,6 +13,9 @@ import { LogRedactionService } from './security/log-redaction.service';
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
   const app = await NestFactory.create(AppModule);
+
+  // Configure WebSocket adapter to use 'ws' library instead of socket.io
+  app.useWebSocketAdapter(new WsAdapter(app));
   const configService = app.get(ConfigService);
   const securityConfigService = app.get(SecurityConfigService);
   const logRedactionService = app.get(LogRedactionService);
