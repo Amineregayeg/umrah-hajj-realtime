@@ -1,6 +1,6 @@
 # ========================================
 # Multi-stage production Dockerfile for NestJS backend
-# Simplified for Koyeb deployment with apps/backend context
+# For Koyeb deployment with REPO ROOT as build context
 # ========================================
 
 # ========================================
@@ -13,14 +13,11 @@ WORKDIR /app
 # Install system dependencies and pnpm
 RUN apk add --no-cache libc6-compat openssl && corepack enable
 
-# Debug: List what files are in the build context
-RUN echo "=== Debugging build context ===" && ls -la / 2>/dev/null || true
-
-# Copy everything first to see what we have
+# Copy everything from repo root
 COPY . .
 
-# Debug: Show what was copied
-RUN echo "=== Files in /app after COPY ===" && ls -la /app
+# Change to backend directory
+WORKDIR /app/apps/backend
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
@@ -49,11 +46,11 @@ ENV PORT=3000
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nestjs -u 1001
 
-# Copy built application and dependencies
-COPY --from=build --chown=nestjs:nodejs /app/dist ./dist
-COPY --from=build --chown=nestjs:nodejs /app/package.json ./package.json
-COPY --from=build --chown=nestjs:nodejs /app/node_modules ./node_modules
-COPY --from=build --chown=nestjs:nodejs /app/prisma ./prisma
+# Copy built application and dependencies from backend directory
+COPY --from=build --chown=nestjs:nodejs /app/apps/backend/dist ./dist
+COPY --from=build --chown=nestjs:nodejs /app/apps/backend/package.json ./package.json
+COPY --from=build --chown=nestjs:nodejs /app/apps/backend/node_modules ./node_modules
+COPY --from=build --chown=nestjs:nodejs /app/apps/backend/prisma ./prisma
 
 # Switch to non-root user
 USER nestjs
