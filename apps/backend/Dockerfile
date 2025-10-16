@@ -16,6 +16,13 @@ RUN apk add --no-cache libc6-compat openssl && corepack enable
 # Copy everything from repo root
 COPY . .
 
+# Debug: Show what was copied
+RUN echo "=== Contents of /workspace ===" && ls -la /workspace && \
+    echo "=== Checking for key files ===" && \
+    ls -la /workspace/package.json 2>/dev/null || echo "No package.json in /workspace" && \
+    ls -la /workspace/pnpm-lock.yaml 2>/dev/null || echo "No pnpm-lock.yaml in /workspace" && \
+    ls -la /workspace/apps/ 2>/dev/null || echo "No apps/ directory"
+
 # Install all workspace dependencies from root
 # This reads pnpm-lock.yaml and pnpm-workspace.yaml from root
 RUN pnpm install --frozen-lockfile
