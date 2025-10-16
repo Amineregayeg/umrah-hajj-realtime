@@ -37,7 +37,6 @@ import type { UiBannerDto } from './dto/ui-banner.dto';
 import type { StateSetDto } from './dto/state-set.dto';
 
 @WebSocketGateway({
-  port: 3001,
   transports: ['websocket'],
   cors: true,
 })
@@ -71,7 +70,7 @@ export class NavGateway implements OnGatewayConnection, OnGatewayDisconnect, OnG
     const nodeEnv = this.configService.get<string>('NODE_ENV', 'development');
     const msgpackEnabled = MessagePackUtil.isMessagePackEnabled();
     
-    this.logger.log(`WebSocket server initialized on port 3001`);
+    this.logger.log(`WebSocket server initialized (sharing HTTP server port)`);
     this.logger.log(`Environment: ${nodeEnv}`);
     this.logger.log(`Required WebSocket origin: ${this.wsOrigin}`);
     this.logger.log(`Allowed WebSocket origins: ${this.allowedOrigins.join(', ')}`);
