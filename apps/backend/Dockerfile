@@ -34,7 +34,11 @@ WORKDIR /workspace/apps/backend
 RUN pnpm prisma generate
 
 # Build the application
-RUN pnpm build
+RUN pnpm build && \
+    echo "=== Build completed, checking dist directory ===" && \
+    ls -la dist/ && \
+    echo "=== Contents of dist/main.js ===" && \
+    ls -la dist/main.js || echo "main.js not found"
 
 # ========================================
 # Stage 2: Production Runtime
