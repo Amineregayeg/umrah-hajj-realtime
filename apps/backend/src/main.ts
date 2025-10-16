@@ -47,20 +47,15 @@ async function bootstrap() {
   const nodeEnv = configService.get<string>('NODE_ENV', 'development');
 
   app.enableCors({
-    origin: (origin, callback, req) => {
-      // Always allow health check endpoints (for Koyeb infrastructure)
-      if (req && (req.url === '/metrics/healthz' || req.url === '/health')) {
-        return callback(null, true);
-      }
-
-      // Allow requests with no origin (mobile apps, curl, etc.)
-      if (!origin && nodeEnv === 'development') {
-        return callback(null, true);
-      }
-
+    origin: (origin, callback) => {
+      // In production, allow requests with no origin (for health checks and infrastructure)
+      // In development, also allow for testing with curl, Postman, etc.
       if (!origin) {
-        logger.warn('Request blocked: No origin header provided');
-        return callback(new Error('Origin header required'), false);
+        // Log in production for monitoring but still allow
+        if (nodeEnv === 'production') {
+          logger.debug('Request without origin header (likely infrastructure health check)');
+        }
+        return callback(null, true);
       }
 
       // Check if origin is in allowed list
