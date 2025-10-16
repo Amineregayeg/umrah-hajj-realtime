@@ -1,6 +1,6 @@
 # ========================================
 # Multi-stage production Dockerfile for NestJS backend
-# For Koyeb deployment with REPO ROOT as build context
+# For Koyeb deployment with pnpm workspace
 # ========================================
 
 # ========================================
@@ -8,7 +8,7 @@
 # ========================================
 FROM node:20-alpine AS build
 
-WORKDIR /app
+WORKDIR /workspace
 
 # Install system dependencies and pnpm
 RUN apk add --no-cache libc6-compat openssl && corepack enable
@@ -16,11 +16,12 @@ RUN apk add --no-cache libc6-compat openssl && corepack enable
 # Copy everything from repo root
 COPY . .
 
-# Change to backend directory
-WORKDIR /app/apps/backend
-
-# Install dependencies
+# Install all workspace dependencies from root
+# This reads pnpm-lock.yaml and pnpm-workspace.yaml from root
 RUN pnpm install --frozen-lockfile
+
+# Change to backend directory for building
+WORKDIR /workspace/apps/backend
 
 # Generate Prisma client
 RUN pnpm prisma generate
@@ -47,10 +48,10 @@ RUN addgroup -g 1001 -S nodejs && \
     adduser -S nestjs -u 1001
 
 # Copy built application and dependencies from backend directory
-COPY --from=build --chown=nestjs:nodejs /app/apps/backend/dist ./dist
-COPY --from=build --chown=nestjs:nodejs /app/apps/backend/package.json ./package.json
-COPY --from=build --chown=nestjs:nodejs /app/apps/backend/node_modules ./node_modules
-COPY --from=build --chown=nestjs:nodejs /app/apps/backend/prisma ./prisma
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/dist ./dist
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/package.json ./package.json
+COPY --from=build --chown=nestjs:nodejs /workspace/node_modules ./node_modules
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/prisma ./prisma
 
 # Switch to non-root user
 USER nestjs
