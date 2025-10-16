@@ -61,8 +61,8 @@ git checkout deploy/koyeb-setup
 ### **Backend API Documentation**
 
 #### 3. **Swagger API Documentation** (Interactive!)
-🌐 **Production:** https://umrah-hajj-backend.koyeb.app/docs
-🌐 **Local:** http://localhost:3000/docs (when running backend)
+🌐 **Local Development:** http://localhost:3000/docs (when running backend locally)
+🌐 **Production:** https://psychological-jilli-amineregayeg-1fe35444.koyeb.app/docs
 
 **Live API documentation where you can:**
 - Browse all 54+ REST endpoints
@@ -322,4 +322,6 @@ If you have questions after reviewing the documentation, we're here to support y
 **Repository:** https://github.com/Amineregayeg/umrah-hajj-realtime
 **Branch:** `deploy/koyeb-setup`
 **Documentation:** See links above
-**API Docs:** https://umrah-hajj-backend.koyeb.app/docs
+**API Docs (Local):** http://localhost:3000/docs
+**API Docs (Production):** https://psychological-jilli-amineregayeg-1fe35444.koyeb.app/docs
+**Public URL:** https://psychological-jilli-amineregayeg-1fe35444.koyeb.app/

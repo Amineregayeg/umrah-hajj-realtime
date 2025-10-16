@@ -29,28 +29,28 @@
 
 ### 1. Access Backend Services
 
-**Development:**
+**Local Development:**
 ```bash
 # Backend API
 http://localhost:3000
 
 # WebSocket
-ws://localhost:3001
+ws://localhost:3000
 
 # Swagger Documentation
 http://localhost:3000/docs
 ```
 
-**Production (Koyeb):**
+**Production (Koyeb Deployment):**
 ```bash
 # Backend API
-https://umrah-hajj-backend.koyeb.app
+https://psychological-jilli-amineregayeg-1fe35444.koyeb.app
 
 # WebSocket
-wss://umrah-hajj-backend.koyeb.app
+wss://psychological-jilli-amineregayeg-1fe35444.koyeb.app
 
 # API Docs
-https://umrah-hajj-backend.koyeb.app/docs
+https://psychological-jilli-amineregayeg-1fe35444.koyeb.app/docs
 ```
 
 ### 2. Authentication
