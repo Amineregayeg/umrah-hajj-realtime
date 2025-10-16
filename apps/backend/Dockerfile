@@ -80,12 +80,12 @@ COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/dist ./apps/back
 # Copy assets directory for Quran data
 COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/assets ./apps/backend/assets
 
-# Generate Prisma client in production node_modules
+# Set working directory and create data directory with proper permissions
 WORKDIR /workspace/apps/backend
-RUN pnpm prisma generate
+RUN mkdir -p ./data && chown -R nestjs:nodejs ./data && chmod -R 755 ./data
 
-# Create data directory for navigation graph with proper permissions
-RUN mkdir -p ./data && chown -R nestjs:nodejs ./data
+# Generate Prisma client in production node_modules
+RUN pnpm prisma generate
 
 # Switch to non-root user
 USER nestjs
