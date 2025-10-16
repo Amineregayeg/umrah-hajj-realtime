@@ -17,7 +17,7 @@ export interface SecurityConfig {
         mediaSrc: string[];
         frameSrc: string[];
         formAction: string[];
-        upgradeInsecureRequests: boolean;
+        upgradeInsecureRequests: string[] | null;
       };
       reportOnly: boolean;
     };
@@ -126,7 +126,7 @@ export class SecurityConfigService {
             mediaSrc: ["'self'"],
             frameSrc: ["'none'"],
             formAction: ["'self'"],
-            upgradeInsecureRequests: isProd,
+            upgradeInsecureRequests: isProd ? [] : null,
           },
           reportOnly: !isProd, // Report-only in development, enforce in production
         },
