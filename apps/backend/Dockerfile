@@ -51,7 +51,7 @@ RUN pnpm build && \
 # ========================================
 FROM node:20-alpine AS runtime
 
-WORKDIR /app
+WORKDIR /workspace
 
 # Install runtime dependencies and dumb-init for signal handling
 RUN apk add --no-cache libc6-compat openssl dumb-init && corepack enable
@@ -64,19 +64,21 @@ ENV PORT=3000
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nestjs -u 1001
 
-# Copy package files first
-COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/package.json ./package.json
+# Copy workspace structure for pnpm
+COPY --from=build --chown=nestjs:nodejs /workspace/package.json ./package.json
 COPY --from=build --chown=nestjs:nodejs /workspace/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=build --chown=nestjs:nodejs /workspace/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/package.json ./apps/backend/package.json
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/prisma ./apps/backend/prisma
 
-# Install ONLY production dependencies with proper resolution
+# Install production dependencies in workspace context
 RUN pnpm install --prod --frozen-lockfile
 
-# Copy built application and Prisma schema
-COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/dist ./dist
-COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/prisma ./prisma
+# Copy built application
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/dist ./apps/backend/dist
 
 # Generate Prisma client in production node_modules
+WORKDIR /workspace/apps/backend
 RUN pnpm prisma generate
 
 # Switch to non-root user
