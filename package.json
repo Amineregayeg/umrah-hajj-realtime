@@ -1,0 +1,31 @@
+{
+  "name": "umrah-hajj-realtime",
+  "version": "1.0.0",
+  "description": "Voice assistant for Hajj & Umrah guidance using OpenAI Realtime API",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0",
+    "pnpm": ">=9"
+  },
+  "workspaces": [
+    "apps/backend"
+  ],
+  "scripts": {
+    "preinstall": "node -e \"const v=process.version.slice(1).split('.')[0]; if(v!=='20') { console.error('❌ Node.js 20.x REQUIRED. Current:', process.version); process.exit(1); }\"",
+    "dev": "pnpm --filter backend dev",
+    "build": "pnpm --filter backend build",
+    "start": "pnpm --filter backend start",
+    "test": "pnpm --filter backend test",
+    "test:ci": "pnpm --filter backend test:ci"
+  },
+  "keywords": [
+    "hajj",
+    "umrah",
+    "voice-assistant",
+    "openai",
+    "realtime-api"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
