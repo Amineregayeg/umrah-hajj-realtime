@@ -47,7 +47,12 @@ async function bootstrap() {
   const nodeEnv = configService.get<string>('NODE_ENV', 'development');
 
   app.enableCors({
-    origin: (origin, callback) => {
+    origin: (origin, callback, req) => {
+      // Always allow health check endpoints (for Koyeb infrastructure)
+      if (req && (req.url === '/metrics/healthz' || req.url === '/health')) {
+        return callback(null, true);
+      }
+
       // Allow requests with no origin (mobile apps, curl, etc.)
       if (!origin && nodeEnv === 'development') {
         return callback(null, true);
