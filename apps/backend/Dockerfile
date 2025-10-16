@@ -25,8 +25,11 @@ RUN echo "=== Contents of /workspace ===" && ls -la /workspace && \
 
 # Install all workspace dependencies from root
 # This reads pnpm-lock.yaml and pnpm-workspace.yaml from root
-# Use --ignore-scripts=false to ensure build scripts run (needed for Prisma, esbuild, etc)
-RUN pnpm install --frozen-lockfile --ignore-scripts=false
+# Approve all build scripts then install with scripts enabled
+RUN pnpm config set enable-pre-post-scripts true && \
+    pnpm install --frozen-lockfile && \
+    cd apps/backend && \
+    pnpm rebuild @prisma/client @prisma/engines esbuild
 
 # Change to backend directory for building
 WORKDIR /workspace/apps/backend
