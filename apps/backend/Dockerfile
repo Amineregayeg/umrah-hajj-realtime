@@ -77,6 +77,12 @@ RUN pnpm install --prod --frozen-lockfile
 # Copy built application
 COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/dist ./apps/backend/dist
 
+# Copy assets directory for Quran data
+COPY --from=build --chown=nestjs:nodejs /workspace/apps/backend/assets ./apps/backend/assets
+
+# Create data directory for navigation graph (will be created if not exists)
+RUN mkdir -p ./apps/backend/data
+
 # Generate Prisma client in production node_modules
 WORKDIR /workspace/apps/backend
 RUN pnpm prisma generate
