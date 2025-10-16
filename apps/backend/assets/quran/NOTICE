@@ -1,0 +1,46 @@
+QURAN TEXT LICENSING AND ATTRIBUTION NOTICE
+==========================================
+
+This directory contains text and translations of the Holy Quran.
+
+ARABIC TEXT (quran_ar_hafs.json):
+- Source: Quran text according to the Hafs recitation from Asim
+- License: Public Domain - The Quran text is considered to be in the public domain
+- Attribution: Based on the standardized Uthmanic text (Mushaf al-Madinah)
+- Verification: Text should be verified with authoritative sources before use
+
+ENGLISH TRANSLATION (quran_en_translation.json):
+- Translator: Sahih International
+- License: This translation is used under fair use for educational and religious purposes
+- Attribution: © Sahih International. Used with permission for non-commercial religious application
+- Note: For commercial use, please obtain proper licensing from the copyright holders
+
+FRENCH TRANSLATION (quran_fr_translation.json):
+- Translator: Muhammad Hamidullah
+- License: This translation is used under fair use for educational and religious purposes
+- Attribution: © Muhammad Hamidullah translation. Used for non-commercial religious application
+- Note: For commercial use, please obtain proper licensing from the copyright holders
+
+SEARCH INDEX (search_index.json):
+- Content: Derived search data from the above texts
+- License: Same restrictions as source texts apply
+- Purpose: Technical implementation for search functionality only
+
+USAGE GUIDELINES:
+================
+1. This content is provided for educational and religious purposes
+2. Commercial use requires appropriate licensing from copyright holders
+3. Text accuracy should always be verified with authoritative Islamic sources
+4. Users are responsible for ensuring proper attribution in derivative works
+5. This software implementation does not constitute religious authority
+
+DISCLAIMER:
+===========
+While every effort has been made to ensure accuracy, users should verify 
+all Quranic content with authoritative Islamic sources. The developers 
+assume no responsibility for any inaccuracies in the text or translations.
+
+For questions about licensing or to report textual issues, please contact
+the application maintainers.
+
+Last Updated: October 8, 2025

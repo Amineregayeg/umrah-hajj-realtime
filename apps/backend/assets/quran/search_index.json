@@ -1,0 +1,245 @@
+{
+  "metadata": {
+    "description": "Trigram search index for Quran text search",
+    "languages": ["ar", "en", "fr"],
+    "generated": "2025-10-08"
+  },
+  "trigrams": {
+    "ar": {
+      "الل": [
+        {"surah": 1, "ayah": 1, "score": 1.0},
+        {"surah": 1, "ayah": 2, "score": 1.0},
+        {"surah": 112, "ayah": 1, "score": 1.0},
+        {"surah": 112, "ayah": 2, "score": 1.0}
+      ],
+      "بسم": [
+        {"surah": 1, "ayah": 1, "score": 1.0}
+      ],
+      "الح": [
+        {"surah": 1, "ayah": 2, "score": 1.0}
+      ],
+      "مد": [
+        {"surah": 1, "ayah": 2, "score": 1.0}
+      ],
+      "رب": [
+        {"surah": 1, "ayah": 2, "score": 1.0}
+      ],
+      "عال": [
+        {"surah": 1, "ayah": 2, "score": 1.0}
+      ],
+      "مين": [
+        {"surah": 1, "ayah": 2, "score": 1.0}
+      ],
+      "قل": [
+        {"surah": 112, "ayah": 1, "score": 1.0}
+      ],
+      "هو": [
+        {"surah": 112, "ayah": 1, "score": 1.0}
+      ],
+      "أحد": [
+        {"surah": 112, "ayah": 1, "score": 1.0},
+        {"surah": 112, "ayah": 4, "score": 1.0}
+      ],
+      "صمد": [
+        {"surah": 112, "ayah": 2, "score": 1.0}
+      ]
+    },
+    "en": {
+      "all": [
+        {"surah": 1, "ayah": 1, "score": 0.9},
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "nam": [
+        {"surah": 1, "ayah": 1, "score": 0.9}
+      ],
+      "ame": [
+        {"surah": 1, "ayah": 1, "score": 0.9}
+      ],
+      "mer": [
+        {"surah": 1, "ayah": 1, "score": 0.9},
+        {"surah": 1, "ayah": 3, "score": 0.9}
+      ],
+      "pra": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "ais": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "due": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "lor": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "ord": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "wor": [
+        {"surah": 1, "ayah": 2, "score": 0.9}
+      ],
+      "say": [
+        {"surah": 112, "ayah": 1, "score": 0.9}
+      ],
+      "one": [
+        {"surah": 112, "ayah": 1, "score": 0.9}
+      ],
+      "ete": [
+        {"surah": 112, "ayah": 2, "score": 0.9}
+      ],
+      "ref": [
+        {"surah": 112, "ayah": 2, "score": 0.9}
+      ],
+      "uge": [
+        {"surah": 112, "ayah": 2, "score": 0.9}
+      ]
+    },
+    "fr": {
+      "nom": [
+        {"surah": 1, "ayah": 1, "score": 0.8}
+      ],
+      "all": [
+        {"surah": 1, "ayah": 1, "score": 0.8}
+      ],
+      "tou": [
+        {"surah": 1, "ayah": 1, "score": 0.8},
+        {"surah": 1, "ayah": 3, "score": 0.8}
+      ],
+      "mis": [
+        {"surah": 1, "ayah": 1, "score": 0.8},
+        {"surah": 1, "ayah": 3, "score": 0.8}
+      ],
+      "lou": [
+        {"surah": 1, "ayah": 2, "score": 0.8}
+      ],
+      "ang": [
+        {"surah": 1, "ayah": 2, "score": 0.8}
+      ],
+      "sei": [
+        {"surah": 1, "ayah": 2, "score": 0.8}
+      ],
+      "gne": [
+        {"surah": 1, "ayah": 2, "score": 0.8}
+      ],
+      "dis": [
+        {"surah": 112, "ayah": 1, "score": 0.8}
+      ],
+      "est": [
+        {"surah": 112, "ayah": 1, "score": 0.8}
+      ],
+      "uni": [
+        {"surah": 112, "ayah": 1, "score": 0.8}
+      ],
+      "que": [
+        {"surah": 112, "ayah": 1, "score": 0.8}
+      ]
+    }
+  },
+  "word_index": {
+    "ar": {
+      "الله": [
+        {"surah": 1, "ayah": 1, "position": 1},
+        {"surah": 1, "ayah": 2, "position": 2},
+        {"surah": 112, "ayah": 1, "position": 2},
+        {"surah": 112, "ayah": 2, "position": 0}
+      ],
+      "بسم": [
+        {"surah": 1, "ayah": 1, "position": 0}
+      ],
+      "الحمد": [
+        {"surah": 1, "ayah": 2, "position": 0}
+      ],
+      "رب": [
+        {"surah": 1, "ayah": 2, "position": 3}
+      ],
+      "العالمين": [
+        {"surah": 1, "ayah": 2, "position": 4}
+      ],
+      "قل": [
+        {"surah": 112, "ayah": 1, "position": 0}
+      ],
+      "هو": [
+        {"surah": 112, "ayah": 1, "position": 1}
+      ],
+      "أحد": [
+        {"surah": 112, "ayah": 1, "position": 3},
+        {"surah": 112, "ayah": 4, "position": 4}
+      ],
+      "الصمد": [
+        {"surah": 112, "ayah": 2, "position": 1}
+      ]
+    },
+    "en": {
+      "allah": [
+        {"surah": 1, "ayah": 1, "position": 3},
+        {"surah": 1, "ayah": 2, "position": 6},
+        {"surah": 112, "ayah": 1, "position": 3},
+        {"surah": 112, "ayah": 2, "position": 0}
+      ],
+      "name": [
+        {"surah": 1, "ayah": 1, "position": 2}
+      ],
+      "merciful": [
+        {"surah": 1, "ayah": 1, "position": 6},
+        {"surah": 1, "ayah": 3, "position": 2}
+      ],
+      "praise": [
+        {"surah": 1, "ayah": 2, "position": 1}
+      ],
+      "lord": [
+        {"surah": 1, "ayah": 2, "position": 7}
+      ],
+      "worlds": [
+        {"surah": 1, "ayah": 2, "position": 10}
+      ],
+      "say": [
+        {"surah": 112, "ayah": 1, "position": 0}
+      ],
+      "one": [
+        {"surah": 112, "ayah": 1, "position": 6}
+      ],
+      "eternal": [
+        {"surah": 112, "ayah": 2, "position": 2}
+      ],
+      "refuge": [
+        {"surah": 112, "ayah": 2, "position": 3}
+      ]
+    },
+    "fr": {
+      "allah": [
+        {"surah": 1, "ayah": 1, "position": 3},
+        {"surah": 1, "ayah": 2, "position": 3},
+        {"surah": 112, "ayah": 1, "position": 3},
+        {"surah": 112, "ayah": 2, "position": 0}
+      ],
+      "nom": [
+        {"surah": 1, "ayah": 1, "position": 1}
+      ],
+      "tout": [
+        {"surah": 1, "ayah": 1, "position": 4},
+        {"surah": 1, "ayah": 3, "position": 1}
+      ],
+      "miséricordieux": [
+        {"surah": 1, "ayah": 1, "position": 5},
+        {"surah": 1, "ayah": 3, "position": 3}
+      ],
+      "louange": [
+        {"surah": 1, "ayah": 2, "position": 0}
+      ],
+      "seigneur": [
+        {"surah": 1, "ayah": 2, "position": 4}
+      ],
+      "univers": [
+        {"surah": 1, "ayah": 2, "position": 7}
+      ],
+      "dis": [
+        {"surah": 112, "ayah": 1, "position": 0}
+      ],
+      "unique": [
+        {"surah": 112, "ayah": 1, "position": 4}
+      ],
+      "seul": [
+        {"surah": 112, "ayah": 2, "position": 2}
+      ]
+    }
+  }
+}

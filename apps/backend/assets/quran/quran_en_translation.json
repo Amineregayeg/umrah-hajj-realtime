@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "name": "The Noble Quran - English Translation",
+    "translator": "Sahih International",
+    "language": "en",
+    "total_surahs": 114,
+    "total_ayahs": 6236
+  },
+  "surahs": [
+    {
+      "id": 1,
+      "name": "Al-Fatihah",
+      "translation": "The Opening",
+      "type": "makkiyyah",
+      "ayah_count": 7,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "In the name of Allah, the Entirely Merciful, the Especially Merciful."
+        },
+        {
+          "id": 2,
+          "text": "[All] praise is [due] to Allah, Lord of the worlds -"
+        },
+        {
+          "id": 3,
+          "text": "The Entirely Merciful, the Especially Merciful,"
+        },
+        {
+          "id": 4,
+          "text": "Sovereign of the Day of Recompense."
+        },
+        {
+          "id": 5,
+          "text": "It is You we worship and You we ask for help."
+        },
+        {
+          "id": 6,
+          "text": "Guide us to the straight path -"
+        },
+        {
+          "id": 7,
+          "text": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Al-Baqarah",
+      "translation": "The Cow",
+      "type": "madaniyyah",
+      "ayah_count": 286,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "Alif, Lam, Meem."
+        },
+        {
+          "id": 2,
+          "text": "This is the Book about which there is no doubt, a guidance for those conscious of Allah -"
+        },
+        {
+          "id": 3,
+          "text": "Who believe in the unseen, establish prayer, and spend out of what We have provided for them,"
+        },
+        {
+          "id": 4,
+          "text": "And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]."
+        },
+        {
+          "id": 5,
+          "text": "Those are upon [right] guidance from their Lord, and it is those who are the successful."
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Al-Ikhlas",
+      "translation": "The Sincerity",
+      "type": "makkiyyah",
+      "ayah_count": 4,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "Say, \"He is Allah, [who is] One,"
+        },
+        {
+          "id": 2,
+          "text": "Allah, the Eternal Refuge."
+        },
+        {
+          "id": 3,
+          "text": "He neither begets nor is born,"
+        },
+        {
+          "id": 4,
+          "text": "Nor is there to Him any equivalent.\""
+        }
+      ]
+    }
+  ]
+}

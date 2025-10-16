@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "name": "Le Noble Coran - Traduction Française",
+    "translator": "Muhammad Hamidullah",
+    "language": "fr",
+    "total_surahs": 114,
+    "total_ayahs": 6236
+  },
+  "surahs": [
+    {
+      "id": 1,
+      "name": "Al-Fatihah",
+      "translation": "L'Ouverture",
+      "type": "makkiyyah",
+      "ayah_count": 7,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux."
+        },
+        {
+          "id": 2,
+          "text": "Louange à Allah, Seigneur de l'univers."
+        },
+        {
+          "id": 3,
+          "text": "Le Tout Miséricordieux, le Très Miséricordieux,"
+        },
+        {
+          "id": 4,
+          "text": "Maître du Jour de la rétribution."
+        },
+        {
+          "id": 5,
+          "text": "C'est Toi [Seul] que nous adorons, et c'est Toi [Seul] dont nous implorons secours."
+        },
+        {
+          "id": 6,
+          "text": "Guide-nous dans le droit chemin,"
+        },
+        {
+          "id": 7,
+          "text": "le chemin de ceux que Tu as comblés de faveurs, non pas de ceux qui ont encouru Ta colère, ni des égarés."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Al-Baqarah",
+      "translation": "La Vache",
+      "type": "madaniyyah",
+      "ayah_count": 286,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "Alif, Lam, Mim."
+        },
+        {
+          "id": 2,
+          "text": "C'est le Livre au sujet duquel il n'y a aucun doute, c'est un guide pour les pieux,"
+        },
+        {
+          "id": 3,
+          "text": "qui croient à l'invisible et accomplissent la Salat et dépensent [dans l'obéissance à Allah], de ce que Nous leur avons attribué,"
+        },
+        {
+          "id": 4,
+          "text": "Ceux qui croient à ce qui t'a été descendu (révélé) et à ce qui a été descendu avant toi et qui croient fermement à la vie future."
+        },
+        {
+          "id": 5,
+          "text": "Ceux-là sont sur le bon chemin de leur Seigneur, et ce sont eux qui réussissent (dans cette vie et dans la vie future)."
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Al-Ikhlas",
+      "translation": "Le Monothéisme Pur",
+      "type": "makkiyyah",
+      "ayah_count": 4,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "Dis: «Il est Allah, Unique."
+        },
+        {
+          "id": 2,
+          "text": "Allah, Le Seul à être imploré pour ce que nous désirons."
+        },
+        {
+          "id": 3,
+          "text": "Il n'a jamais engendré, n'a pas été engendré non plus."
+        },
+        {
+          "id": 4,
+          "text": "Et nul n'est égal à Lui»."
+        }
+      ]
+    }
+  ]
+}

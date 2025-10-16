@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "name": "القرآن الكريم - رواية حفص عن عاصم",
+    "translation": "The Noble Quran - Hafs from Asim",
+    "language": "ar",
+    "total_surahs": 114,
+    "total_ayahs": 6236
+  },
+  "surahs": [
+    {
+      "id": 1,
+      "name": "الفاتحة",
+      "transliteration": "Al-Fatihah",
+      "translation": "The Opening",
+      "type": "makkiyyah",
+      "ayah_count": 7,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 2,
+          "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 3,
+          "text": "الرَّحْمَٰنِ الرَّحِيمِ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 4,
+          "text": "مَالِكِ يَوْمِ الدِّينِ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 5,
+          "text": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 6,
+          "text": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 7,
+          "text": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+          "page": 1,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "البقرة",
+      "transliteration": "Al-Baqarah",
+      "translation": "The Cow",
+      "type": "madaniyyah",
+      "ayah_count": 286,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "الم",
+          "page": 2,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 2,
+          "text": "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ",
+          "page": 2,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 3,
+          "text": "الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ",
+          "page": 2,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 4,
+          "text": "وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ",
+          "page": 2,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        },
+        {
+          "id": 5,
+          "text": "أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ",
+          "page": 2,
+          "juz": 1,
+          "manzil": 1,
+          "ruku": 1,
+          "hizbQuarter": 1,
+          "sajda": false
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "name": "الإخلاص",
+      "transliteration": "Al-Ikhlas",
+      "translation": "The Sincerity",
+      "type": "makkiyyah",
+      "ayah_count": 4,
+      "ayahs": [
+        {
+          "id": 1,
+          "text": "قُلْ هُوَ اللَّهُ أَحَدٌ",
+          "page": 604,
+          "juz": 30,
+          "manzil": 7,
+          "ruku": 553,
+          "hizbQuarter": 240,
+          "sajda": false
+        },
+        {
+          "id": 2,
+          "text": "اللَّهُ الصَّمَدُ",
+          "page": 604,
+          "juz": 30,
+          "manzil": 7,
+          "ruku": 553,
+          "hizbQuarter": 240,
+          "sajda": false
+        },
+        {
+          "id": 3,
+          "text": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+          "page": 604,
+          "juz": 30,
+          "manzil": 7,
+          "ruku": 553,
+          "hizbQuarter": 240,
+          "sajda": false
+        },
+        {
+          "id": 4,
+          "text": "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+          "page": 604,
+          "juz": 30,
+          "manzil": 7,
+          "ruku": 553,
+          "hizbQuarter": 240,
+          "sajda": false
+        }
+      ]
+    }
+  ]
+}
