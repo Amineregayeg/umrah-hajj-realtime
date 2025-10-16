@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email        String   @unique
+  passwordHash String?  @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  // Relations
+  profile             UserProfile?
+  consent             Consent?
+  navCheckpoints      NavCheckpoint[]
+  transcriptsMeta     TranscriptsMeta[]
+  eventsAnalytics     EventsAnalytics[]
+
+  @@map("users")
+}
+
+model UserProfile {
+  userId        String  @id @map("user_id") @db.Uuid
+  firstName     String? @map("first_name")
+  lastName      String? @map("last_name")
+  country       String?
+  languageUi    String  @map("language_ui")
+  languageAudio String  @map("language_audio")
+  madhhab       String  @db.Text
+  gender        String  @db.Text
+  mobility      String?
+  accessibility Json?   @db.JsonB
+  guidanceMode  String  @map("guidance_mode") @db.Text
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_profile")
+}
+
+model Consent {
+  userId              String    @id @map("user_id") @db.Uuid
+  essential           Boolean   @default(true)
+  crashReports        Boolean   @default(true) @map("crash_reports")
+  analytics           Boolean   @default(true)
+  uploadTranscripts   Boolean   @default(false) @map("upload_transcripts")
+  uploadAudioClips    Boolean   @default(false) @map("upload_audio_clips")
+  backgroundLocation  Boolean   @default(false) @map("background_location")
+  emailUpdates        Boolean   @default(false) @map("email_updates")
+  updatedAt           DateTime  @default(now()) @map("updated_at") @db.Timestamptz
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("consent")
+}
+
+model NavCheckpoint {
+  id     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId String?  @map("user_id") @db.Uuid
+  ts     DateTime @default(now()) @db.Timestamptz
+  stage  String
+  lap    Int?
+  saiLeg Int?     @map("sai_leg")
+  floor  Int?
+  lat    Float?   @db.DoublePrecision
+  lon    Float?   @db.DoublePrecision
+  acc    Float?   @db.DoublePrecision
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("nav_checkpoint")
+}
+
+model TranscriptsMeta {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String?  @map("user_id") @db.Uuid
+  ts        DateTime @default(now()) @db.Timestamptz
+  stage     String?
+  sizeBytes Int?     @map("size_bytes")
+  stored    Boolean  @default(false)
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("transcripts_meta")
+}
+
+model EventsAnalytics {
+  id       BigInt   @id @default(autoincrement())
+  userUuid String?  @map("user_uuid") @db.Uuid
+  event    String
+  ts       DateTime @default(now()) @db.Timestamptz
+  payload  Json?    @db.JsonB
+
+  // Relations
+  user User? @relation(fields: [userUuid], references: [id])
+
+  @@map("events_analytics")
+}
