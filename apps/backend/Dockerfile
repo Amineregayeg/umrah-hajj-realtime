@@ -14,19 +14,20 @@ WORKDIR /workspace
 RUN apk add --no-cache libc6-compat openssl && corepack enable
 
 # Copy workspace root configuration files
-COPY ../../pnpm-lock.yaml ../../package.json ../../pnpm-workspace.yaml ./
-COPY ../../.npmrc ./ 2>/dev/null || true
+# NOTE: Build context must be repo root (.) for these paths to work
+COPY pnpm-lock.yaml package.json pnpm-workspace.yaml ./
+COPY .npmrc ./ 2>/dev/null || true
 
 # Copy all workspace package.json files for dependency resolution
-COPY package.json apps/backend/package.json
-COPY ../../shared/ws-types/package.json shared/ws-types/package.json 2>/dev/null || true
+COPY apps/backend/package.json apps/backend/package.json
+COPY shared/ws-types/package.json shared/ws-types/package.json 2>/dev/null || true
 
 # Install all dependencies with frozen lockfile
 RUN pnpm install --frozen-lockfile
 
 # Copy backend source code
-COPY . apps/backend/
-COPY ../../shared/ws-types shared/ws-types/ 2>/dev/null || true
+COPY apps/backend apps/backend/
+COPY shared/ws-types shared/ws-types/ 2>/dev/null || true
 
 # Generate Prisma client
 WORKDIR /workspace/apps/backend
@@ -73,5 +74,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
 # Use dumb-init for proper signal handling
 ENTRYPOINT ["dumb-init", "--"]
 
-# Start the application (main.js is in dist root based on nest-cli.json)
-CMD ["node", "dist/main.js"]
+# Run migrations and start the application
+# Uses sh -c to run multiple commands in sequence
+CMD ["sh", "-c", "node node_modules/.bin/prisma migrate deploy && node dist/main.js"]
