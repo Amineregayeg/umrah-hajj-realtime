@@ -1,9 +1,6 @@
 # ========================================
 # Multi-stage production Dockerfile for NestJS backend
-# Simplified for Koyeb deployment
-# ========================================
-# IMPORTANT: Set Dockerfile path to "Dockerfile" (this file in repo root)
-# NOT "apps/backend/Dockerfile" to allow proper build context
+# Simplified for Koyeb deployment with apps/backend context
 # ========================================
 
 # ========================================
@@ -16,15 +13,17 @@ WORKDIR /app
 # Install system dependencies and pnpm
 RUN apk add --no-cache libc6-compat openssl && corepack enable
 
-# Copy package files
-COPY package.json ./
-COPY prisma ./prisma/
+# Debug: List what files are in the build context
+RUN echo "=== Debugging build context ===" && ls -la / 2>/dev/null || true
+
+# Copy everything first to see what we have
+COPY . .
+
+# Debug: Show what was copied
+RUN echo "=== Files in /app after COPY ===" && ls -la /app
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
-
-# Copy source code
-COPY . ./
 
 # Generate Prisma client
 RUN pnpm prisma generate
