@@ -2,7 +2,6 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as fs from 'fs';
 import * as path from 'path';
-import { watch } from 'chokidar';
 import { NavGraphSchema } from '../schemas/graph.schema';
 import { NavGraph } from '../interfaces/graph.interface';
 
@@ -38,8 +37,8 @@ export class GraphLoaderService implements OnModuleInit {
 
       const graphData = JSON.parse(fs.readFileSync(this.graphPath, 'utf8'));
       const validatedGraph = NavGraphSchema.parse(graphData);
-      
-      this.graph = validatedGraph;
+
+      this.graph = validatedGraph as NavGraph;
       this.logger.log(`Graph loaded successfully from ${this.graphPath}`);
       this.logger.log(`Loaded: ${this.graph.nodes.length} nodes, ${this.graph.edges.length} edges, ${this.graph.floors.length} floors`);
       
@@ -98,20 +97,8 @@ export class GraphLoaderService implements OnModuleInit {
   }
 
   private setupHotReload(): void {
-    const watcher = watch(this.graphPath, { persistent: true });
-    
-    watcher.on('change', async () => {
-      this.logger.log('Graph file changed, reloading...');
-      try {
-        await this.loadGraph();
-        this.notifyReloadCallbacks();
-        this.logger.log('Graph hot-reloaded successfully');
-      } catch (error) {
-        this.logger.error(`Hot-reload failed: ${error.message}`);
-      }
-    });
-
-    this.logger.log('Hot-reload enabled for graph file');
+    // Hot-reload disabled in production builds (chokidar not available)
+    this.logger.log('Hot-reload skipped (production build)');
   }
 
   private async createDefaultGraph(): Promise<void> {

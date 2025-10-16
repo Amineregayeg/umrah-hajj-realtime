@@ -132,8 +132,8 @@ export class HMMTrackingService {
 
       // Determine search parameters based on curvature and zone density
       const isCurved = state.curvature > this.CURVATURE_THRESHOLD;
-      const floorId = this.getFloorId(update.pos.floor);
-      const isDenseZone = this.isDenseZone(smoothedPosition, floorId, graph);
+      const currentFloorId = this.getFloorId(update.pos.floor);
+      const isDenseZone = this.isDenseZone(smoothedPosition, currentFloorId, graph);
       const searchRadius = isDenseZone ? this.R_SEARCH_RADIUS_DENSE : this.R_SEARCH_RADIUS_BASE;
       const maxCandidates = isCurved ? this.K_CANDIDATES_CURVE : this.K_CANDIDATES_BASE;
       
@@ -192,16 +192,16 @@ export class HMMTrackingService {
       }
 
       // Validate floor transition
-      const floorId = this.getFloorId(update.pos.floor);
-      if (!this.validateFloorTransition(state, floorId, update.confidence, graph)) {
+      const transitionFloorId = this.getFloorId(update.pos.floor);
+      if (!this.validateFloorTransition(state, transitionFloorId, update.confidence, graph)) {
         this.logger.warn(
           `Invalid floor transition for user ${update.userId}: ` +
-          `${state.lastValidFloor} -> ${floorId}`
+          `${state.lastValidFloor} -> ${transitionFloorId}`
         );
         return null;
       }
 
-      state.lastValidFloor = floorId;
+      state.lastValidFloor = transitionFloorId;
       state.hmmState.lastUpdate = update;
 
       // Calculate confidence based on HMM probability

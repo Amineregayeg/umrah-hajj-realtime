@@ -23,6 +23,6 @@
     "strictFunctionTypes": false,
     "noFallthroughCasesInSwitch": false,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "jest"]
+    "types": ["node"]
   }
 }
