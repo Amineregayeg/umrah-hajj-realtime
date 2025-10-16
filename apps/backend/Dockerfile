@@ -41,8 +41,10 @@ RUN pnpm prisma generate
 RUN pnpm build && \
     echo "=== Build completed, checking dist directory ===" && \
     ls -la dist/ && \
-    echo "=== Contents of dist/main.js ===" && \
-    ls -la dist/main.js || echo "main.js not found"
+    echo "=== Checking dist/src ===" && \
+    ls -la dist/src/ || echo "No dist/src" && \
+    echo "=== Looking for main.js ===" && \
+    find dist -name "main.js" -type f || echo "main.js not found anywhere"
 
 # ========================================
 # Stage 2: Production Runtime
