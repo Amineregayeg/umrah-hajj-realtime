@@ -13,6 +13,8 @@ import {
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AIService } from './ai.service';
 import { VoiceTokenService } from './services/voice-token.service';
+import { AIRealtimeService } from './services/ai-realtime.service';
+import { FeatureFlagsService } from '../shared/config/feature-flags.service';
 import {
   AIChatRequestDto,
   AIContentGenerationRequestDto,
@@ -40,6 +42,8 @@ export class AIController {
   constructor(
     private readonly aiService: AIService,
     private readonly voiceTokenService: VoiceTokenService,
+    private readonly aiRealtimeService: AIRealtimeService,
+    private readonly featureFlagsService: FeatureFlagsService,
   ) {}
 
   @Post('chat')
@@ -201,6 +205,89 @@ export class AIController {
       throw new BadRequestException({
         error: 'Failed to create voice token',
         code: 'VOICE_TOKEN_CREATION_FAILED',
+        message: error.message,
+      });
+    }
+  }
+
+  @Post('realtime/session')
+  @ApiOperation({
+    summary: 'Create OpenAI Realtime API session for voice chat',
+    description: 'Creates an ephemeral session for real-time voice interaction with AI guide. Feature flag protected.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Session created successfully',
+    schema: {
+      type: 'object',
+      properties: {
+        sessionId: { type: 'string', description: 'OpenAI session ID' },
+        websocketUrl: { type: 'string', description: 'WebSocket URL for connection' },
+        ephemeralToken: { type: 'string', description: 'Short-lived authentication token' },
+        expiresAt: { type: 'number', description: 'Unix timestamp when session expires' },
+        voice: { type: 'string', description: 'Selected voice (e.g., verse, alloy, coral)' },
+        language: { type: 'string', description: 'Session language (en, fr, ar)' },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Feature not enabled or invalid request',
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Unauthorized - invalid or missing authentication token',
+  })
+  @ApiBearerAuth()
+  @UseGuards(SupabaseJwtGuard)
+  async createRealtimeSession(
+    @Request() req: any,
+    @Body()
+    body?: {
+      language?: 'en' | 'fr' | 'ar';
+      gender?: 'male' | 'female';
+      ritualType?: 'umrah' | 'hajj';
+      madhhab?: string;
+    },
+  ) {
+    const userId = req.user?.sub;
+    const userEmail = req.user?.email;
+
+    if (!userId) {
+      throw new BadRequestException('User ID not found in token');
+    }
+
+    // Check feature flags
+    if (!this.featureFlagsService.isAIRealtimeEnabled()) {
+      throw new BadRequestException({
+        error: 'AI Realtime feature is not enabled',
+        code: 'FEATURE_NOT_ENABLED',
+        message: 'This feature is currently disabled. Please check back later.',
+      });
+    }
+
+    if (!this.featureFlagsService.isAIEnabledForUser(userId)) {
+      throw new BadRequestException({
+        error: 'AI features not enabled for this user',
+        code: 'USER_NOT_IN_ROLLOUT',
+        message: 'AI features are not available for your account yet.',
+      });
+    }
+
+    try {
+      const session = await this.aiRealtimeService.createSession({
+        userId,
+        gender: body?.gender,
+        preferredLanguage: body?.language || 'en',
+        madhhab: body?.madhhab,
+        ritualType: body?.ritualType,
+      });
+
+      return session;
+    } catch (error) {
+      throw new BadRequestException({
+        error: 'Failed to create AI session',
+        code: 'SESSION_CREATION_FAILED',
         message: error.message,
       });
     }

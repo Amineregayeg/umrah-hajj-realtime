@@ -1,46 +1,124 @@
-QURAN TEXT LICENSING AND ATTRIBUTION NOTICE
-==========================================
+# Quran Data - Attribution and License
 
-This directory contains text and translations of the Holy Quran.
+## Data Source
 
-ARABIC TEXT (quran_ar_hafs.json):
-- Source: Quran text according to the Hafs recitation from Asim
-- License: Public Domain - The Quran text is considered to be in the public domain
-- Attribution: Based on the standardized Uthmanic text (Mushaf al-Madinah)
-- Verification: Text should be verified with authoritative sources before use
+This directory contains the complete text of the Noble Quran in multiple languages:
 
-ENGLISH TRANSLATION (quran_en_translation.json):
-- Translator: Sahih International
-- License: This translation is used under fair use for educational and religious purposes
-- Attribution: © Sahih International. Used with permission for non-commercial religious application
-- Note: For commercial use, please obtain proper licensing from the copyright holders
+### Arabic Text (Hafs from Asim)
+- **Source:** AlQuran.cloud API (http://api.alquran.cloud/)
+- **Edition:** quran-uthmani (Uthmani script)
+- **Content:** 114 Surahs, 6,236 ayahs
+- **File:** quran_ar_hafs.json
 
-FRENCH TRANSLATION (quran_fr_translation.json):
-- Translator: Muhammad Hamidullah
-- License: This translation is used under fair use for educational and religious purposes
-- Attribution: © Muhammad Hamidullah translation. Used for non-commercial religious application
-- Note: For commercial use, please obtain proper licensing from the copyright holders
+### English Translation
+- **Source:** AlQuran.cloud API (http://api.alquran.cloud/)
+- **Translator:** Sahih International
+- **Edition:** en.sahih
+- **Content:** 114 Surahs, 6,236 ayahs
+- **File:** quran_en_translation.json
 
-SEARCH INDEX (search_index.json):
-- Content: Derived search data from the above texts
-- License: Same restrictions as source texts apply
-- Purpose: Technical implementation for search functionality only
+### French Translation
+- **Source:** AlQuran.cloud API (http://api.alquran.cloud/)
+- **Translator:** Muhammad Hamidullah
+- **Edition:** fr.hamidullah
+- **Content:** 114 Surahs, 6,236 ayahs
+- **File:** quran_fr_translation.json
 
-USAGE GUIDELINES:
-================
-1. This content is provided for educational and religious purposes
-2. Commercial use requires appropriate licensing from copyright holders
-3. Text accuracy should always be verified with authoritative Islamic sources
-4. Users are responsible for ensuring proper attribution in derivative works
-5. This software implementation does not constitute religious authority
+## Download Information
 
-DISCLAIMER:
-===========
-While every effort has been made to ensure accuracy, users should verify 
-all Quranic content with authoritative Islamic sources. The developers 
-assume no responsibility for any inaccuracies in the text or translations.
+- **Downloaded:** October 28, 2025
+- **Script:** scripts/fetch-complete-quran.cjs
+- **Total Size:** 5.02 MB (combined)
 
-For questions about licensing or to report textual issues, please contact
-the application maintainers.
+## License and Usage
 
-Last Updated: October 8, 2025
+### Quranic Text
+The text of the Noble Quran is in the public domain and can be used freely. However, users are expected to:
+
+1. **Maintain Accuracy:** The Quranic text must be preserved without alterations
+2. **Show Respect:** Handle the text with utmost reverence
+3. **Attribute Source:** Credit AlQuran.cloud API when distributing
+
+### Translation Rights
+The translations included are used according to their respective licenses:
+- Sahih International translation is widely distributed and used in Islamic applications
+- Muhammad Hamidullah translation is widely used for French-speaking Muslims
+
+## Attribution Requirements
+
+When using this data, please include attribution:
+
+```
+Quran data sourced from AlQuran.cloud API (http://api.alquran.cloud/)
+- Arabic: Hafs from Asim recitation (Uthmani script)
+- English: Sahih International translation
+- French: Muhammad Hamidullah translation
+```
+
+## AlQuran.cloud API
+
+AlQuran.cloud is a RESTful Quran API that provides:
+- Multiple translations and recitations
+- Well-structured JSON/XML formats
+- Free access with no API key required
+- Comprehensive metadata (juz, page, manzil, ruku, sajda)
+
+Website: https://alquran.cloud/
+Documentation: https://alquran.cloud/api
+
+## Disclaimer
+
+This application provides Quranic text and translations for educational and spiritual purposes. Users are encouraged to:
+
+- Consult qualified scholars for religious guidance
+- Verify interpretations with authentic sources
+- Study with proper Arabic language understanding when possible
+- Respect the sacred nature of the text
+
+## Technical Details
+
+### Data Structure
+Each JSON file contains:
+- Metadata (language, total surahs, total ayahs)
+- Array of surahs with:
+  - Surah ID, name, transliteration, translation
+  - Revelation type (Makkiyyah/Madaniyyah)
+  - Ayah count
+  - Array of ayahs with text and metadata
+
+### Metadata Fields (Arabic only)
+- **page:** Mushaf page number (1-604)
+- **juz:** Juz/para number (1-30)
+- **manzil:** Manzil number (1-7, for weekly completion)
+- **ruku:** Ruku/section number
+- **hizbQuarter:** Hizb quarter number (1-240)
+- **sajda:** Boolean indicating prostration verse
+
+### File Sizes
+- quran_ar_hafs.json: 2.55 MB (63,570 lines)
+- quran_en_translation.json: 1.21 MB (26,094 lines)
+- quran_fr_translation.json: 1.25 MB (26,094 lines)
+
+## Updates and Maintenance
+
+To update the Quran data:
+
+```bash
+node scripts/fetch-complete-quran.cjs
+```
+
+This will re-download the latest versions from AlQuran.cloud API.
+
+## Contact
+
+For questions about the data source or API:
+- AlQuran.cloud: https://alquran.cloud/contact
+
+For questions about this application:
+- See main project documentation
+
+---
+
+**Last Updated:** October 28, 2025
+**Data Version:** AlQuran.cloud API v1 (Complete Edition)
+**Verification:** All 114 Surahs, 6,236 ayahs verified complete
