@@ -14,12 +14,14 @@ import { HealthModule } from './health/health.module';
 import { MetricsModule } from './metrics/metrics.module';
 import { SecurityModule } from './security/security.module';
 import { SecurityInitService } from './shared/utils/security-init.util';
+import { FeatureFlagsModule } from './shared/config/feature-flags.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    FeatureFlagsModule,
     SecurityModule,
     PrismaModule,
     AuthModule,
