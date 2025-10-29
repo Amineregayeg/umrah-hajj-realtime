@@ -30,12 +30,100 @@ import {
   QuranAyahDto,
   QuranSearchResponseDto,
   QuranRecitersResponseDto,
+  QuranSurahsListResponseDto,
 } from './dto';
 
 @ApiTags('Quran')
 @Controller('content/quran')
 export class QuranController {
   constructor(private readonly quranService: QuranService) {}
+
+  @Get('surahs')
+  @Header('Cache-Control', 'public, max-age=86400') // 24 hours cache
+  @ApiOperation({
+    summary: 'Get list of all Surahs (metadata only)',
+    description: 'Retrieve all 114 Surahs with metadata (names, counts) without ayah content. Perfect for displaying surah lists, dropdowns, or navigation menus.',
+  })
+  @ApiQuery({
+    name: 'lang',
+    description: 'Language for the response',
+    enum: QuranLanguage,
+    required: false,
+    example: 'ar',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Surahs list retrieved successfully',
+    type: QuranSurahsListResponseDto,
+    examples: {
+      arabic: {
+        summary: 'Arabic names example',
+        value: {
+          surahs: [
+            {
+              id: 1,
+              name: 'الفاتحة',
+              transliteration: 'Al-Fatihah',
+              translation: 'The Opening',
+              type: 'makkiyyah',
+              ayah_count: 7,
+            },
+            {
+              id: 2,
+              name: 'البقرة',
+              transliteration: 'Al-Baqarah',
+              translation: 'The Cow',
+              type: 'madaniyyah',
+              ayah_count: 286,
+            },
+          ],
+          total: 114,
+          language: 'ar',
+        },
+      },
+      english: {
+        summary: 'English names example',
+        value: {
+          surahs: [
+            {
+              id: 1,
+              name: 'Al-Fatihah',
+              translation: 'The Opening',
+              type: 'makkiyyah',
+              ayah_count: 7,
+            },
+            {
+              id: 2,
+              name: 'Al-Baqarah',
+              translation: 'The Cow',
+              type: 'madaniyyah',
+              ayah_count: 286,
+            },
+          ],
+          total: 114,
+          language: 'en',
+        },
+      },
+    },
+  })
+  @ApiBadRequestResponse({ description: 'Invalid language' })
+  @ApiInternalServerErrorResponse({ description: 'Internal server error' })
+  async getAllSurahs(
+    @Query('lang') lang: QuranLanguage = QuranLanguage.ARABIC,
+  ): Promise<QuranSurahsListResponseDto> {
+    try {
+      return await this.quranService.getAllSurahs(lang);
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+
+      throw new HttpException(
+        'Failed to retrieve surahs list',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 
   @Get('surah/:id')
   @Header('Cache-Control', 'public, max-age=86400') // 24 hours cache

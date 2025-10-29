@@ -51,7 +51,96 @@ The Quran API provides access to the complete Quran in multiple languages with s
 
 ## API Endpoints
 
-### 1. Get Complete Surah
+### 1. Get All Surahs (List with Metadata Only)
+
+Retrieve all 114 Surahs with metadata (names, counts) **without ayah content**. Lightweight endpoint perfect for surah pickers, dropdowns, and navigation menus.
+
+**Endpoint:** `GET /content/quran/surahs`
+
+**Parameters:**
+- `lang` (query parameter, optional) - Language: `ar` (default), `en`, or `fr`
+
+**Example Request:**
+```bash
+# Get all surahs in Arabic
+curl "https://api.umrah.app/content/quran/surahs?lang=ar"
+
+# Get all surahs in English
+curl "https://api.umrah.app/content/quran/surahs?lang=en"
+
+# Get all surahs in French
+curl "https://api.umrah.app/content/quran/surahs?lang=fr"
+```
+
+**Response Example (Arabic):**
+```json
+{
+  "surahs": [
+    {
+      "id": 1,
+      "name": "الفاتحة",
+      "transliteration": "Al-Fatihah",
+      "translation": "The Opening",
+      "type": "makkiyyah",
+      "ayah_count": 7
+    },
+    {
+      "id": 2,
+      "name": "البقرة",
+      "transliteration": "Al-Baqarah",
+      "translation": "The Cow",
+      "type": "madaniyyah",
+      "ayah_count": 286
+    },
+    {
+      "id": 3,
+      "name": "آل عمران",
+      "transliteration": "Aal-E-Imran",
+      "translation": "The Family of Imran",
+      "type": "madaniyyah",
+      "ayah_count": 200
+    }
+    // ... all 114 surahs
+  ],
+  "total": 114,
+  "language": "ar"
+}
+```
+
+**Response Example (English):**
+```json
+{
+  "surahs": [
+    {
+      "id": 1,
+      "name": "Al-Fatihah",
+      "translation": "The Opening",
+      "type": "makkiyyah",
+      "ayah_count": 7
+    },
+    {
+      "id": 2,
+      "name": "Al-Baqarah",
+      "translation": "The Cow",
+      "type": "madaniyyah",
+      "ayah_count": 286
+    }
+    // ... all 114 surahs
+  ],
+  "total": 114,
+  "language": "en"
+}
+```
+
+**Use Cases:**
+- Surah picker dropdown
+- Table of contents
+- Navigation menu
+- Quick reference without fetching full content
+
+---
+
+### 2. Get Complete Surah
 
 Retrieve a complete Surah with all its Ayahs.
 
@@ -132,7 +221,7 @@ curl "https://api.umrah.app/content/quran/surah/12?lang=fr"
 
 ---
 
-### 2. Get Specific Ayah
+### 3. Get Specific Ayah
 
 Retrieve a single Ayah by Surah and Ayah number.
 
@@ -168,7 +257,7 @@ curl "https://api.umrah.app/content/quran/ayah?surah=2&ayah=255&lang=en"
 
 ---
 
-### 3. Search Quran
+### 4. Search Quran
 
 Search for specific terms in the Quran using advanced trigram matching and fuzzy search.
 
@@ -232,7 +321,7 @@ curl "https://api.umrah.app/content/quran/search?q=prayer&lang=en&limit=20&offse
 
 ---
 
-### 4. Get Audio Reciters
+### 5. Get Audio Reciters
 
 Get a list of available Quran reciters with audio URL templates.
 
@@ -283,7 +372,7 @@ const audioUrl = reciter.audio_url_template.replace('{surah:03d}', surahNumber.t
 
 ---
 
-### 5. Cache Statistics (Monitoring)
+### 6. Cache Statistics (Monitoring)
 
 Get cache performance statistics.
 
@@ -312,6 +401,19 @@ curl "https://api.umrah.app/content/quran/cache/stats"
 ### JavaScript/TypeScript (Frontend)
 
 ```typescript
+// Get list of all surahs (for dropdown/picker)
+async function getAllSurahs(language: 'ar' | 'en' | 'fr' = 'ar') {
+  const response = await fetch(
+    `https://api.umrah.app/content/quran/surahs?lang=${language}`
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch surahs list: ${response.statusText}`);
+  }
+
+  return await response.json();
+}
+
 // Get Surah Al-Fatihah in user's preferred language
 async function getSurah(surahId: number, language: 'ar' | 'en' | 'fr') {
   const response = await fetch(
@@ -345,6 +447,10 @@ async function searchQuran(query: string, language: 'ar' | 'en' | 'fr', limit: n
 }
 
 // Usage
+const surahs = await getAllSurahs('en');
+console.log(`Total surahs: ${surahs.total}`);
+surahs.surahs.forEach(s => console.log(`${s.id}. ${s.name} (${s.ayah_count} ayahs)`));
+
 const surah = await getSurah(1, 'en');
 console.log(`${surah.name}: ${surah.ayah_count} ayahs`);
 
@@ -376,6 +482,25 @@ public class QuranAPI : MonoBehaviour
     }
 
     [System.Serializable]
+    public class SurahMetadata
+    {
+        public int id;
+        public string name;
+        public string transliteration;
+        public string translation;
+        public string type;
+        public int ayah_count;
+    }
+
+    [System.Serializable]
+    public class SurahsList
+    {
+        public List<SurahMetadata> surahs;
+        public int total;
+        public string language;
+    }
+
+    [System.Serializable]
     public class Surah
     {
         public int id;
@@ -384,6 +509,26 @@ public class QuranAPI : MonoBehaviour
         public string type;
         public int ayah_count;
         public List<Ayah> ayahs;
+    }
+
+    public IEnumerator GetAllSurahs(string language, System.Action<SurahsList> callback)
+    {
+        string url = $"{API_BASE}/content/quran/surahs?lang={language}";
+
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                SurahsList list = JsonUtility.FromJson<SurahsList>(request.downloadHandler.text);
+                callback?.Invoke(list);
+            }
+            else
+            {
+                Debug.LogError($"Failed to fetch surahs list: {request.error}");
+            }
+        }
     }
 
     public IEnumerator GetSurah(int surahId, string language, System.Action<Surah> callback)
@@ -409,6 +554,16 @@ public class QuranAPI : MonoBehaviour
     // Usage
     void Start()
     {
+        // Get list of all surahs (for UI dropdown)
+        StartCoroutine(GetAllSurahs("en", (list) => {
+            Debug.Log($"Retrieved {list.total} surahs");
+            foreach (var surah in list.surahs)
+            {
+                Debug.Log($"{surah.id}. {surah.name} ({surah.ayah_count} ayahs)");
+            }
+        }));
+
+        // Get specific surah with all ayahs
         StartCoroutine(GetSurah(1, "ar", (surah) => {
             Debug.Log($"Retrieved {surah.name} with {surah.ayah_count} ayahs");
         }));
@@ -421,6 +576,10 @@ public class QuranAPI : MonoBehaviour
 ### cURL (Testing)
 
 ```bash
+# Get all surahs list (metadata only)
+curl -X GET "https://api.umrah.app/content/quran/surahs?lang=ar" \
+  -H "Accept: application/json" | jq '.surahs[] | {id, name, ayah_count}'
+
 # Get Surah Al-Fatihah (Arabic)
 curl -X GET "https://api.umrah.app/content/quran/surah/1?lang=ar" \
   -H "Accept: application/json"
@@ -568,7 +727,16 @@ interface SearchResponse {
 
 ### Manual Testing Checklist
 
-#### 1. Test Get Surah
+#### 1. Test Get All Surahs
+
+- [ ] Get all surahs in Arabic (should return 114 surahs with transliteration)
+- [ ] Get all surahs in English (should return 114 surahs, no transliteration)
+- [ ] Get all surahs in French (should return 114 surahs, no transliteration)
+- [ ] Verify total always equals 114
+- [ ] Verify no ayah content in response (metadata only)
+- [ ] Try invalid language 'es' (should default to 'ar')
+
+#### 2. Test Get Surah
 
 - [ ] Get Surah 1 (Al-Fatihah) in Arabic
 - [ ] Get Surah 114 (An-Nas) in Arabic (last Surah)
@@ -578,14 +746,14 @@ interface SearchResponse {
 - [ ] Try invalid Surah ID 115 (should fail)
 - [ ] Try invalid language 'es' (should default to 'ar')
 
-#### 2. Test Get Ayah
+#### 3. Test Get Ayah
 
 - [ ] Get Surah 1, Ayah 1 (Bismillah)
 - [ ] Get Surah 2, Ayah 255 (Ayat al-Kursi)
 - [ ] Try invalid Ayah number 0 (should fail)
 - [ ] Try Ayah number exceeding Surah length (should fail)
 
-#### 3. Test Search
+#### 4. Test Search
 
 - [ ] Search "الله" in Arabic (should find many results)
 - [ ] Search "mercy" in English
@@ -595,14 +763,14 @@ interface SearchResponse {
 - [ ] Try 101-character query (should fail)
 - [ ] Search for non-existent term (should return 0 results)
 
-#### 4. Test Audio Reciters
+#### 5. Test Audio Reciters
 
 - [ ] Get reciters list
 - [ ] Verify 5 reciters returned
 - [ ] Check audio URL template format
 - [ ] Generate audio URL for Surah 1
 
-#### 5. Test Cache
+#### 6. Test Cache
 
 - [ ] Get cache stats
 - [ ] Request same Surah twice, verify hit rate increases
@@ -614,6 +782,24 @@ interface SearchResponse {
 // Jest test suite
 describe('Quran API', () => {
   const API_BASE = 'https://api.umrah.app';
+
+  test('should get all surahs list', async () => {
+    const response = await fetch(`${API_BASE}/content/quran/surahs?lang=ar`);
+    expect(response.status).toBe(200);
+
+    const data = await response.json();
+    expect(data.total).toBe(114);
+    expect(data.surahs).toHaveLength(114);
+    expect(data.language).toBe('ar');
+
+    // Verify first surah
+    expect(data.surahs[0].id).toBe(1);
+    expect(data.surahs[0].name).toBe('الفاتحة');
+    expect(data.surahs[0].ayah_count).toBe(7);
+
+    // Verify no ayah content
+    expect(data.surahs[0].ayahs).toBeUndefined();
+  });
 
   test('should get Surah Al-Fatihah in Arabic', async () => {
     const response = await fetch(`${API_BASE}/content/quran/surah/1?lang=ar`);

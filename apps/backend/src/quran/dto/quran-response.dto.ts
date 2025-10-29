@@ -239,3 +239,61 @@ export class QuranRecitersResponseDto {
   })
   total: number;
 }
+
+export class QuranSurahMetadataDto {
+  @ApiProperty({
+    description: 'Surah number',
+    example: 1,
+  })
+  id: number;
+
+  @ApiProperty({
+    description: 'Surah name (in requested language)',
+    example: 'الفاتحة',
+  })
+  name: string;
+
+  @ApiPropertyOptional({
+    description: 'Surah name transliteration (only for Arabic)',
+    example: 'Al-Fatihah',
+  })
+  transliteration?: string;
+
+  @ApiProperty({
+    description: 'Surah name translation',
+    example: 'The Opening',
+  })
+  translation: string;
+
+  @ApiProperty({
+    description: 'Revelation type (makkiyyah or madaniyyah)',
+    example: 'makkiyyah',
+  })
+  type: string;
+
+  @ApiProperty({
+    description: 'Total number of ayahs in this surah',
+    example: 7,
+  })
+  ayah_count: number;
+}
+
+export class QuranSurahsListResponseDto {
+  @ApiProperty({
+    description: 'Array of surahs with metadata only (no ayahs)',
+    type: [QuranSurahMetadataDto],
+  })
+  surahs: QuranSurahMetadataDto[];
+
+  @ApiProperty({
+    description: 'Total number of surahs (always 114)',
+    example: 114,
+  })
+  total: number;
+
+  @ApiProperty({
+    description: 'Language of the surah names',
+    example: 'ar',
+  })
+  language: string;
+}

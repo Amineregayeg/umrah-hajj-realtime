@@ -9,6 +9,8 @@ import {
   QuranSearchResponseDto,
   QuranReciterDto,
   QuranRecitersResponseDto,
+  QuranSurahMetadataDto,
+  QuranSurahsListResponseDto,
 } from './dto';
 import { LRUCache } from './utils/lru-cache.util';
 import {
@@ -112,6 +114,42 @@ export class QuranService {
     if (!this.initialized) {
       throw new Error('Quran service not initialized');
     }
+  }
+
+  /**
+   * Get list of all surahs (metadata only, no ayah content)
+   */
+  async getAllSurahs(lang: QuranLanguage = QuranLanguage.ARABIC): Promise<QuranSurahsListResponseDto> {
+    this.ensureInitialized();
+
+    const cacheKey = `surahs:all:${lang}`;
+    const cached = this.cache.get(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
+    const data = this.quranData[lang];
+    if (!data) {
+      throw new BadRequestException(`Language ${lang} not supported`);
+    }
+
+    const surahs: QuranSurahMetadataDto[] = data.surahs.map(surah => ({
+      id: surah.id,
+      name: surah.name,
+      transliteration: surah.transliteration,
+      translation: surah.translation,
+      type: surah.type,
+      ayah_count: surah.ayah_count,
+    }));
+
+    const result: QuranSurahsListResponseDto = {
+      surahs,
+      total: surahs.length,
+      language: lang,
+    };
+
+    this.cache.set(cacheKey, result);
+    return result;
   }
 
   /**
