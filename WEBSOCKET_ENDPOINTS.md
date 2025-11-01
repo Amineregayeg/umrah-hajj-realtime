@@ -117,14 +117,32 @@ ws.Connect();
 
 ### Getting a JWT Token
 
-**Option 1: Mock Authentication (Development)**
-```bash
-curl -X POST "https://api.umrah.app/auth/mock-login" \
-  -H "Content-Type: application/json" \
-  -d '{"username": "test@example.com"}'
+**Option 1: Mock Tokens (Development/Testing)**
+
+For local development and testing, use mock tokens:
+
+```javascript
+// Mock token format: dummy-jwt-{userId}
+const mockToken = "dummy-jwt-testuser";
+const ws = new WebSocket(`ws://localhost:3000?token=${mockToken}`);
 ```
 
+**Valid mock tokens:**
+- `dummy-jwt-user123`
+- `dummy-jwt-alice`
+- `dummy-jwt-testuser`
+- `dummy-jwt-{anyname}` (any name works!)
+
+**⚠️ Mock tokens only work in development (AUTH_MODE=mock)**
+
+**📖 Full guide:** [WEBSOCKET_TESTING_TOKENS.md](./WEBSOCKET_TESTING_TOKENS.md)
+
+---
+
 **Option 2: Supabase Authentication (Production)**
+
+For production, use real JWT tokens from Supabase:
+
 ```typescript
 import { createClient } from '@supabase/supabase-js';
 
@@ -135,6 +153,7 @@ const { data, error } = await supabase.auth.signInWithPassword({
 });
 
 const jwtToken = data.session.access_token;
+const ws = new WebSocket(`wss://api.umrah.app?token=${jwtToken}`);
 ```
 
 ---
@@ -813,6 +832,7 @@ Header:       Authorization: Bearer JWT_TOKEN
 
 ## Related Documentation
 
+- **Testing Tokens Guide:** [WEBSOCKET_TESTING_TOKENS.md](./WEBSOCKET_TESTING_TOKENS.md) ⭐ **Start here for testing!**
 - **Quran API:** [QURAN_API_DOCUMENTATION.md](./QURAN_API_DOCUMENTATION.md)
 - **AI Usage:** [AI_USAGE_DOCUMENTATION.md](./AI_USAGE_DOCUMENTATION.md)
 - **Authentication:** [docs/authentication/README.md](./docs/authentication/README.md)
