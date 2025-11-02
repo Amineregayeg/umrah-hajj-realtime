@@ -45,7 +45,7 @@ export class WsAuthUtil {
       throw new Error('SUPABASE_URL environment variable is required for Supabase auth mode');
     }
 
-    const jwksUri = `${supabaseUrl}/rest/v1/auth/jwks`;
+    const jwksUri = `${supabaseUrl}/auth/v1/jwks`;
     this.jwksSet = createRemoteJWKSet(new URL(jwksUri));
     this.logger.log(`JWKS initialized with URI: ${jwksUri}`);
   }
