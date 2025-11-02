@@ -470,15 +470,30 @@
 
         const data = await response.json();
 
-        if (response.ok && data.access_token) {
-          output.className = 'output success';
-          currentAccessToken = data.access_token;
-          currentRefreshToken = data.refresh_token;
-          currentUser = data.user;
+        if (response.ok) {
+          // Check if user was created (with or without immediate access token)
+          if (data.access_token) {
+            // Email confirmation disabled - got token immediately
+            output.className = 'output success';
+            currentAccessToken = data.access_token;
+            currentRefreshToken = data.refresh_token;
+            currentUser = data.user;
 
-          output.textContent = `✓ Account Created Successfully!\n\nEmail: ${email}\nUser ID: ${data.user?.id}\n\n✓ Auto-signed in!\n\nAccess Token: ${data.access_token.substring(0, 30)}...\n\nYou can now use this token for API calls.\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+            output.textContent = `✓ Account Created Successfully!\n\nEmail: ${email}\nUser ID: ${data.user?.id}\n\n✓ Auto-signed in!\n\nAccess Token: ${data.access_token.substring(0, 30)}...\n\nYou can now use this token for API calls.\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
 
-          displayToken(data.access_token);
+            displayToken(data.access_token);
+          } else if (data.id && data.confirmation_sent_at) {
+            // Email confirmation enabled - check your email
+            output.className = 'output success';
+            output.textContent = `✓ Account Created Successfully!\n\nEmail: ${email}\nUser ID: ${data.id}\n\n📧 Confirmation Email Sent!\n\nPlease check your email (${email}) and click the confirmation link.\n\nAfter confirming, use the "Sign In" section below to get your access token.\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+          } else if (data.id) {
+            // User created but no confirmation required, no token yet
+            output.className = 'output success';
+            output.textContent = `✓ Account Created Successfully!\n\nEmail: ${email}\nUser ID: ${data.id}\n\nPlease use the "Sign In" section below to get your access token.\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+          } else {
+            output.className = 'output error';
+            output.textContent = `⚠️ Unexpected Response\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+          }
         } else {
           output.className = 'output error';
           output.textContent = `✗ Sign Up Failed\n\n${data.error_description || data.msg || data.message || 'Unknown error'}\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
