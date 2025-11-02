@@ -24,25 +24,8 @@ async function bootstrap() {
   securityConfigService.validateConfiguration();
   logRedactionService.validateConfig();
 
-  // Enhanced Security: Use Helmet with strict CSP configuration
-  const securityConfig = securityConfigService.getSecurityConfig();
-  
-  app.use(helmet({
-    contentSecurityPolicy: securityConfig.helmet.contentSecurityPolicy as any,
-    hsts: securityConfig.helmet.hsts as any,
-    xssFilter: securityConfig.helmet.xssFilter as any,
-    noSniff: securityConfig.helmet.noSniff as any,
-    frameguard: securityConfig.helmet.frameguard as any,
-    referrerPolicy: securityConfig.helmet.referrerPolicy as any,
-    crossOriginEmbedderPolicy: false, // Allow for WebSocket connections
-  }));
-
-  // Apply additional security middleware
-  app.use(securityConfigService.nonceMiddleware);
-  app.use(securityConfigService.hstsMiddleware);
-  app.use(securityConfigService.securityHeadersMiddleware);
-
   // CORS Configuration with Origin Validation
+  // CRITICAL: CORS must be applied BEFORE Helmet to ensure preflight requests are handled correctly
   const allowedOrigins = configService.get<string>('ALLOWED_ORIGINS', 'http://localhost:3000')
     .split(',')
     .map(origin => origin.trim())
@@ -84,6 +67,26 @@ async function bootstrap() {
     preflightContinue: false,
     optionsSuccessStatus: 204,
   });
+
+  // Enhanced Security: Use Helmet with strict CSP configuration
+  // Applied AFTER CORS to prevent interference with preflight requests
+  const securityConfig = securityConfigService.getSecurityConfig();
+
+  app.use(helmet({
+    contentSecurityPolicy: securityConfig.helmet.contentSecurityPolicy as any,
+    hsts: securityConfig.helmet.hsts as any,
+    xssFilter: securityConfig.helmet.xssFilter as any,
+    noSniff: securityConfig.helmet.noSniff as any,
+    frameguard: securityConfig.helmet.frameguard as any,
+    referrerPolicy: securityConfig.helmet.referrerPolicy as any,
+    crossOriginEmbedderPolicy: false, // Allow for WebSocket connections
+    crossOriginResourcePolicy: false, // Allow CORS to work properly
+  }));
+
+  // Apply additional security middleware
+  app.use(securityConfigService.nonceMiddleware);
+  app.use(securityConfigService.hstsMiddleware);
+  app.use(securityConfigService.securityHeadersMiddleware);
 
   // Additional security headers
   app.use((req, res, next) => {
