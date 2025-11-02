@@ -43,8 +43,13 @@ async function bootstrap() {
   app.use(securityConfigService.securityHeadersMiddleware);
 
   // CORS Configuration with Origin Validation
-  const allowedOrigins = configService.get<string>('ALLOWED_ORIGINS', 'http://localhost:3000').split(',');
+  const allowedOrigins = configService.get<string>('ALLOWED_ORIGINS', 'http://localhost:3000')
+    .split(',')
+    .map(origin => origin.trim())
+    .filter(origin => origin.length > 0);
   const nodeEnv = configService.get<string>('NODE_ENV', 'development');
+
+  logger.log(`CORS allowed origins: ${allowedOrigins.join(', ')}`);
 
   app.enableCors({
     origin: (origin, callback) => {
@@ -60,6 +65,7 @@ async function bootstrap() {
 
       // Check if origin is in allowed list
       if (allowedOrigins.includes(origin)) {
+        logger.debug(`CORS: Allowing origin ${origin}`);
         return callback(null, true);
       }
 
@@ -68,12 +74,15 @@ async function bootstrap() {
         return callback(null, true);
       }
 
-      logger.warn(`Request blocked: Origin '${origin}' not allowed`);
+      logger.warn(`Request blocked: Origin '${origin}' not allowed. Allowed origins: ${allowedOrigins.join(', ')}`);
       callback(new Error(`Origin '${origin}' not allowed by CORS policy`), false);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    exposedHeaders: ['Content-Length', 'Content-Type'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   });
 
   // Additional security headers
