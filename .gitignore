@@ -1,1 +1,24 @@
 apps/backend/assets/quran/search_index.json
+
+# Environment files (API keys, secrets)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Logs
+*.log
+logs/
+**/logs/
