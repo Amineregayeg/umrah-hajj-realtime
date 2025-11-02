@@ -95,10 +95,25 @@ export class QuranService {
       const frenchData = await readFile(frenchPath, 'utf-8');
       this.quranData[QuranLanguage.FRENCH] = JSON.parse(frenchData);
 
-      // Load search index
-      const searchIndexPath = join(this.assetsPath, 'search_index.json');
-      const searchIndexData = await readFile(searchIndexPath, 'utf-8');
-      this.searchIndex = JSON.parse(searchIndexData);
+      // Load search index (optional - may not exist in production)
+      try {
+        const searchIndexPath = join(this.assetsPath, 'search_index.json');
+        const searchIndexData = await readFile(searchIndexPath, 'utf-8');
+        this.searchIndex = JSON.parse(searchIndexData);
+        this.logger.log('Search index loaded successfully');
+      } catch (searchIndexError) {
+        this.logger.warn('Search index not found - search functionality will use fallback methods');
+        // Initialize empty search index structure
+        this.searchIndex = {
+          metadata: {
+            description: 'Fallback search index',
+            languages: ['ar', 'en', 'fr'],
+            generated: new Date().toISOString(),
+          },
+          trigrams: { ar: {}, en: {}, fr: {} },
+          word_index: { ar: {}, en: {}, fr: {} },
+        };
+      }
 
       this.logger.log('All Quran data loaded successfully');
     } catch (error) {
