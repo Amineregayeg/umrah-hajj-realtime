@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qibla Module - Documentation Index</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      margin-top: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 28px;
+      border-bottom: 3px solid #28a745;
+      padding-bottom: 10px;
+    }
+
+    .section h3 {
+      color: #34495e;
+      margin: 25px 0 15px 0;
+      font-size: 20px;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .link-card {
+      display: block;
+      background: #f8f9fa;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      color: inherit;
+    }
+
+    .link-card:hover {
+      border-color: #28a745;
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .link-card .icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .link-card .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .link-card .description {
+      font-size: 14px;
+      color: #7f8c8d;
+      line-height: 1.5;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 10px 0;
+      padding-left: 30px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #28a745;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-box {
+      background: #e8f5e9;
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .stat-box .label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-box .value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #28a745;
+      margin-top: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #218838 0%, #1aa179 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #e83e8c;
+    }
+
+    .footer {
+      text-align: center;
+      color: white;
+      margin-top: 40px;
+      padding: 20px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .link-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Qibla Direction Module</h1>
+      <p>Complete Testing Interface for Umrah & Hajj Backend</p>
+      <div class="badge">Production Ready v1.0.0</div>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="section">
+      <h2>🚀 Quick Start</h2>
+      <div class="button-row">
+        <a href="qibla-test.html" class="btn">Launch Testing Interface</a>
+        <a href="QIBLA_QUICK_START.md" class="btn btn-secondary">60-Second Guide</a>
+      </div>
+      <p style="margin-top: 15px; color: #666;">
+        Open <code>qibla-test.html</code> in your browser to start testing immediately.
+        Or run <code>node test-qibla-api.js</code> for automated API testing.
+      </p>
+    </div>
+
+    <!-- Project Stats -->
+    <div class="section">
+      <h2>📊 Project Statistics</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <div class="label">Lines of Code</div>
+          <div class="value">1,310+</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Core Files</div>
+          <div class="value">3</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Documentation</div>
+          <div class="value">5 Files</div>
+        </div>
+        <div class="stat-box">
+          <div class="label">Status</div>
+          <div class="value">Ready</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Files -->
+    <div class="section">
+      <h2>📁 Core Files</h2>
+      <div class="link-grid">
+        <a href="qibla-test.html" class="link-card">
+          <div class="icon">📄</div>
+          <div class="title">qibla-test.html</div>
+          <div class="description">Main HTML interface with complete UI (264 lines)</div>
+        </a>
+        <a href="js/qibla-module.js" class="link-card">
+          <div class="icon">📜</div>
+          <div class="title">qibla-module.js</div>
+          <div class="description">QiblaTester class with all functionality (547 lines)</div>
+        </a>
+        <a href="css/qibla-module.css" class="link-card">
+          <div class="icon">🎨</div>
+          <div class="title">qibla-module.css</div>
+          <div class="description">Complete styling with responsive design (499 lines)</div>
+        </a>
+        <a href="test-qibla-api.js" class="link-card">
+          <div class="icon">🧪</div>
+          <div class="title">test-qibla-api.js</div>
+          <div class="description">Node.js API test script for automated testing</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Documentation -->
+    <div class="section">
+      <h2>📚 Documentation</h2>
+      <div class="link-grid">
+        <a href="README.md" class="link-card">
+          <div class="icon">📖</div>
+          <div class="title">README.md</div>
+          <div class="description">Complete documentation with usage, features, and troubleshooting</div>
+        </a>
+        <a href="QIBLA_QUICK_START.md" class="link-card">
+          <div class="icon">⚡</div>
+          <div class="title">Quick Start Guide</div>
+          <div class="description">Get started in 60 seconds with sample locations</div>
+        </a>
+        <a href="QIBLA_MODULE_SPEC.md" class="link-card">
+          <div class="icon">📋</div>
+          <div class="title">Technical Specification</div>
+          <div class="description">Detailed specs, visual layout, and API documentation</div>
+        </a>
+        <a href="INTEGRATION_EXAMPLES.md" class="link-card">
+          <div class="icon">💻</div>
+          <div class="title">Integration Examples</div>
+          <div class="description">Code examples for React, Vue, and more</div>
+        </a>
+        <a href="QIBLA_MODULE_SUMMARY.txt" class="link-card">
+          <div class="icon">📄</div>
+          <div class="title">Project Summary</div>
+          <div class="description">Complete overview and feature checklist</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="section">
+      <h2>✨ Key Features</h2>
+      <ul class="feature-list">
+        <li><strong>Interactive Input:</strong> Manual coordinate entry with validation</li>
+        <li><strong>Geolocation:</strong> Browser-based location detection</li>
+        <li><strong>Visual Compass:</strong> HTML5 Canvas with smooth animations</li>
+        <li><strong>Real-time API:</strong> Direct testing of backend endpoints</li>
+        <li><strong>Comprehensive Results:</strong> Direction, distance, coordinates, timestamp</li>
+        <li><strong>Error Handling:</strong> Graceful handling of all error cases</li>
+        <li><strong>Responsive Design:</strong> Works on desktop, tablet, and mobile</li>
+        <li><strong>Accessibility:</strong> ARIA labels and keyboard navigation</li>
+        <li><strong>Production Ready:</strong> Clean code with extensive documentation</li>
+      </ul>
+    </div>
+
+    <!-- API Information -->
+    <div class="section">
+      <h2>🔌 Backend API</h2>
+      <h3>Endpoint</h3>
+      <p>
+        <code>GET /content/qibla?lat={latitude}&lng={longitude}</code>
+      </p>
+      <h3>Base URL</h3>
+      <p>
+        <code>https://umrah-hajj-realtime.koyeb.app</code>
+      </p>
+      <h3>Response Format</h3>
+      <pre style="background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>{
+  "location": { "latitude": 40.7128, "longitude": -74.0060 },
+  "qibla": { "direction": 58.48, "distance": 9842.5 },
+  "kaaba": { "latitude": 21.4225, "longitude": 39.8262 },
+  "calculatedAt": "2025-10-17T..."
+}</code></pre>
+    </div>
+
+    <!-- Testing -->
+    <div class="section">
+      <h2>🧪 Testing</h2>
+      <h3>Quick Test Locations</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+        <thead>
+          <tr style="background: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+            <th style="padding: 10px; text-align: left;">City</th>
+            <th style="padding: 10px; text-align: left;">Latitude</th>
+            <th style="padding: 10px; text-align: left;">Longitude</th>
+            <th style="padding: 10px; text-align: left;">Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #dee2e6;">
+            <td style="padding: 10px;">New York, USA</td>
+            <td style="padding: 10px;"><code>40.7128</code></td>
+            <td style="padding: 10px;"><code>-74.0060</code></td>
+            <td style="padding: 10px;">~58° NE</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #dee2e6;">
+            <td style="padding: 10px;">London, UK</td>
+            <td style="padding: 10px;"><code>51.5074</code></td>
+            <td style="padding: 10px;"><code>-0.1278</code></td>
+            <td style="padding: 10px;">~118° SE</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #dee2e6;">
+            <td style="padding: 10px;">Tokyo, Japan</td>
+            <td style="padding: 10px;"><code>35.6762</code></td>
+            <td style="padding: 10px;"><code>139.6503</code></td>
+            <td style="padding: 10px;">~293° NW</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">Sydney, Australia</td>
+            <td style="padding: 10px;"><code>-33.8688</code></td>
+            <td style="padding: 10px;"><code>151.2093</code></td>
+            <td style="padding: 10px;">~277° W</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Automated Testing</h3>
+      <p style="margin: 15px 0;">Run the Node.js test suite:</p>
+      <pre style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 5px;"><code>node test-qibla-api.js</code></pre>
+      <p style="margin-top: 10px; color: #666;">
+        This will test 7 locations worldwide and validate API responses.
+      </p>
+    </div>
+
+    <!-- Browser Support -->
+    <div class="section">
+      <h2>🌐 Browser Support</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin: 20px 0;">
+        <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🌐</div>
+          <strong>Chrome 90+</strong>
+        </div>
+        <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🦊</div>
+          <strong>Firefox 88+</strong>
+        </div>
+        <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">🧭</div>
+          <strong>Safari 14+</strong>
+        </div>
+        <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+          <div style="font-size: 32px; margin-bottom: 8px;">📱</div>
+          <strong>Edge 90+</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="section">
+      <h2>🎯 Getting Started</h2>
+      <ol style="line-height: 2; padding-left: 20px;">
+        <li>Open <code>qibla-test.html</code> in your browser</li>
+        <li>Enter test coordinates: <code>40.7128, -74.0060</code> (New York)</li>
+        <li>Click "Calculate Qibla" and watch the compass animate</li>
+        <li>Try "Use My Location" for automatic detection</li>
+        <li>Explore the documentation files for advanced usage</li>
+      </ol>
+
+      <div class="button-row" style="margin-top: 20px;">
+        <a href="qibla-test.html" class="btn">Start Testing Now</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2025 Umrah & Hajj Real-Time Navigation System</p>
+      <p>Version 1.0.0 | Production Ready | Complete Documentation</p>
+    </div>
+  </div>
+</body>
+</html>

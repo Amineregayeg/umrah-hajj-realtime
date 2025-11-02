@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Qibla Direction Testing Module for Umrah & Hajj Backend">
+  <title>Qibla Direction Tester - Umrah & Hajj Backend</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/qibla-module.css">
+
+  <style>
+    /* Base page styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .page-header .subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .api-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-top: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .footer {
+      text-align: center;
+      color: white;
+      margin-top: 40px;
+      padding: 20px;
+      opacity: 0.8;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Qibla Direction Tester</h1>
+      <p class="subtitle">Testing Interface for Umrah & Hajj Backend API</p>
+      <div class="api-badge">
+        API: umrah-hajj-realtime.koyeb.app
+      </div>
+    </div>
+
+    <!-- Qibla Module -->
+    <div class="qibla-module">
+      <!-- Module Header -->
+      <div class="qibla-header">
+        <h2>Calculate Qibla Direction</h2>
+        <p>Find the direction to the Kaaba from any location on Earth</p>
+      </div>
+
+      <!-- Error Message -->
+      <div id="errorMessage" class="error-message"></div>
+
+      <!-- Loading Indicator -->
+      <div id="loadingIndicator" class="loading-indicator">
+        Calculating Qibla direction
+      </div>
+
+      <!-- Main Content -->
+      <div class="qibla-content">
+        <!-- Input Section -->
+        <div class="qibla-input-section">
+          <h3>Location Coordinates</h3>
+
+          <div class="input-group">
+            <label for="latitudeInput">Latitude</label>
+            <input
+              type="number"
+              id="latitudeInput"
+              placeholder="e.g., 40.7128"
+              step="0.000001"
+              min="-90"
+              max="90"
+              aria-label="Latitude coordinate"
+            >
+            <div class="input-hint">Range: -90 to 90 degrees</div>
+          </div>
+
+          <div class="input-group">
+            <label for="longitudeInput">Longitude</label>
+            <input
+              type="number"
+              id="longitudeInput"
+              placeholder="e.g., -74.0060"
+              step="0.000001"
+              min="-180"
+              max="180"
+              aria-label="Longitude coordinate"
+            >
+            <div class="input-hint">Range: -180 to 180 degrees</div>
+          </div>
+
+          <div class="button-group">
+            <button id="calculateQiblaBtn" class="btn btn-primary" aria-label="Calculate Qibla direction">
+              Calculate Qibla
+            </button>
+            <button id="useLocationBtn" class="btn btn-secondary" aria-label="Use current location">
+              Use My Location
+            </button>
+          </div>
+
+          <!-- GPS Tracking Controls -->
+          <div class="button-group" style="margin-top: 15px;">
+            <button id="startTrackingBtn" class="btn btn-success" aria-label="Start live GPS tracking" onclick="qiblaTester.startLiveTracking()">
+              📍 Start Live Tracking
+            </button>
+            <button id="stopTrackingBtn" class="btn btn-danger" style="display: none;" aria-label="Stop live GPS tracking" onclick="qiblaTester.stopLiveTracking()">
+              ⏹️ Stop Tracking
+            </button>
+            <span id="trackingIndicator" style="display: none; margin-left: 10px; color: #28a745; font-size: 14px;">
+              ● Live Tracking Active
+            </span>
+          </div>
+
+          <!-- GPS Accuracy Display -->
+          <div class="input-group" style="margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+              <span style="font-weight: bold;">GPS Accuracy:</span>
+              <span id="gpsAccuracy" style="font-weight: bold;">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compass Visualization -->
+        <div class="qibla-compass-section">
+          <h3>Qibla Compass</h3>
+
+          <div class="compass-container">
+            <canvas id="qiblaCompass" width="300" height="300" aria-label="Qibla direction compass"></canvas>
+          </div>
+
+          <div class="compass-legend">
+            <div class="legend-item">
+              <div class="legend-color qibla"></div>
+              <span>Qibla Direction</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color opposite"></div>
+              <span>Opposite Direction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="qiblaResults" class="qibla-results">
+        <h3>Calculation Results</h3>
+
+        <div class="results-grid">
+          <div class="result-item">
+            <div class="result-label">Qibla Direction</div>
+            <div class="result-value highlight">
+              <span id="qiblaDirection">-</span>
+            </div>
+            <div class="result-label" style="margin-top: 10px; font-size: 11px;">
+              <span id="cardinalDirection">-</span>
+            </div>
+          </div>
+
+          <div class="result-item">
+            <div class="result-label">Distance to Kaaba</div>
+            <div class="result-value highlight">
+              <span id="qiblaDistance">-</span>
+            </div>
+          </div>
+
+          <div class="result-item">
+            <div class="result-label">Your Location</div>
+            <div class="result-value" style="font-size: 16px;">
+              <span id="userLocation">-</span>
+            </div>
+          </div>
+
+          <div class="result-item">
+            <div class="result-label">Kaaba Location</div>
+            <div class="result-value" style="font-size: 16px;">
+              <span id="kaabaLocation">-</span>
+            </div>
+          </div>
+
+          <div class="result-item full-width">
+            <div class="result-label">Calculated At</div>
+            <div class="result-value" style="font-size: 14px;">
+              <span id="calculatedTimestamp">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Information Section -->
+      <div class="qibla-info">
+        <h4>About Qibla Direction</h4>
+        <ul>
+          <li><strong>Qibla</strong> is the direction Muslims face during prayer, towards the Kaaba in Mecca</li>
+          <li>The direction is calculated using the <strong>great-circle distance</strong> between your location and the Kaaba</li>
+          <li>Direction is measured in <strong>degrees from North</strong> (0° = North, 90° = East, 180° = South, 270° = West)</li>
+          <li>The Kaaba is located at coordinates: <strong>21.4225°N, 39.8262°E</strong></li>
+        </ul>
+
+        <h4 style="margin-top: 15px;">Testing Instructions</h4>
+        <ul>
+          <li>Enter latitude and longitude manually, or use "Use My Location" for automatic detection</li>
+          <li>The compass will animate to show the Qibla direction from your location</li>
+          <li>Green arrow points toward the Kaaba, red indicates the opposite direction</li>
+        </ul>
+
+        <h4 style="margin-top: 15px;">Example Locations to Test</h4>
+        <ul>
+          <li><strong>New York, USA:</strong> 40.7128, -74.0060 (Direction: ~58° NE)</li>
+          <li><strong>London, UK:</strong> 51.5074, -0.1278 (Direction: ~118° SE)</li>
+          <li><strong>Tokyo, Japan:</strong> 35.6762, 139.6503 (Direction: ~293° NW)</li>
+          <li><strong>Sydney, Australia:</strong> -33.8688, 151.2093 (Direction: ~277° W)</li>
+          <li><strong>São Paulo, Brazil:</strong> -23.5505, -46.6333 (Direction: ~72° E)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2025 Umrah & Hajj Real-Time Navigation System</p>
+      <p>Backend API: <a href="https://umrah-hajj-realtime.koyeb.app" target="_blank">https://umrah-hajj-realtime.koyeb.app</a></p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/qibla-module.js"></script>
+  <script>
+    // Initialize the Qibla Tester when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create instance with API URL
+      const qiblaTester = new QiblaTester('https://umrah-hajj-realtime.koyeb.app');
+
+      // Initialize the module
+      qiblaTester.init();
+
+      console.log('Qibla Direction Tester loaded successfully');
+      console.log('API Base URL:', qiblaTester.apiBaseUrl);
+
+      // Optional: Expose to window for debugging
+      window.qiblaTester = qiblaTester;
+    });
+  </script>
+</body>
+</html>

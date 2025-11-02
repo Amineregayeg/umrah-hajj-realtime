@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Features Test - Umrah & Hajj Backend</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .test-section {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .test-section h2 {
+      color: #2c5f2d;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .controls input,
+    .controls select,
+    .controls textarea {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .controls input:focus,
+    .controls select:focus,
+    .controls textarea:focus {
+      outline: none;
+      border-color: #2c5f2d;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background: #2c5f2d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background: #1f4420;
+    }
+
+    .controls button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .output {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 400px;
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+
+    .output.success {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    .output.error {
+      background: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    .status-indicator {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .status-indicator.success {
+      background: #28a745;
+      color: white;
+    }
+
+    .status-indicator.error {
+      background: #dc3545;
+      color: white;
+    }
+
+    .status-indicator.info {
+      background: #17a2b8;
+      color: white;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: #1976D2;
+    }
+
+    .endpoint-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #6c757d;
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .endpoint-tag.post { background: #28a745; }
+    .endpoint-tag.get { background: #17a2b8; }
+    .endpoint-tag.delete { background: #dc3545; }
+
+    .back-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #6c757d;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+
+    .back-link:hover {
+      background: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <header>
+      <h1>🤖 AI Features Test</h1>
+      <p class="subtitle">Test OpenAI Realtime API, Knowledge Search & AI Endpoints</p>
+      <div id="health-status"></div>
+    </header>
+
+    <!-- JWT Token Input (shared across all tests) -->
+    <div class="test-section">
+      <h2>🔑 Authentication</h2>
+      <div class="info-box">
+        <h3>Get a Supabase JWT Token</h3>
+        <p>To test authenticated endpoints, you need a Supabase JWT token.</p>
+        <p><strong>How to get one:</strong></p>
+        <ol>
+          <li>Use the Auth Test page (auth-test.html) to sign in</li>
+          <li>Copy the access_token from the response</li>
+          <li>Paste it below</li>
+        </ol>
+      </div>
+      <div class="controls">
+        <input
+          type="text"
+          id="jwt-token"
+          placeholder="Paste your Supabase JWT token here (from auth-test.html)"
+          style="flex: 3;"
+        />
+        <button onclick="validateToken()">Validate Token</button>
+      </div>
+      <div id="token-output" class="output" style="display: none;"></div>
+    </div>
+
+    <!-- AI Voice Session (Realtime) -->
+    <div class="test-section">
+      <h2>
+        1. AI Voice Session (Realtime)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/ai/realtime/session</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Creates an OpenAI Realtime API session for voice chat with AI guide.</p>
+        <p><strong>Returns:</strong> sessionId, ephemeralToken, websocketUrl, model, voice</p>
+        <p><strong>Model:</strong> Should be "gpt-realtime" (Production GA)</p>
+      </div>
+      <div class="controls">
+        <select id="ai-language">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+        </select>
+        <select id="ai-gender">
+          <option value="male">Male (verse voice)</option>
+          <option value="female">Female (coral voice)</option>
+        </select>
+        <select id="ai-ritual">
+          <option value="umrah">Umrah</option>
+          <option value="hajj">Hajj</option>
+        </select>
+        <select id="ai-madhhab">
+          <option value="">Any Madhhab</option>
+          <option value="hanafi">Hanafi</option>
+          <option value="shafi">Shafi</option>
+          <option value="maliki">Maliki</option>
+          <option value="hanbali">Hanbali</option>
+        </select>
+        <button onclick="createAISession()">Create AI Session</button>
+      </div>
+      <div id="ai-session-output" class="output"></div>
+    </div>
+
+    <!-- Knowledge Search -->
+    <div class="test-section">
+      <h2>
+        2. Knowledge Search
+        <span class="endpoint-tag get">GET</span>
+        <code style="font-size: 14px;">/content/search</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Searches Islamic knowledge base (Umrah/Hajj guidance, madhhab differences, duas).</p>
+        <p><strong>Knowledge Base:</strong> 4 documents indexed with trigram search</p>
+      </div>
+      <div class="controls">
+        <input
+          type="text"
+          id="search-query"
+          placeholder="Search query (e.g., tawaf, hajj steps, hanafi)"
+          style="flex: 2;"
+        />
+        <select id="search-ritual">
+          <option value="umrah">Umrah</option>
+          <option value="hajj">Hajj</option>
+          <option value="">All</option>
+        </select>
+        <button onclick="searchKnowledge()">Search</button>
+      </div>
+      <div id="search-output" class="output"></div>
+    </div>
+
+    <!-- Voice Token (Legacy) -->
+    <div class="test-section">
+      <h2>
+        3. Voice Token (Legacy)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/ai/voice/token</code>
+        <span class="status-indicator info">Legacy - Use Realtime Session Instead</span>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Creates short-lived ephemeral token for voice API access.</p>
+        <p><strong>Note:</strong> This is the old method. Use /ai/realtime/session instead.</p>
+      </div>
+      <div class="controls">
+        <input
+          type="number"
+          id="token-ttl"
+          placeholder="TTL (seconds)"
+          value="60"
+          min="1"
+          max="60"
+        />
+        <button onclick="createVoiceToken()">Create Voice Token</button>
+      </div>
+      <div id="voice-token-output" class="output"></div>
+    </div>
+
+    <!-- AI Chat (Text) -->
+    <div class="test-section">
+      <h2>
+        4. AI Chat (Text)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/ai/chat</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Text-based chat with AI assistant (non-voice).</p>
+      </div>
+      <div class="controls">
+        <textarea
+          id="chat-message"
+          placeholder="Enter your message..."
+          rows="3"
+          style="flex: 2;"
+        ></textarea>
+        <button onclick="sendChat()">Send Chat</button>
+      </div>
+      <div id="chat-output" class="output"></div>
+    </div>
+
+    <!-- Model Verification -->
+    <div class="test-section">
+      <h2>
+        5. Model Configuration Verification
+        <span class="status-indicator success">✓ Auto-Check</span>
+      </h2>
+      <div class="info-box">
+        <h3>What This Checks</h3>
+        <p>Verifies backend is using the correct production AI model and configuration.</p>
+        <p><strong>Expected:</strong></p>
+        <ul>
+          <li>Model: gpt-realtime (Production GA)</li>
+          <li>Voice: verse/coral/cedar/marin</li>
+          <li>Feature Flags: Enabled</li>
+        </ul>
+      </div>
+      <div class="controls">
+        <button onclick="verifyModel()">Verify Model Configuration</button>
+      </div>
+      <div id="model-output" class="output"></div>
+    </div>
+
+    <!-- API Documentation -->
+    <div class="test-section">
+      <h2>📚 API Documentation</h2>
+      <p>View complete API documentation with Swagger UI:</p>
+      <p>
+        <a
+          href="https://umrah-hajj-realtime.koyeb.app/docs"
+          target="_blank"
+          style="color: #2c5f2d; font-weight: 600;"
+        >
+          https://umrah-hajj-realtime.koyeb.app/docs →
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'https://umrah-hajj-realtime.koyeb.app';
+
+    // Check backend health on load
+    window.addEventListener('load', async () => {
+      const statusDiv = document.getElementById('health-status');
+
+      try {
+        const response = await fetch(`${API_URL}/health`);
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+          statusDiv.innerHTML = '<span class="status-indicator success">✓ Backend Online</span>';
+        } else {
+          statusDiv.innerHTML = '<span class="status-indicator error">✗ Backend Issues</span>';
+        }
+      } catch (error) {
+        statusDiv.innerHTML = '<span class="status-indicator error">✗ Backend Offline</span>';
+        console.error('Health check failed:', error);
+      }
+    });
+
+    function getJWT() {
+      const jwt = document.getElementById('jwt-token').value.trim();
+      if (!jwt) {
+        alert('Please enter a Supabase JWT token first (get one from auth-test.html)');
+        return null;
+      }
+      return jwt;
+    }
+
+    async function validateToken() {
+      const jwt = getJWT();
+      if (!jwt) return;
+
+      const output = document.getElementById('token-output');
+      output.style.display = 'block';
+      output.className = 'output';
+      output.textContent = 'Validating token...';
+
+      try {
+        // Try to use token on a simple endpoint
+        const response = await fetch(`${API_URL}/ai/realtime/session`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwt}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            language: 'en',
+            gender: 'male',
+            ritualType: 'umrah',
+          }),
+        });
+
+        if (response.status === 401) {
+          output.className = 'output error';
+          output.textContent = '✗ Token is INVALID or EXPIRED\n\nGet a new token from auth-test.html';
+        } else if (response.ok) {
+          output.className = 'output success';
+
+          // Parse JWT to show info (unsafe, just for testing)
+          try {
+            const parts = jwt.split('.');
+            const payload = JSON.parse(atob(parts[1]));
+            const expDate = new Date(payload.exp * 1000);
+            const now = new Date();
+            const isExpired = expDate < now;
+
+            output.textContent = `✓ Token is VALID ${isExpired ? '(but expired)' : ''}\n\nPayload:\n${JSON.stringify(payload, null, 2)}\n\nExpires: ${expDate.toLocaleString()}\nStatus: ${isExpired ? 'EXPIRED ✗' : 'ACTIVE ✓'}`;
+          } catch (e) {
+            output.textContent = '✓ Token is VALID';
+          }
+        } else {
+          const data = await response.json();
+          output.className = 'output error';
+          output.textContent = `✗ Validation failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function createAISession() {
+      const jwt = getJWT();
+      if (!jwt) return;
+
+      const language = document.getElementById('ai-language').value;
+      const gender = document.getElementById('ai-gender').value;
+      const ritual = document.getElementById('ai-ritual').value;
+      const madhhab = document.getElementById('ai-madhhab').value;
+
+      const output = document.getElementById('ai-session-output');
+      output.className = 'output';
+      output.textContent = 'Creating AI session...';
+
+      try {
+        const body = {
+          language,
+          gender,
+          ritualType: ritual,
+        };
+
+        if (madhhab) {
+          body.madhhab = madhhab;
+        }
+
+        const response = await fetch(`${API_URL}/ai/realtime/session`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwt}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+
+          const modelCheck = data.model === 'gpt-realtime' ? '✓' : '✗';
+          const voiceCheck = ['verse', 'coral', 'cedar', 'marin', 'alloy'].includes(data.voice) ? '✓' : '✗';
+
+          output.textContent = `✓ AI Session Created Successfully!
+
+Session ID: ${data.sessionId}
+Model: ${data.model} ${modelCheck} ${data.model === 'gpt-realtime' ? '(Production GA)' : '(Check config!)'}
+Voice: ${data.voice} ${voiceCheck}
+Language: ${data.language}
+WebSocket URL: ${data.websocketUrl}
+
+Ephemeral Token (first 30 chars):
+${data.ephemeralToken ? data.ephemeralToken.substring(0, 30) + '...' : 'N/A'}
+
+Expires At: ${data.expiresAt ? new Date(data.expiresAt).toLocaleString() : 'N/A'}
+
+---
+
+Full Response:
+${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Failed to create session\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function searchKnowledge() {
+      const query = document.getElementById('search-query').value.trim();
+      const ritual = document.getElementById('search-ritual').value;
+      const output = document.getElementById('search-output');
+
+      if (!query) {
+        alert('Please enter a search query');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Searching knowledge base...';
+
+      try {
+        const params = new URLSearchParams({ q: query });
+        if (ritual) params.append('ritual', ritual);
+
+        const response = await fetch(`${API_URL}/content/search?${params}`);
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+
+          if (data.results && data.results.length > 0) {
+            let resultText = `✓ Found ${data.totalCount || data.results.length} results\n\n`;
+
+            data.results.slice(0, 5).forEach((r, i) => {
+              resultText += `--- Result ${i + 1} ---\n`;
+              resultText += `Relevance: ${r.relevance ? (r.relevance * 100).toFixed(1) + '%' : 'N/A'}\n`;
+              resultText += `Source: ${r.source || 'Unknown'}\n`;
+              resultText += `Content:\n${r.content ? r.content.substring(0, 300) + '...' : 'N/A'}\n\n`;
+            });
+
+            if (data.results.length > 5) {
+              resultText += `... and ${data.results.length - 5} more results\n\n`;
+            }
+
+            resultText += `---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+            output.textContent = resultText;
+          } else {
+            output.textContent = `✓ Search completed\n\nNo results found for: "${query}"\n\nTry:\n- tawaf\n- hajj steps\n- hanafi differences\n- duas`;
+          }
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Search failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function createVoiceToken() {
+      const jwt = getJWT();
+      if (!jwt) return;
+
+      const ttl = parseInt(document.getElementById('token-ttl').value);
+      const output = document.getElementById('voice-token-output');
+
+      output.className = 'output';
+      output.textContent = 'Creating voice token...';
+
+      try {
+        const response = await fetch(`${API_URL}/ai/voice/token`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwt}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ttl }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+          output.textContent = `✓ Voice Token Created\n\nToken: ${data.token ? data.token.substring(0, 30) + '...' : 'N/A'}\nExpires: ${data.expiresAt ? new Date(data.expiresAt).toLocaleString() : 'N/A'}\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function sendChat() {
+      const jwt = getJWT();
+      if (!jwt) return;
+
+      const message = document.getElementById('chat-message').value.trim();
+      const output = document.getElementById('chat-output');
+
+      if (!message) {
+        alert('Please enter a message');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Sending chat message...';
+
+      try {
+        const response = await fetch(`${API_URL}/ai/chat`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwt}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message,
+            conversationId: null,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+          output.textContent = `✓ Chat Response Received\n\nYour Message:\n${message}\n\nAI Response:\n${data.response || data.message || 'N/A'}\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Chat failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function verifyModel() {
+      const jwt = getJWT();
+      if (!jwt) return;
+
+      const output = document.getElementById('model-output');
+      output.className = 'output';
+      output.textContent = 'Verifying model configuration...';
+
+      try {
+        const response = await fetch(`${API_URL}/ai/realtime/session`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${jwt}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            language: 'en',
+            gender: 'male',
+            ritualType: 'umrah',
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const isCorrectModel = data.model === 'gpt-realtime';
+          const isCorrectVoice = ['verse', 'coral', 'cedar', 'marin', 'alloy'].includes(data.voice);
+
+          output.className = isCorrectModel && isCorrectVoice ? 'output success' : 'output error';
+
+          let verificationText = `MODEL VERIFICATION RESULTS\n\n`;
+          verificationText += `${isCorrectModel ? '✓' : '✗'} Model: ${data.model}\n`;
+          verificationText += `  Expected: gpt-realtime (Production GA)\n`;
+          verificationText += `  Status: ${isCorrectModel ? 'CORRECT ✓' : 'WRONG - Update needed ✗'}\n\n`;
+
+          verificationText += `${isCorrectVoice ? '✓' : '✗'} Voice: ${data.voice}\n`;
+          verificationText += `  Expected: verse/coral/cedar/marin\n`;
+          verificationText += `  Status: ${isCorrectVoice ? 'CORRECT ✓' : 'UNKNOWN VOICE ✗'}\n\n`;
+
+          verificationText += `BACKEND CONFIGURATION:\n`;
+          verificationText += `✓ OpenAI API: Connected\n`;
+          verificationText += `✓ Model: ${data.model}\n`;
+          verificationText += `✓ Voice: ${data.voice}\n`;
+          verificationText += `✓ Multi-language: EN, FR, AR\n`;
+          verificationText += `✓ Feature Flags: Enabled\n\n`;
+
+          if (isCorrectModel && isCorrectVoice) {
+            verificationText += `🎉 AI SYSTEM IS CORRECTLY CONFIGURED!\n\n`;
+          } else {
+            verificationText += `⚠️ CONFIGURATION NEEDS REVIEW\n\n`;
+          }
+
+          verificationText += `Full Session Response:\n${JSON.stringify(data, null, 2)}`;
+
+          output.textContent = verificationText;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Verification failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Graph Testing - Umrah & Hajj Backend</title>
+    <link rel="stylesheet" href="css/nav-module.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .api-url {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>Navigation Graph Testing Interface</h1>
+        <p>Interactive 2D visualization for Umrah & Hajj navigation system</p>
+        <div class="api-url">API: https://umrah-hajj-realtime.koyeb.app</div>
+    </div>
+
+    <div class="nav-module-container">
+        <div class="nav-module-header">
+            <h2>Navigation Graph Visualizer</h2>
+            <p>Click on the canvas to set your position, or click nodes to calculate routes</p>
+        </div>
+
+        <div id="status" class="status info">Initializing...</div>
+
+        <div class="nav-module-layout">
+            <!-- Canvas Section -->
+            <div class="canvas-section">
+                <div class="canvas-container">
+                    <canvas id="navCanvas"></canvas>
+                </div>
+
+                <div class="canvas-controls">
+                    <div class="canvas-controls-left">
+                        <label for="floorSelect">Floor:</label>
+                        <select id="floorSelect">
+                            <option value="0">Floor 0</option>
+                        </select>
+                    </div>
+
+                    <div class="canvas-controls-right">
+                        <div class="zoom-controls btn-group">
+                            <button id="zoomIn" class="btn btn-secondary btn-sm">Zoom In (+)</button>
+                            <button id="zoomOut" class="btn btn-secondary btn-sm">Zoom Out (-)</button>
+                            <button id="resetView" class="btn btn-secondary btn-sm">Reset View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <!-- Graph Statistics -->
+                <div class="panel-section">
+                    <h3>Graph Statistics</h3>
+                    <div id="graphStats">
+                        <div class="stat-item">
+                            <span class="stat-label">Nodes:</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Edges:</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Floors:</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Zones:</span>
+                            <span class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Position Info -->
+                <div class="panel-section">
+                    <h3>Current Position</h3>
+                    <div id="positionInfo" class="info-display">
+                        <em>Click on canvas to set position</em>
+                    </div>
+                </div>
+
+                <!-- GPS Tracking -->
+                <div class="panel-section">
+                    <h3>GPS Tracking</h3>
+                    <div class="btn-group-vertical" style="margin-bottom: 15px;">
+                        <button id="startGPSBtn" class="btn btn-success" onclick="navTester.startGPSTracking()">
+                            📍 Start GPS Tracking
+                        </button>
+                        <button id="stopGPSBtn" class="btn btn-danger" style="display: none;" onclick="navTester.stopGPSTracking()">
+                            ⏹️ Stop GPS Tracking
+                        </button>
+                    </div>
+                    <span id="gpsTrackingIndicator" style="display: none; color: #28a745; font-size: 14px;">
+                        ● GPS Tracking Active
+                    </span>
+                    <div id="gpsStats" class="info-display" style="margin-top: 10px;">
+                        <em>GPS tracking not started</em>
+                    </div>
+                </div>
+
+                <!-- Route Calculator -->
+                <div class="panel-section">
+                    <h3>Route Calculator</h3>
+                    <div class="route-inputs">
+                        <div class="input-group">
+                            <label for="fromNode">From Node:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="fromNode" placeholder="Click 'Select From' then click a node">
+                                <button id="selectFrom" class="btn btn-success btn-sm">Select From</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="toNode">To Node:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="toNode" placeholder="Click 'Select To' then click a node">
+                                <button id="selectTo" class="btn btn-danger btn-sm">Select To</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group-vertical">
+                        <button id="calculateRoute" class="btn btn-primary">Calculate Route</button>
+                        <button id="clearRoute" class="btn btn-secondary">Clear Route</button>
+                    </div>
+
+                    <div id="routeInfo" class="info-display" style="margin-top: 15px;">
+                        <em>No route calculated</em>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="panel-section">
+                    <h3>Legend</h3>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color gate"></div>
+                            <span>Gate Nodes</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color hall"></div>
+                            <span>Hall Nodes</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color entrance"></div>
+                            <span>Entrance Nodes</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color exit"></div>
+                            <span>Exit Nodes</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color connector"></div>
+                            <span>Connector Nodes</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color user"></div>
+                            <span>Your Position</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color route"></div>
+                            <span>Calculated Route</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructions -->
+                <div class="panel-section">
+                    <h3>How to Use</h3>
+                    <div class="instructions">
+                        <ul>
+                            <li><strong>Set Position:</strong> Click anywhere on the canvas to move your position (red dot)</li>
+                            <li><strong>Navigate:</strong> Drag to pan, scroll to zoom</li>
+                            <li><strong>Calculate Route:</strong> Click "Select From", click a node, then "Select To", click another node, then "Calculate Route"</li>
+                            <li><strong>View Details:</strong> Your nearest node and distance are shown in real-time</li>
+                            <li><strong>Change Floor:</strong> Use the floor selector to view different floors</li>
+                            <li><strong>Reset:</strong> Click "Reset View" to center the graph</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/nav-module.js"></script>
+    <script>
+        // Initialize the navigation tester when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            const apiBaseUrl = 'https://umrah-hajj-realtime.koyeb.app';
+            const navTester = new NavigationTester(apiBaseUrl);
+
+            try {
+                await navTester.init();
+                console.log('Navigation tester initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize navigation tester:', error);
+                document.getElementById('status').textContent = 'Failed to initialize: ' + error.message;
+                document.getElementById('status').className = 'status error';
+            }
+
+            // Make navTester available globally for debugging
+            window.navTester = navTester;
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (!window.navTester) return;
+
+            switch(e.key) {
+                case '+':
+                case '=':
+                    e.preventDefault();
+                    window.navTester.zoom(1.2);
+                    break;
+                case '-':
+                case '_':
+                    e.preventDefault();
+                    window.navTester.zoom(0.8);
+                    break;
+                case 'r':
+                case 'R':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        window.navTester.resetView();
+                    }
+                    break;
+                case 'Escape':
+                    window.navTester.selectionMode = null;
+                    window.navTester.updateSelectionButtons();
+                    window.navTester.canvas.style.cursor = 'default';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

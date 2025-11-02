@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication Test - Umrah & Hajj Backend</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .test-section {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .test-section h2 {
+      color: #2c5f2d;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .controls input,
+    .controls select {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .controls input:focus,
+    .controls select:focus {
+      outline: none;
+      border-color: #2c5f2d;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background: #2c5f2d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background: #1f4420;
+    }
+
+    .controls button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .controls button.danger {
+      background: #dc3545;
+    }
+
+    .controls button.danger:hover {
+      background: #c82333;
+    }
+
+    .output {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-height: 400px;
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+
+    .output.success {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+
+    .output.error {
+      background: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    .status-indicator {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .status-indicator.success {
+      background: #28a745;
+      color: white;
+    }
+
+    .status-indicator.error {
+      background: #dc3545;
+      color: white;
+    }
+
+    .status-indicator.info {
+      background: #17a2b8;
+      color: white;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: #1976D2;
+    }
+
+    .info-box.warning {
+      background: #fff3cd;
+      border-color: #ffc107;
+    }
+
+    .info-box.warning h3 {
+      color: #856404;
+    }
+
+    .endpoint-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #6c757d;
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .endpoint-tag.post { background: #28a745; }
+    .endpoint-tag.get { background: #17a2b8; }
+    .endpoint-tag.delete { background: #dc3545; }
+
+    .back-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #6c757d;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+
+    .back-link:hover {
+      background: #5a6268;
+    }
+
+    .copy-button {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #17a2b8;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+    .copy-button:hover {
+      background: #138496;
+    }
+
+    .token-display {
+      background: #f8f9fa;
+      border: 2px solid #28a745;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 15px;
+      word-wrap: break-word;
+      font-family: monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <header>
+      <h1>🔐 Authentication Test</h1>
+      <p class="subtitle">Test Supabase Authentication & JWT Token Management</p>
+      <div id="health-status"></div>
+    </header>
+
+    <!-- Auth Configuration Info -->
+    <div class="test-section">
+      <h2>📋 Supabase Configuration</h2>
+      <div class="info-box">
+        <h3>Production Supabase Instance</h3>
+        <p><strong>URL:</strong> https://qtrgbxuvjlblgkolgvxx.supabase.co</p>
+        <p><strong>Auth Mode:</strong> Supabase JWT</p>
+        <p><strong>Backend Validates:</strong> JWT signatures, expiration, user claims</p>
+      </div>
+    </div>
+
+    <!-- Sign Up -->
+    <div class="test-section">
+      <h2>
+        1. Sign Up (Create Account)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/auth/v1/signup</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Creates a new user account in Supabase.</p>
+        <p><strong>Returns:</strong> User object + access_token (JWT) + refresh_token</p>
+      </div>
+      <div class="controls">
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="Email (e.g., test@example.com)"
+        />
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Password (min 6 chars)"
+        />
+        <button onclick="signUp()">Sign Up</button>
+      </div>
+      <div id="signup-output" class="output"></div>
+    </div>
+
+    <!-- Sign In -->
+    <div class="test-section">
+      <h2>
+        2. Sign In (Login)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/auth/v1/token?grant_type=password</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Authenticates existing user and retrieves JWT token.</p>
+        <p><strong>Returns:</strong> access_token (use this for API calls)</p>
+      </div>
+      <div class="controls">
+        <input
+          type="email"
+          id="signin-email"
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          id="signin-password"
+          placeholder="Password"
+        />
+        <button onclick="signIn()">Sign In</button>
+      </div>
+      <div id="signin-output" class="output"></div>
+      <div id="token-display" style="display: none;" class="token-display">
+        <strong>🎫 Your JWT Token (copy this for AI tests):</strong>
+        <div id="token-value" style="margin-top: 10px; padding: 10px; background: white; border: 1px solid #ddd; border-radius: 4px;"></div>
+        <button class="copy-button" onclick="copyToken()">📋 Copy Token</button>
+        <button class="copy-button" onclick="useInAITest()">🤖 Use in AI Test</button>
+      </div>
+    </div>
+
+    <!-- Get User Info -->
+    <div class="test-section">
+      <h2>
+        3. Get User Info
+        <span class="endpoint-tag get">GET</span>
+        <code style="font-size: 14px;">/auth/v1/user</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Retrieves current user information using JWT token.</p>
+        <p><strong>Requires:</strong> Valid access_token from sign in</p>
+      </div>
+      <div class="controls">
+        <button onclick="getUser()">Get User Info</button>
+        <span id="user-status" style="margin-left: 10px;"></span>
+      </div>
+      <div id="user-output" class="output"></div>
+    </div>
+
+    <!-- Refresh Token -->
+    <div class="test-section">
+      <h2>
+        4. Refresh Token
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/auth/v1/token?grant_type=refresh_token</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Exchanges refresh_token for new access_token (when token expires).</p>
+      </div>
+      <div class="controls">
+        <button onclick="refreshToken()">Refresh Access Token</button>
+      </div>
+      <div id="refresh-output" class="output"></div>
+    </div>
+
+    <!-- Sign Out -->
+    <div class="test-section">
+      <h2>
+        5. Sign Out (Logout)
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/auth/v1/logout</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Invalidates current JWT token and signs user out.</p>
+      </div>
+      <div class="controls">
+        <button onclick="signOut()" class="danger">Sign Out</button>
+      </div>
+      <div id="signout-output" class="output"></div>
+    </div>
+
+    <!-- Backend JWT Validation Test -->
+    <div class="test-section">
+      <h2>
+        6. Backend JWT Validation Test
+        <span class="endpoint-tag get">GET</span>
+        <code style="font-size: 14px;">/profile/me</code>
+      </h2>
+      <div class="info-box">
+        <h3>What This Tests</h3>
+        <p>Tests that backend correctly validates Supabase JWT tokens.</p>
+        <p><strong>Endpoint:</strong> Protected endpoint requiring authentication</p>
+      </div>
+      <div class="controls">
+        <button onclick="testBackendAuth()">Test Backend Validation</button>
+      </div>
+      <div id="backend-auth-output" class="output"></div>
+    </div>
+
+    <!-- Password Reset -->
+    <div class="test-section">
+      <h2>
+        7. Password Reset
+        <span class="endpoint-tag post">POST</span>
+        <code style="font-size: 14px;">/auth/v1/recover</code>
+      </h2>
+      <div class="info-box warning">
+        <h3>⚠️ Note</h3>
+        <p>This sends a password reset email. Only use with real email addresses you control.</p>
+      </div>
+      <div class="controls">
+        <input
+          type="email"
+          id="reset-email"
+          placeholder="Email"
+        />
+        <button onclick="resetPassword()">Send Reset Email</button>
+      </div>
+      <div id="reset-output" class="output"></div>
+    </div>
+
+    <!-- Token Inspector -->
+    <div class="test-section">
+      <h2>8. JWT Token Inspector</h2>
+      <div class="info-box">
+        <h3>What This Does</h3>
+        <p>Decodes and displays JWT token contents (header, payload, expiration).</p>
+      </div>
+      <div class="controls">
+        <input
+          type="text"
+          id="inspect-token"
+          placeholder="Paste JWT token here"
+          style="flex: 3;"
+        />
+        <button onclick="inspectToken()">Inspect Token</button>
+      </div>
+      <div id="inspect-output" class="output"></div>
+    </div>
+
+    <!-- Quick Test User -->
+    <div class="test-section">
+      <h2>9. Quick Test User</h2>
+      <div class="info-box">
+        <h3>For Testing Only</h3>
+        <p>Creates a random test user and signs in automatically.</p>
+      </div>
+      <div class="controls">
+        <button onclick="createQuickTestUser()">Create & Sign In Test User</button>
+      </div>
+      <div id="quick-test-output" class="output"></div>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://qtrgbxuvjlblgkolgvxx.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0cmdieHV2amxibGdrb2xndnh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIwMTkxMzksImV4cCI6MjA3NzU5NTEzOX0.MZTqMkE9TcerxmmAhJ_irL-v_YsXrp8B26alMGpWQi4';
+    const BACKEND_URL = 'https://umrah-hajj-realtime.koyeb.app';
+
+    // Store tokens in session
+    let currentAccessToken = null;
+    let currentRefreshToken = null;
+    let currentUser = null;
+
+    // Check backend health on load
+    window.addEventListener('load', async () => {
+      const statusDiv = document.getElementById('health-status');
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/health`);
+        const data = await response.json();
+
+        if (data.status === 'ok') {
+          statusDiv.innerHTML = '<span class="status-indicator success">✓ Backend Online</span>';
+        } else {
+          statusDiv.innerHTML = '<span class="status-indicator error">✗ Backend Issues</span>';
+        }
+      } catch (error) {
+        statusDiv.innerHTML = '<span class="status-indicator error">✗ Backend Offline</span>';
+      }
+    });
+
+    async function signUp() {
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value;
+      const output = document.getElementById('signup-output');
+
+      if (!email || !password) {
+        alert('Please enter email and password');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Creating account...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.access_token) {
+          output.className = 'output success';
+          currentAccessToken = data.access_token;
+          currentRefreshToken = data.refresh_token;
+          currentUser = data.user;
+
+          output.textContent = `✓ Account Created Successfully!\n\nEmail: ${email}\nUser ID: ${data.user?.id}\n\n✓ Auto-signed in!\n\nAccess Token: ${data.access_token.substring(0, 30)}...\n\nYou can now use this token for API calls.\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+
+          displayToken(data.access_token);
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Sign Up Failed\n\n${data.error_description || data.msg || data.message || 'Unknown error'}\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function signIn() {
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value;
+      const output = document.getElementById('signin-output');
+
+      if (!email || !password) {
+        alert('Please enter email and password');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Signing in...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.access_token) {
+          output.className = 'output success';
+          currentAccessToken = data.access_token;
+          currentRefreshToken = data.refresh_token;
+          currentUser = data.user;
+
+          output.textContent = `✓ Signed In Successfully!\n\nEmail: ${email}\nUser ID: ${data.user?.id}\n\nAccess Token (first 30 chars):\n${data.access_token.substring(0, 30)}...\n\nToken Expires: ${data.expires_in} seconds (${Math.floor(data.expires_in / 60)} minutes)\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+
+          displayToken(data.access_token);
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Sign In Failed\n\n${data.error_description || data.msg || data.message || 'Invalid credentials'}\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function getUser() {
+      const output = document.getElementById('user-output');
+      const statusSpan = document.getElementById('user-status');
+
+      if (!currentAccessToken) {
+        alert('Please sign in first to get a token');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Getting user info...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${currentAccessToken}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+          statusSpan.innerHTML = '<span class="status-indicator success">✓ Authenticated</span>';
+
+          output.textContent = `✓ User Info Retrieved\n\nID: ${data.id}\nEmail: ${data.email}\nCreated: ${new Date(data.created_at).toLocaleString()}\nLast Sign In: ${new Date(data.last_sign_in_at).toLocaleString()}\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          statusSpan.innerHTML = '<span class="status-indicator error">✗ Unauthorized</span>';
+          output.textContent = `✗ Failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function refreshToken() {
+      const output = document.getElementById('refresh-output');
+
+      if (!currentRefreshToken) {
+        alert('No refresh token available. Sign in first.');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Refreshing token...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ refresh_token: currentRefreshToken }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.access_token) {
+          output.className = 'output success';
+          currentAccessToken = data.access_token;
+          currentRefreshToken = data.refresh_token;
+
+          output.textContent = `✓ Token Refreshed!\n\nNew Access Token: ${data.access_token.substring(0, 30)}...\nExpires: ${data.expires_in} seconds\n\n---\n\nFull Response:\n${JSON.stringify(data, null, 2)}`;
+
+          displayToken(data.access_token);
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Refresh Failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function signOut() {
+      const output = document.getElementById('signout-output');
+
+      if (!currentAccessToken) {
+        alert('Not signed in');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Signing out...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/logout`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${currentAccessToken}`,
+          },
+        });
+
+        if (response.ok || response.status === 204) {
+          output.className = 'output success';
+          output.textContent = `✓ Signed Out Successfully\n\nToken invalidated. You'll need to sign in again.`;
+
+          currentAccessToken = null;
+          currentRefreshToken = null;
+          currentUser = null;
+
+          document.getElementById('token-display').style.display = 'none';
+        } else {
+          const data = await response.json();
+          output.className = 'output error';
+          output.textContent = `✗ Sign Out Failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function resetPassword() {
+      const email = document.getElementById('reset-email').value.trim();
+      const output = document.getElementById('reset-output');
+
+      if (!email) {
+        alert('Please enter an email address');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Sending password reset email...';
+
+      try {
+        const response = await fetch(`${SUPABASE_URL}/auth/v1/recover`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+          output.textContent = `✓ Password Reset Email Sent\n\nCheck ${email} for reset link.\n\n---\n\nResponse:\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Failed\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    async function testBackendAuth() {
+      const output = document.getElementById('backend-auth-output');
+
+      if (!currentAccessToken) {
+        alert('Please sign in first to get a token');
+        return;
+      }
+
+      output.className = 'output';
+      output.textContent = 'Testing backend JWT validation...';
+
+      try {
+        const response = await fetch(`${BACKEND_URL}/profile/me`, {
+          headers: {
+            'Authorization': `Bearer ${currentAccessToken}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          output.className = 'output success';
+          output.textContent = `✓ Backend Auth Working!\n\n✓ Backend correctly validated your Supabase JWT\n✓ Protected endpoint accessible\n\nProfile Data:\n${JSON.stringify(data, null, 2)}`;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Backend Auth Failed\n\nStatus: ${response.status}\n\nThis means backend JWT validation isn't working correctly.\n\n${JSON.stringify(data, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    function inspectToken() {
+      const token = document.getElementById('inspect-token').value.trim();
+      const output = document.getElementById('inspect-output');
+
+      if (!token) {
+        alert('Please paste a JWT token');
+        return;
+      }
+
+      output.className = 'output';
+
+      try {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+          throw new Error('Invalid JWT format (should have 3 parts separated by dots)');
+        }
+
+        const header = JSON.parse(atob(parts[0]));
+        const payload = JSON.parse(atob(parts[1]));
+
+        const expDate = new Date(payload.exp * 1000);
+        const iatDate = new Date(payload.iat * 1000);
+        const now = new Date();
+        const isExpired = expDate < now;
+        const timeLeft = Math.floor((expDate - now) / 1000);
+
+        output.className = isExpired ? 'output error' : 'output success';
+
+        let inspection = `${isExpired ? '✗ TOKEN EXPIRED' : '✓ TOKEN VALID'}\n\n`;
+        inspection += `HEADER:\n${JSON.stringify(header, null, 2)}\n\n`;
+        inspection += `PAYLOAD:\n${JSON.stringify(payload, null, 2)}\n\n`;
+        inspection += `TIMING:\n`;
+        inspection += `Issued: ${iatDate.toLocaleString()}\n`;
+        inspection += `Expires: ${expDate.toLocaleString()}\n`;
+        inspection += `Status: ${isExpired ? 'EXPIRED ✗' : `ACTIVE (${Math.floor(timeLeft / 60)} minutes left) ✓`}\n\n`;
+        inspection += `USER INFO:\n`;
+        inspection += `User ID: ${payload.sub || 'N/A'}\n`;
+        inspection += `Email: ${payload.email || 'N/A'}\n`;
+        inspection += `Role: ${payload.role || 'N/A'}\n`;
+
+        output.textContent = inspection;
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Failed to decode token\n\nError: ${error.message}\n\nMake sure you pasted a valid JWT token.`;
+      }
+    }
+
+    async function createQuickTestUser() {
+      const output = document.getElementById('quick-test-output');
+      output.className = 'output';
+      output.textContent = 'Creating random test user...';
+
+      const randomId = Math.random().toString(36).substring(2, 10);
+      const testEmail = `test-${randomId}@example.com`;
+      const testPassword = 'test123456';
+
+      try {
+        // Sign up
+        const signupResponse = await fetch(`${SUPABASE_URL}/auth/v1/signup`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: testEmail, password: testPassword }),
+        });
+
+        const signupData = await signupResponse.json();
+
+        if (signupResponse.ok && signupData.access_token) {
+          currentAccessToken = signupData.access_token;
+          currentRefreshToken = signupData.refresh_token;
+          currentUser = signupData.user;
+
+          output.className = 'output success';
+          output.textContent = `✓ Test User Created & Signed In!\n\nEmail: ${testEmail}\nPassword: ${testPassword}\nUser ID: ${signupData.user?.id}\n\nAccess Token: ${signupData.access_token.substring(0, 30)}...\n\n✓ Token ready to use!\n\n---\n\nFull Response:\n${JSON.stringify(signupData, null, 2)}`;
+
+          displayToken(signupData.access_token);
+
+          // Auto-fill sign in form
+          document.getElementById('signin-email').value = testEmail;
+          document.getElementById('signin-password').value = testPassword;
+        } else {
+          output.className = 'output error';
+          output.textContent = `✗ Failed to create test user\n\n${JSON.stringify(signupData, null, 2)}`;
+        }
+      } catch (error) {
+        output.className = 'output error';
+        output.textContent = `✗ Error: ${error.message}`;
+      }
+    }
+
+    function displayToken(token) {
+      const tokenDisplay = document.getElementById('token-display');
+      const tokenValue = document.getElementById('token-value');
+
+      tokenDisplay.style.display = 'block';
+      tokenValue.textContent = token;
+    }
+
+    function copyToken() {
+      const tokenValue = document.getElementById('token-value').textContent;
+      navigator.clipboard.writeText(tokenValue).then(() => {
+        alert('✓ Token copied to clipboard!');
+      });
+    }
+
+    function useInAITest() {
+      const tokenValue = document.getElementById('token-value').textContent;
+      // Store in sessionStorage for AI test page to pick up
+      sessionStorage.setItem('supabase_jwt', tokenValue);
+      // Open AI test page
+      window.open('ai-test.html', '_blank');
+      alert('✓ Token saved! Opening AI test page...\nPaste the token in the JWT field.');
+    }
+
+    // Auto-fill token from sessionStorage if available
+    window.addEventListener('load', () => {
+      const storedToken = sessionStorage.getItem('supabase_jwt');
+      if (storedToken) {
+        currentAccessToken = storedToken;
+        displayToken(storedToken);
+      }
+    });
+  </script>
+</body>
+</html>

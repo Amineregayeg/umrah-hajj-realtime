@@ -1,0 +1,61 @@
+# Netlify Configuration for Umrah & Hajj Testing Prototype
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # No build command needed - pure static HTML/JS
+  command = ""
+  # Publish everything in the current directory
+  publish = "."
+
+# Redirect rules
+[[redirects]]
+  # Redirect root to index.html
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  # Handle 404s by showing index.html (for SPA-like behavior)
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Cache control
+    Cache-Control = "public, max-age=3600"
+
+    # CORS - allow backend API access
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=1800"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=7200"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=7200"
+
+# Geolocation requires HTTPS (Netlify provides this automatically)
+# No additional configuration needed
+
+# Custom error pages (optional)
+# [[redirects]]
+#   from = "/404"
+#   to = "/index.html"
+#   status = 404

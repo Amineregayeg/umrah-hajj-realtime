@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quran Module Test - Umrah & Hajj Backend</title>
+
+  <!-- Quran Module CSS -->
+  <link rel="stylesheet" href="css/quran-module.css">
+
+  <!-- Base styles for the test page -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #2c5f2d, #1e4620);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .api-info {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .api-info strong {
+      color: #d4af37;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .page-header h1 {
+        font-size: 28px;
+      }
+
+      .page-header p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1>Quran Module Testing Interface</h1>
+      <p>Testing Umrah & Hajj Backend Quran APIs</p>
+      <div class="api-info">
+        <strong>Backend URL:</strong> https://umrah-hajj-realtime.koyeb.app
+      </div>
+    </div>
+
+    <!-- Quran Module -->
+    <div id="quran-module">
+      <!-- Backend Data Limitation Notice -->
+      <div class="quran-section" style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px;">
+        <h4 style="color: #856404; margin-bottom: 10px;">ℹ️ Backend Data Limitation</h4>
+        <p style="color: #856404; margin: 0;">
+          <strong>Limited Quran Data:</strong> Only <strong>Surah 1 (7 Ayahs)</strong> and partial <strong>Surah 2 (first 5 Ayahs only)</strong> are loaded in the backend database.
+          The backend reports 286 Ayahs for Surah 2 but only returns the first 5. Other Surahs return 404 errors.
+          Search and Get Specific Ayah features are also not available yet.
+        </p>
+      </div>
+
+      <!-- Section 1: Get Surah -->
+      <div class="quran-section">
+        <h3>Get Complete Surah</h3>
+        <div class="quran-controls">
+          <div class="control-group">
+            <label for="surah-select">Select Surah:</label>
+            <select id="surah-select">
+              <option value="">-- Choose a Surah --</option>
+              <!-- Populated by JavaScript -->
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="surah-lang-select">Language:</label>
+            <select id="surah-lang-select">
+              <option value="ar">Arabic</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="control-group" style="display: flex; align-items: flex-end;">
+            <button id="get-surah-btn" class="quran-btn">Get Surah</button>
+          </div>
+        </div>
+        <div id="surah-display"></div>
+      </div>
+
+      <!-- Section 2: Search Quran -->
+      <div class="quran-section">
+        <h3>Search Quran</h3>
+        <div class="quran-controls">
+          <div class="control-group" style="flex: 2;">
+            <label for="search-query">Search Query:</label>
+            <input
+              type="text"
+              id="search-query"
+              placeholder="Enter search term (e.g., 'الله', 'prayer', etc.)"
+            />
+          </div>
+          <div class="control-group">
+            <label for="search-lang-select">Language:</label>
+            <select id="search-lang-select">
+              <option value="ar">Arabic</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="search-limit">Result Limit:</label>
+            <input
+              type="number"
+              id="search-limit"
+              min="1"
+              max="100"
+              value="10"
+            />
+          </div>
+          <div class="control-group" style="display: flex; align-items: flex-end;">
+            <button id="search-quran-btn" class="quran-btn">Search</button>
+          </div>
+        </div>
+        <div id="search-results"></div>
+      </div>
+
+      <!-- Section 3: Get Specific Ayah -->
+      <div class="quran-section">
+        <h3>Get Specific Ayah</h3>
+        <div class="quran-controls">
+          <div class="control-group">
+            <label for="ayah-surah">Surah Number (1-114):</label>
+            <input
+              type="number"
+              id="ayah-surah"
+              min="1"
+              max="114"
+              placeholder="e.g., 1"
+            />
+          </div>
+          <div class="control-group">
+            <label for="ayah-number">Ayah Number:</label>
+            <input
+              type="number"
+              id="ayah-number"
+              min="1"
+              placeholder="e.g., 1"
+            />
+          </div>
+          <div class="control-group">
+            <label for="ayah-lang-select">Language:</label>
+            <select id="ayah-lang-select">
+              <option value="ar">Arabic</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div class="control-group" style="display: flex; align-items: flex-end;">
+            <button id="get-ayah-btn" class="quran-btn">Get Ayah</button>
+          </div>
+        </div>
+        <div id="ayah-display"></div>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div id="loading-indicator">
+        <div class="spinner"></div>
+        <span class="loading-text">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Client (Simple fetch-based client) -->
+  <script>
+    /**
+     * Simple API Client for making requests to the backend
+     */
+    class ApiClient {
+      constructor(baseUrl) {
+        this.baseUrl = baseUrl;
+      }
+
+      async get(endpoint) {
+        const url = `${this.baseUrl}${endpoint}`;
+        console.log(`Making GET request to: ${url}`);
+
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          });
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP ${response.status}: ${errorText || response.statusText}`);
+          }
+
+          const data = await response.json();
+          console.log('Response received:', data);
+          return data;
+
+        } catch (error) {
+          console.error('API request failed:', error);
+          throw error;
+        }
+      }
+    }
+  </script>
+
+  <!-- Quran Module -->
+  <script src="js/quran-module.js"></script>
+
+  <!-- Initialize the module -->
+  <script>
+    // Backend API URL
+    const API_BASE_URL = 'https://umrah-hajj-realtime.koyeb.app';
+
+    // Initialize API client
+    const apiClient = new ApiClient(API_BASE_URL);
+
+    // Initialize Quran Tester
+    const quranTester = new QuranTester(apiClient);
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Initializing Quran Test Interface...');
+      quranTester.init();
+      console.log('Quran Test Interface ready!');
+    });
+  </script>
+</body>
+</html>
