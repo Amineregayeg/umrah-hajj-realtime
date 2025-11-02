@@ -1,6 +1,6 @@
 import { Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { JWTPayload, jwtVerify, createRemoteJWKSet } from 'jose';
+import { JWTPayload, jwtVerify, createRemoteJWKSet, createSecretKey } from 'jose';
 import { WebSocket } from 'ws';
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
@@ -20,34 +20,40 @@ export interface AuthenticatedSocket extends WebSocket {
 export class WsAuthUtil {
   private static readonly logger = new Logger(WsAuthUtil.name);
   private static jwksSet: ReturnType<typeof createRemoteJWKSet> | null = null;
+  private static jwtSecret: Uint8Array | null = null;
   private static authMode: 'mock' | 'supabase' = 'supabase';
   private static configService: ConfigService;
 
   static initialize(configService: ConfigService) {
     this.configService = configService;
-    
+
     // Determine auth mode
     const nodeEnv = configService.get<string>('NODE_ENV');
     const authModeConfig = configService.get<string>('AUTH_MODE', '');
-    
+
     if (authModeConfig === 'mock' || (nodeEnv === 'development' && authModeConfig !== 'supabase')) {
       this.authMode = 'mock';
       this.logger.warn('WebSocket authentication running in MOCK mode');
     } else {
       this.authMode = 'supabase';
-      this.initializeJWKS();
+      this.initializeJWTSecret();
     }
   }
 
-  private static initializeJWKS() {
+  private static initializeJWTSecret() {
     const supabaseUrl = this.configService.get<string>('SUPABASE_URL');
+    const jwtSecret = this.configService.get<string>('SUPABASE_JWT_SECRET');
+
     if (!supabaseUrl) {
       throw new Error('SUPABASE_URL environment variable is required for Supabase auth mode');
     }
+    if (!jwtSecret) {
+      throw new Error('SUPABASE_JWT_SECRET environment variable is required for Supabase auth mode');
+    }
 
-    const jwksUri = `${supabaseUrl}/auth/v1/jwks`;
-    this.jwksSet = createRemoteJWKSet(new URL(jwksUri));
-    this.logger.log(`JWKS initialized with URI: ${jwksUri}`);
+    // Use JWT Secret for HS256 verification (Supabase default)
+    this.jwtSecret = new TextEncoder().encode(jwtSecret);
+    this.logger.log(`WebSocket JWT Secret initialized for HS256 verification`);
   }
 
   static async authenticateSocket(socket: AuthenticatedSocket, request: IncomingMessage): Promise<boolean> {
@@ -83,19 +89,19 @@ export class WsAuthUtil {
 
   private static async handleSupabaseAuth(socket: AuthenticatedSocket): Promise<boolean> {
     const token = this.extractTokenFromSocket(socket);
-    
+
     if (!token) {
       throw new UnauthorizedException('No token provided');
     }
 
-    if (!this.jwksSet) {
-      throw new Error('JWKS not initialized');
+    if (!this.jwtSecret) {
+      throw new Error('JWT Secret not initialized');
     }
 
     try {
-      // Verify JWT using jose library with JWKS
-      const { payload } = await jwtVerify(token, this.jwksSet, {
-        algorithms: ['RS256'],
+      // Verify JWT using jose library with JWT Secret (HS256)
+      const { payload } = await jwtVerify(token, this.jwtSecret, {
+        algorithms: ['HS256'],
         audience: 'authenticated',
       });
 

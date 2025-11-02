@@ -6,12 +6,13 @@ import {
   Logger,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { jwtVerify, createRemoteJWKSet, JWTPayload } from 'jose';
+import { jwtVerify, createRemoteJWKSet, JWTPayload, createSecretKey } from 'jose';
 
 @Injectable()
 export class SupabaseJwtGuard implements CanActivate {
   private readonly logger = new Logger(SupabaseJwtGuard.name);
   private readonly jwksSet: ReturnType<typeof createRemoteJWKSet> | null;
+  private readonly jwtSecret: Uint8Array | null;
   private readonly authMode: 'mock' | 'supabase';
 
   constructor(
@@ -20,21 +21,28 @@ export class SupabaseJwtGuard implements CanActivate {
     // Determine authentication mode
     const nodeEnv = this.configService.get<string>('NODE_ENV');
     const authModeConfig = this.configService.get<string>('AUTH_MODE', '');
-    
+
     if (authModeConfig === 'mock' || (nodeEnv === 'development' && authModeConfig !== 'supabase')) {
       this.authMode = 'mock';
       this.jwksSet = null;
+      this.jwtSecret = null;
       this.logger.warn('HTTP authentication running in MOCK mode');
     } else {
       this.authMode = 'supabase';
       const supabaseUrl = this.configService.get<string>('SUPABASE_URL');
+      const jwtSecret = this.configService.get<string>('SUPABASE_JWT_SECRET');
+
       if (!supabaseUrl) {
         throw new Error('SUPABASE_URL environment variable is required for Supabase auth mode');
       }
+      if (!jwtSecret) {
+        throw new Error('SUPABASE_JWT_SECRET environment variable is required for Supabase auth mode');
+      }
 
-      const jwksUri = `${supabaseUrl}/auth/v1/jwks`;
-      this.jwksSet = createRemoteJWKSet(new URL(jwksUri));
-      this.logger.log(`HTTP JWKS initialized with URI: ${jwksUri}`);
+      // Use JWT Secret for HS256 verification (Supabase default)
+      this.jwtSecret = new TextEncoder().encode(jwtSecret);
+      this.jwksSet = null; // Not used for HS256
+      this.logger.log(`HTTP JWT Secret initialized for HS256 verification`);
     }
   }
 
@@ -93,14 +101,14 @@ export class SupabaseJwtGuard implements CanActivate {
   }
 
   private async verifySupabaseToken(token: string): Promise<JWTPayload> {
-    if (!this.jwksSet) {
-      throw new Error('JWKS not initialized');
+    if (!this.jwtSecret) {
+      throw new Error('JWT Secret not initialized');
     }
 
     try {
-      // Verify JWT using jose library with cached JWKS
-      const { payload } = await jwtVerify(token, this.jwksSet, {
-        algorithms: ['RS256'],
+      // Verify JWT using jose library with JWT Secret (HS256)
+      const { payload } = await jwtVerify(token, this.jwtSecret, {
+        algorithms: ['HS256'],
         audience: 'authenticated',
       });
 
