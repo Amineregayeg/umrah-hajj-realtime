@@ -4,6 +4,7 @@
 **Supabase Project:** `https://qtrgbxuvjlblgkolgvxx.supabase.co`
 **Status:** ✅ Production Ready
 **Auth Mode:** Supabase JWT (HS256)
+**Email Confirmation:** ❌ DISABLED (users can login immediately - no email verification)
 **Unity Versions:** 2021.3+ / 2022.x / 2023.x
 **Platforms:** Android, iOS, WebGL, Standalone
 
@@ -170,6 +171,7 @@ public class AuthManager : MonoBehaviour
 {
     /// <summary>
     /// Register a new user with email and password
+    /// NOTE: Email confirmation is DISABLED - users can login immediately after signup
     /// </summary>
     /// <param name="email">User's email</param>
     /// <param name="password">Password (minimum 6 characters)</param>
@@ -183,13 +185,14 @@ public class AuthManager : MonoBehaviour
             if (session?.User != null)
             {
                 Debug.Log($"✅ Sign up successful! User: {session.User.Email}");
+                Debug.Log($"✅ You can login immediately - no email confirmation needed");
                 Debug.Log($"✅ JWT Token: {session.AccessToken}");
                 return true;
             }
             else
             {
-                Debug.LogWarning("⚠️ Sign up succeeded but email confirmation required");
-                return false; // User needs to confirm email
+                Debug.LogError("❌ Sign up failed - no session returned");
+                return false;
             }
         }
         catch (System.Exception ex)
@@ -557,7 +560,8 @@ ALLOWED_ORIGINS=https://umratestnav.netlify.app,https://yourdomain.com
 ### 2. Test User Registration
 ```csharp
 await authManager.SignUp("test@example.com", "testpassword123");
-// Expected: "✅ Sign up successful!" in logs
+// Expected: "✅ Sign up successful! You can login immediately" in logs
+// Note: Email confirmation is DISABLED - no email verification needed
 ```
 
 ### 3. Test User Login
