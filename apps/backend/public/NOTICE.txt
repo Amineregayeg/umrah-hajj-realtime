@@ -1,0 +1,92 @@
+UMRAH HAJJ REAL-TIME NAVIGATION API
+=====================================
+
+This software includes open-source components. Below is the list of third-party
+libraries and their respective licenses:
+
+NestJS Framework
+----------------
+License: MIT
+Copyright (c) 2017-2024 Kamil Myśliwiec
+Repository: https://github.com/nestjs/nest
+
+Prisma ORM
+----------
+License: Apache License 2.0
+Copyright (c) 2016-2024 Prisma Data, Inc.
+Repository: https://github.com/prisma/prisma
+
+Express.js
+----------
+License: MIT
+Copyright (c) 2009-2014 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2013-2014 Roman Shtylman <shtylman+expressjs@gmail.com>
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+Repository: https://github.com/expressjs/express
+
+WebSocket (ws)
+--------------
+License: MIT
+Copyright (c) 2011 Einar Otto Stangvik <einaros@gmail.com>
+Copyright (c) 2013 Arnout Kazemier and contributors
+Repository: https://github.com/websockets/ws
+
+Helmet
+------
+License: MIT
+Copyright (c) 2012-2024 Evan Hahn, Adam Baldwin
+Repository: https://github.com/helmetjs/helmet
+
+MessagePack (@msgpack/msgpack)
+------------------------------
+License: ISC
+Copyright (c) 2019 Masaki Hara
+Repository: https://github.com/msgpack/msgpack-javascript
+
+Zod
+---
+License: MIT
+Copyright (c) 2020 Colin McDonnell
+Repository: https://github.com/colinhacks/zod
+
+JSON Web Token (jsonwebtoken)
+------------------------------
+License: MIT
+Copyright (c) 2015 Auth0, Inc.
+Repository: https://github.com/auth0/node-jsonwebtoken
+
+OpenStreetMap Data
+------------------
+License: Open Database License (ODbL) 1.0
+Copyright: OpenStreetMap Contributors
+Website: https://www.openstreetmap.org/copyright
+
+Note: Navigation graph data derived from OpenStreetMap is licensed under ODbL.
+Any derivative works must maintain attribution and share-alike provisions.
+
+Tanzil Quran Text
+-----------------
+License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+Copyright: Tanzil Project
+Website: http://tanzil.net/
+
+The Quran text is used for educational and religious guidance purposes. Users
+must consult qualified Islamic scholars for official religious rulings.
+
+=====================================
+DISCLAIMER
+
+This software provides navigation assistance and religious content for
+educational purposes. It does not replace qualified Islamic scholarship or
+official religious guidance. Users should verify all religious information
+with authentic sources and scholars.
+
+The navigation features use GPS and other location technologies which may have
+accuracy limitations. Always exercise caution and use common sense when
+navigating, especially in crowded or unfamiliar environments.
+
+For full license texts, see the LICENSE file or visit the respective project
+repositories listed above.
+
+Generated: 2025-11-05
+Last Updated: 2025-11-05

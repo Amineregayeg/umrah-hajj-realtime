@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, Header } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiQuery } from '@nestjs/swagger';
 import { GraphService } from './services/graph.service';
 import { RouteRequest, PathFindingResult } from './interfaces/graph.interface';
@@ -27,6 +27,7 @@ export class GraphController {
   @Get('stats')
   @ApiOperation({ summary: 'Get graph statistics' })
   @ApiResponse({ status: 200, description: 'Graph statistics' })
+  @Header('Cache-Control', 'public, max-age=300')
   getGraphStats() {
     return {
       graph: this.graphService.getGraphStats(),
@@ -63,6 +64,7 @@ export class GraphController {
   @Get('graph')
   @ApiOperation({ summary: 'Get the complete graph structure' })
   @ApiResponse({ status: 200, description: 'Complete graph data' })
+  @Header('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400')
   getGraph() {
     return this.graphService.getGraph();
   }

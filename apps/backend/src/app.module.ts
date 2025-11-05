@@ -17,6 +17,7 @@ import { MetricsModule } from './metrics/metrics.module';
 import { SecurityModule } from './security/security.module';
 import { SecurityInitService } from './shared/utils/security-init.util';
 import { FeatureFlagsModule } from './shared/config/feature-flags.module';
+import { UmrahModule } from './umrah/umrah.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { FeatureFlagsModule } from './shared/config/feature-flags.module';
     ContentModule,
     QuranModule,
     AIModule,
+    UmrahModule,
     HealthModule,
     MetricsModule,
   ],

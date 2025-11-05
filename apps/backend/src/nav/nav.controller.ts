@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Body, Logger, UseGuards, Request, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Logger, UseGuards, Request, HttpStatus, HttpException, Header, Req, Res } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { NavGateway } from './nav.gateway';
 import { SupabaseJwtGuard } from '../auth/guards/supabase-jwt.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import { NavUpdateDto } from './dto/nav-update.dto';
 import { NavigationCorrectionService } from './services/navigation-correction.service';
+import { GraphService } from './graph/services/graph.service';
+import { createHash } from 'crypto';
+import { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 
 @ApiTags('Navigation')
 @Controller('nav')
@@ -16,7 +19,8 @@ export class NavController {
   constructor(
     private readonly navGateway: NavGateway,
     private readonly prismaService: PrismaService,
-    private readonly navCorrectionService: NavigationCorrectionService
+    private readonly navCorrectionService: NavigationCorrectionService,
+    private readonly graphService: GraphService
   ) {}
 
   @Get('status')
@@ -163,5 +167,42 @@ export class NavController {
       snapshotBuckets: this.snapshotBuckets.size,
       timestamp: new Date().toISOString()
     };
+  }
+
+  @Get('offline-bundle')
+  @ApiOperation({
+    summary: 'Get offline navigation bundle',
+    description: 'Returns complete navigation graph and metadata for offline use. Cached for 30 days (immutable). Supports ETag for efficient caching.'
+  })
+  @ApiResponse({ status: 200, description: 'Offline bundle with graph data' })
+  @ApiResponse({ status: 304, description: 'Not modified (ETag match)' })
+  @Header('Cache-Control', 'public, max-age=2592000, immutable')
+  async getOfflineBundle(@Req() req: ExpressRequest, @Res() res: ExpressResponse) {
+    const graph = this.graphService.getGraph();
+
+    const payload = {
+      version: process.env.GIT_SHA ?? 'dev',
+      generatedAt: new Date().toISOString(),
+      graph,
+      phrases: [
+        'Turn left', 'Turn right', 'Continue straight',
+        'Take stairs up', 'Take stairs down', 'Take elevator',
+        'Walk north', 'Walk south', 'Walk east', 'Walk west',
+        'Walk northeast', 'Walk northwest', 'Walk southeast', 'Walk southwest'
+      ],
+      units: 'metric'
+    };
+
+    const json = JSON.stringify(payload);
+    const etag = '"' + createHash('sha256').update(json).digest('base64').slice(0, 27) + '"';
+
+    // Check ETag for 304 Not Modified
+    if (req.headers['if-none-match'] === etag) {
+      res.status(304).end();
+      return;
+    }
+
+    res.setHeader('ETag', etag);
+    res.type('application/json').send(json);
   }
 }

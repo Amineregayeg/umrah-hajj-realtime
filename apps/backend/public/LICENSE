@@ -1,0 +1,75 @@
+MIT License
+
+Copyright (c) 2024 Umrah Hajj Real-time Navigation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+RELIGIOUS CONTENT DISCLAIMER
+
+This software includes Islamic religious content (Quran text, prayer guidance,
+ritual information) for educational and informational purposes only. The
+developers and contributors make no representations or warranties regarding the
+religious accuracy, completeness, or suitability of this content for any
+particular purpose.
+
+Users are strongly advised to:
+
+1. Consult qualified Islamic scholars and authentic sources for religious
+   guidance and rulings (fatwas)
+2. Verify all religious information independently
+3. Not rely solely on this software for religious obligations
+4. Recognize that this software is a tool for assistance, not a replacement
+   for proper Islamic education and scholarship
+
+The developers, contributors, and associated parties:
+- Do not claim religious authority or scholarship
+- Are not responsible for any religious misunderstandings or errors
+- Disclaim all liability for decisions made based on content in this software
+- Recommend consulting local religious authorities and scholars
+
+================================================================================
+
+NAVIGATION AND LOCATION SERVICES DISCLAIMER
+
+The navigation features use GPS and other location technologies which may have
+inherent accuracy limitations. Users should:
+
+1. Exercise caution when navigating in unfamiliar areas
+2. Use common sense and be aware of their surroundings
+3. Not rely exclusively on this software for critical navigation decisions
+4. Be aware that location accuracy can be affected by environmental factors
+
+The developers are not responsible for any incidents, injuries, or losses
+resulting from the use of navigation features.
+
+================================================================================
+
+THIRD-PARTY COMPONENTS
+
+This software includes third-party open-source components. See NOTICE.txt for
+detailed attribution and license information for these components.
+
+Some components may be subject to different licenses:
+- OpenStreetMap data: Open Database License (ODbL)
+- Tanzil Quran text: Creative Commons Attribution 3.0 (CC BY 3.0)
+
+Users must comply with all applicable licenses when using or distributing this
+software.
