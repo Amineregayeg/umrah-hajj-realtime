@@ -9,8 +9,6 @@ import { MetricsService } from './metrics/metrics.service';
 import { MetricsMiddleware } from './metrics/metrics.middleware';
 import { SecurityConfigService } from './security/security-config.service';
 import { LogRedactionService } from './security/log-redaction.service';
-import * as express from 'express';
-import * as path from 'path';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
@@ -119,8 +117,7 @@ async function bootstrap() {
     transform: true,
   }));
 
-  // Serve static files from public directory
-  app.use(express.static(path.join(__dirname, '..', 'public')));
+  // NOTE: Static file serving for /NOTICE.txt and /LICENSE will be handled by ServeStaticModule in app.module.ts
 
   // Swagger Documentation Setup
   const config = new DocumentBuilder()
