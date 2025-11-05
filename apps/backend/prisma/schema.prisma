@@ -22,6 +22,7 @@ model User {
   navCheckpoints      NavCheckpoint[]
   transcriptsMeta     TranscriptsMeta[]
   eventsAnalytics     EventsAnalytics[]
+  umrahSessions       UmrahSession[]
 
   @@map("users")
 }
@@ -105,4 +106,45 @@ model EventsAnalytics {
   user User? @relation(fields: [userUuid], references: [id])
 
   @@map("events_analytics")
+}
+
+model UmrahSession {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  startedAt DateTime @default(now()) @map("started_at") @db.Timestamptz
+  state     String   @default("active") @db.Text // active, paused, completed, abandoned
+
+  // Relations
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  events   UmrahEvent[]
+  progress UmrahProgress?
+
+  @@map("umrah_session")
+}
+
+model UmrahEvent {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionId String   @map("session_id") @db.Uuid
+  type      String   @db.Text // ihram, tawaf, sai, halq, taqsir
+  lap       Int?     // For tawaf (1-7) or sa'i (1-7)
+  ts        DateTime @default(now()) @db.Timestamptz
+  meta      Json?    @db.JsonB // Additional metadata (location, duration, etc)
+
+  // Relations
+  session UmrahSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("umrah_event")
+}
+
+model UmrahProgress {
+  sessionId    String    @id @map("session_id") @db.Uuid
+  currentStep  String    @map("current_step") @db.Text // ihram, tawaf, sai, halq
+  tawafLaps    Int       @default(0) @map("tawaf_laps")
+  saiLaps      Int       @default(0) @map("sai_laps")
+  completedAt  DateTime? @map("completed_at") @db.Timestamptz
+
+  // Relations
+  session UmrahSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@map("umrah_progress")
 }

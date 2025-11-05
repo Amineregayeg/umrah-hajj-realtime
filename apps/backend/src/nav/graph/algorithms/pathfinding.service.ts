@@ -284,11 +284,89 @@ export class PathfindingService {
       distance += this.heuristic(nodeA, nodeB);
     }
 
+    // Generate turn-by-turn steps
+    const steps = this.generateSteps(path, distance);
+    const duration_s = Math.round(distance / 1.4); // Average walking speed 1.4 m/s
+
     return {
       path,
       totalCost,
       distance,
-      floors: Array.from(floors)
+      floors: Array.from(floors),
+      distance_m: distance,
+      duration_s,
+      steps
     };
+  }
+
+  private generateSteps(path: string[], totalDistance: number): any[] {
+    const steps: any[] = [];
+    const graph = this.graphLoader.getGraph();
+    let remainingDistance = totalDistance;
+
+    for (let i = 0; i < path.length - 1; i++) {
+      const fromNodeId = path[i];
+      const toNodeId = path[i + 1];
+      const fromNode = this.graphLoader.getNode(fromNodeId)!;
+      const toNode = this.graphLoader.getNode(toNodeId)!;
+
+      const stepDistance = this.heuristic(fromNode, toNode);
+
+      // Determine step type (walk, stairs, elevator)
+      let stepType: 'walk' | 'stairs' | 'elevator' | 'escalator' = 'walk';
+      let instruction = '';
+
+      // Check if this is a connector (floor change)
+      const connector = graph.connectors.find(
+        c => (c.from === fromNodeId && c.to === toNodeId) ||
+             (c.to === fromNodeId && c.from === toNodeId)
+      );
+
+      if (connector) {
+        stepType = connector.type === 'stairs' ? 'stairs' : 'elevator';
+        const direction = fromNode.floor < toNode.floor ? 'up' : 'down';
+        instruction = stepType === 'stairs'
+          ? `Take stairs ${direction} to ${toNode.floor} floor`
+          : `Take elevator to ${toNode.floor} floor`;
+      } else {
+        // Regular walk segment - calculate bearing for direction
+        const bearing = this.calculateBearing(fromNode, toNode);
+        const direction = this.bearingToDirection(bearing);
+        instruction = `Walk ${Math.round(stepDistance)}m ${direction} toward ${toNodeId}`;
+      }
+
+      steps.push({
+        type: stepType,
+        instruction,
+        from: fromNodeId,
+        to: toNodeId,
+        distance_m: Math.round(stepDistance * 10) / 10,
+        remaining_distance_m: Math.round(remainingDistance * 10) / 10,
+        floor: fromNode.floor !== toNode.floor ? toNode.floor : undefined
+      });
+
+      remainingDistance -= stepDistance;
+    }
+
+    return steps;
+  }
+
+  private calculateBearing(from: Node, to: Node): number {
+    const dLon = (to.lon - from.lon) * Math.PI / 180;
+    const lat1 = from.lat * Math.PI / 180;
+    const lat2 = to.lat * Math.PI / 180;
+
+    const y = Math.sin(dLon) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) -
+              Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    const bearing = Math.atan2(y, x) * 180 / Math.PI;
+
+    return (bearing + 360) % 360; // Normalize to 0-360
+  }
+
+  private bearingToDirection(bearing: number): string {
+    const directions = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'];
+    const index = Math.round(bearing / 45) % 8;
+    return directions[index];
   }
 }

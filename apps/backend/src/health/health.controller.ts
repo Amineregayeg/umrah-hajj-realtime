@@ -13,7 +13,11 @@ export class HealthController {
       status: 'healthy',
       timestamp: new Date().toISOString(),
       service: 'umrah-backend',
-      version: '1.0.0'
+      version: process.env.npm_package_version || '1.0.0',
+      environment: process.env.NODE_ENV || 'development',
+      node_env: process.env.NODE_ENV || 'development',
+      git_sha: process.env.GIT_SHA || 'unknown',
+      build_date: process.env.BUILD_DATE || new Date().toISOString()
     };
   }
 }

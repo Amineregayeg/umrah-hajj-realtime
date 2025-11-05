@@ -1,0 +1,81 @@
+Umrah Hajj Real-time Navigation System
+=======================================
+
+This software uses the following open-source components:
+
+## Runtime Dependencies
+
+### NestJS Framework (@nestjs/*) - MIT License
+Copyright (c) 2017-2024 Kamil Mysliwiec
+https://nestjs.com/
+
+### TypeScript (typescript) - Apache License 2.0
+Copyright Microsoft Corporation
+https://www.typescriptlang.org/
+
+### Prisma ORM (@prisma/client, prisma) - Apache License 2.0
+Copyright (c) 2018-2024 Prisma Data, Inc.
+https://www.prisma.io/
+
+### Express (express) - MIT License
+Copyright (c) 2009-2024 TJ Holowaychuk and other contributors
+https://expressjs.com/
+
+### WebSocket (ws) - MIT License
+Copyright (c) 2011 Einar Otto Stangvik and contributors
+https://github.com/websockets/ws
+
+### Helmet (helmet) - MIT License
+Copyright (c) 2012-2024 Adam Baldwin and contributors
+https://helmetjs.github.io/
+
+### Class Validator & Transformer - MIT License
+Copyright (c) 2015-2024 TypeStack
+https://github.com/typestack
+
+### RxJS (rxjs) - Apache License 2.0
+Copyright (c) 2015-2024 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors
+https://rxjs.dev/
+
+### MessagePack (@msgpack/msgpack) - ISC License
+Copyright 2019 Yusuke Endoh
+https://github.com/msgpack/msgpack-javascript
+
+### Zod (zod) - MIT License
+Copyright (c) 2020 Colin McDonnell
+https://zod.dev/
+
+## Data Sources and Attributions
+
+### Navigation Graph Data
+Indoor mapping data for Masjid al-Haram derived from OpenStreetMap
+© OpenStreetMap contributors
+https://www.openstreetmap.org/copyright
+Data available under ODbL (Open Database License)
+
+### Qur'an Content
+Qur'an text and translations provided by:
+- Tanzil.net (text) - Creative Commons Attribution 3.0 License
+- Quran.com API (audio, translations) - Various licenses
+https://tanzil.net/docs/tanzil_license
+
+### Prayer Times Calculations
+Based on algorithms from Islamic Society of North America (ISNA) and
+University of Islamic Sciences, Karachi (calculations in public domain)
+
+### Geographic Data
+Coordinate system: WGS84
+Prayer time calculations use standard astronomical algorithms
+
+## Build and Development Tools
+
+See package.json for complete list of development dependencies.
+
+## Notices
+
+This software is provided "AS IS" without warranty of any kind.
+
+For religious guidance, please consult qualified Islamic scholars.
+This system provides navigation and informational assistance only.
+
+Last updated: November 2025

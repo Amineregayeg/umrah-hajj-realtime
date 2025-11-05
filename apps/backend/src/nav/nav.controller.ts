@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Logger, UseGuards, Request, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Logger, UseGuards, Request, HttpStatus, HttpException, Header } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 import { NavGateway } from './nav.gateway';
 import { SupabaseJwtGuard } from '../auth/guards/supabase-jwt.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import { NavUpdateDto } from './dto/nav-update.dto';
 import { NavigationCorrectionService } from './services/navigation-correction.service';
+import { GraphService } from './graph/services/graph.service';
+import { OfflineBundleDto } from './dto/offline-bundle.dto';
 
 @ApiTags('Navigation')
 @Controller('nav')
@@ -16,7 +18,8 @@ export class NavController {
   constructor(
     private readonly navGateway: NavGateway,
     private readonly prismaService: PrismaService,
-    private readonly navCorrectionService: NavigationCorrectionService
+    private readonly navCorrectionService: NavigationCorrectionService,
+    private readonly graphService: GraphService
   ) {}
 
   @Get('status')
@@ -54,6 +57,45 @@ export class NavController {
       service: 'nav-websocket-gateway',
       timestamp: new Date().toISOString(),
       version: '1.0.0'
+    };
+  }
+
+  @Get('offline-bundle')
+  @ApiOperation({
+    summary: 'Get offline navigation bundle',
+    description: 'Returns complete navigation graph, phrases, and data for offline use. Cached for 30 days (immutable).'
+  })
+  @ApiResponse({ status: 200, description: 'Offline bundle', type: OfflineBundleDto })
+  @Header('Cache-Control', 'public, max-age=2592000, immutable')
+  getOfflineBundle(): OfflineBundleDto {
+    const graph = this.graphService.getGraph();
+
+    const phrases = [
+      'Turn left',
+      'Turn right',
+      'Continue straight',
+      'Take stairs up',
+      'Take stairs down',
+      'Take elevator',
+      'Take escalator',
+      'You have arrived',
+      'Recalculating route',
+      'Walk north',
+      'Walk south',
+      'Walk east',
+      'Walk west',
+      'Walk northeast',
+      'Walk northwest',
+      'Walk southeast',
+      'Walk southwest'
+    ];
+
+    return {
+      version: '1.0.0',
+      graph,
+      phrases,
+      units: 'metric',
+      timestamp: Date.now()
     };
   }
 
