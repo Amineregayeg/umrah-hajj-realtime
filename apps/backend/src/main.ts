@@ -63,7 +63,17 @@ async function bootstrap() {
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-    exposedHeaders: ['Content-Length', 'Content-Type'],
+    exposedHeaders: [
+      'Content-Length',
+      'Content-Type',
+      'X-RateLimit-Limit',
+      'X-RateLimit-Remaining',
+      'X-RateLimit-Reset',
+      'Retry-After',
+      'Cache-Control',
+      'ETag',
+      'Last-Modified'
+    ],
     preflightContinue: false,
     optionsSuccessStatus: 204,
   });
@@ -107,11 +117,13 @@ async function bootstrap() {
     transform: true,
   }));
 
+  // NOTE: Static file serving for /NOTICE.txt and /LICENSE will be handled by ServeStaticModule in app.module.ts
+
   // Swagger Documentation Setup
   const config = new DocumentBuilder()
     .setTitle('Umrah Hajj API')
     .setDescription(`API documentation for Umrah Hajj Real-time Application
-    
+
 **Phase B Features:**
 - 🗄️ **PostgreSQL Persistence**: Profile and consent data stored in database
 - 🔒 **Zod Validation**: Request validation with detailed error messages
@@ -122,7 +134,7 @@ async function bootstrap() {
 **Persistence Endpoints:**
 - GET /profile - Retrieve user profile from database
 - PUT /profile - Update user profile with validation
-- GET /consent - Get user consent preferences  
+- GET /consent - Get user consent preferences
 - PUT /consent - Update consent settings with persistence
 
 **WebSocket Protocol:**
@@ -135,6 +147,8 @@ async function bootstrap() {
     .addTag('Content', 'Content management and retrieval')
     .addTag('Health', 'Health check endpoints')
     .addBearerAuth()
+    .addServer('https://psychological-jilli-amineregayeg-1fe35444.koyeb.app', 'Production')
+    .addServer('http://localhost:3000', 'Local Development')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
