@@ -39,26 +39,11 @@ export interface NavGraph {
   zones: Zone[];
 }
 
-export interface PathStep {
-  type: 'walk' | 'stairs' | 'elevator' | 'escalator';
-  instruction: string;
-  from: string;
-  to: string;
-  distance_m: number;
-  remaining_distance_m: number;
-  floor?: string;
-}
-
 export interface PathFindingResult {
-  path: string[]; // Array of node IDs (legacy)
-  totalCost: number; // (legacy)
-  distance: number; // (legacy)
-  floors: string[]; // Floors traversed (legacy)
-
-  // New fields for turn-by-turn navigation
-  distance_m: number; // Total distance in meters
-  duration_s: number; // Estimated time in seconds (distance_m / 1.4)
-  steps: PathStep[]; // Turn-by-turn instructions
+  path: string[]; // Array of node IDs
+  totalCost: number;
+  distance: number;
+  floors: string[]; // Floors traversed
 }
 
 export interface RouteRequest {

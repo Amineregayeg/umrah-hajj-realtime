@@ -8,11 +8,9 @@ import {
   Delete,
   Request,
   UseGuards,
-  UseInterceptors,
   BadRequestException,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
-import { RateLimitHeadersInterceptor } from '../common/interceptors/rate-limit-headers.interceptor';
 import { AIService } from './ai.service';
 import { VoiceTokenService } from './services/voice-token.service';
 import { AIRealtimeService } from './services/ai-realtime.service';
@@ -97,7 +95,6 @@ export class AIController {
   }
 
   @Get('prayer-guidance')
-  @UseInterceptors(RateLimitHeadersInterceptor)
   // @UseGuards(JwtAuthGuard) // TODO: Uncomment when Auth_Security_Engineer completes auth guard
   async getPrayerGuidance(
     @Request() req: any,
@@ -110,7 +107,6 @@ export class AIController {
   }
 
   @Get('ritual-assistance/:ritual')
-  @UseInterceptors(RateLimitHeadersInterceptor)
   // @UseGuards(JwtAuthGuard) // TODO: Uncomment when Auth_Security_Engineer completes auth guard
   async getRitualAssistance(
     @Request() req: any,

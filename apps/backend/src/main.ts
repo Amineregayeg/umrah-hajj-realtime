@@ -9,8 +9,6 @@ import { MetricsService } from './metrics/metrics.service';
 import { MetricsMiddleware } from './metrics/metrics.middleware';
 import { SecurityConfigService } from './security/security-config.service';
 import { LogRedactionService } from './security/log-redaction.service';
-import * as express from 'express';
-import * as path from 'path';
 
 async function bootstrap() {
   const logger = new Logger('Bootstrap');
@@ -65,17 +63,7 @@ async function bootstrap() {
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-    exposedHeaders: [
-      'Content-Length',
-      'Content-Type',
-      'X-RateLimit-Limit',
-      'X-RateLimit-Remaining',
-      'X-RateLimit-Reset',
-      'Retry-After',
-      'Cache-Control',
-      'ETag',
-      'Last-Modified'
-    ],
+    exposedHeaders: ['Content-Length', 'Content-Type'],
     preflightContinue: false,
     optionsSuccessStatus: 204,
   });
@@ -119,14 +107,11 @@ async function bootstrap() {
     transform: true,
   }));
 
-  // Serve static files from public directory
-  app.use(express.static(path.join(__dirname, '..', 'public')));
-
   // Swagger Documentation Setup
   const config = new DocumentBuilder()
     .setTitle('Umrah Hajj API')
     .setDescription(`API documentation for Umrah Hajj Real-time Application
-
+    
 **Phase B Features:**
 - 🗄️ **PostgreSQL Persistence**: Profile and consent data stored in database
 - 🔒 **Zod Validation**: Request validation with detailed error messages
@@ -137,7 +122,7 @@ async function bootstrap() {
 **Persistence Endpoints:**
 - GET /profile - Retrieve user profile from database
 - PUT /profile - Update user profile with validation
-- GET /consent - Get user consent preferences
+- GET /consent - Get user consent preferences  
 - PUT /consent - Update consent settings with persistence
 
 **WebSocket Protocol:**
@@ -150,8 +135,6 @@ async function bootstrap() {
     .addTag('Content', 'Content management and retrieval')
     .addTag('Health', 'Health check endpoints')
     .addBearerAuth()
-    .addServer('https://psychological-jilli-amineregayeg-1fe35444.koyeb.app', 'Production')
-    .addServer('http://localhost:3000', 'Local Development')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
