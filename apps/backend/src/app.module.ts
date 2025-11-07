@@ -25,7 +25,7 @@ import { UmrahModule } from './umrah/umrah.module';
       isGlobal: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(__dirname, 'public'),
       serveRoot: '/',
     }),
     FeatureFlagsModule,

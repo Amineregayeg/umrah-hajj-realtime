@@ -4,7 +4,10 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": ["**/*.json", "../public/**/*"],
+    "assets": [
+      "**/*.json",
+      { "include": "../public/**/*", "outDir": "./public" }
+    ],
     "watchAssets": true
   }
 }
