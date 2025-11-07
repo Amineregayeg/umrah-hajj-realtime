@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salat Times</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#169c4c",
+              "background-light": "#f6f8f7",
+              "background-dark": "#112118",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="flex h-full min-h-screen flex-col">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4">
+<button class="flex h-10 w-10 items-center justify-center">
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 256 256">
+<path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+</svg>
+</button>
+<h1 class="flex-1 text-center text-lg font-bold">Salat</h1>
+<div class="w-10"></div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-4 pt-4 pb-24">
+<div class="space-y-8">
+<section>
+<h2 class="text-2xl font-bold">Today's Prayers</h2>
+<p class="text-sm text-white/60">Next prayer in 3h 14m</p>
+<div class="mt-4 space-y-2">
+<div class="flex items-center justify-between rounded-lg bg-white/5 p-4">
+<div>
+<p class="text-base font-medium">Fajr</p>
+<p class="text-sm text-primary">4:50 AM</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-primary/10 p-4">
+<div>
+<p class="text-base font-bold">Dhuhr</p>
+<p class="text-sm font-medium text-white/90">12:20 PM</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-white/5 p-4">
+<div>
+<p class="text-base font-medium">Asr</p>
+<p class="text-sm text-primary">3:40 PM</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-white/5 p-4">
+<div>
+<p class="text-base font-medium">Maghrib</p>
+<p class="text-sm text-primary">6:10 PM</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-white/5 p-4">
+<div>
+<p class="text-base font-medium">Isha</p>
+<p class="text-sm text-primary">7:40 PM</p>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold">Monthly Prayer Times</h2>
+<div class="mt-4 rounded-lg bg-white/5 p-4">
+<div class="flex items-center justify-between">
+<button class="flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
+</button>
+<p class="text-base font-bold">October 2024</p>
+<button class="flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-y-1 text-center text-sm">
+<p class="p-2 text-white/60">S</p>
+<p class="p-2 text-white/60">M</p>
+<p class="p-2 text-white/60">T</p>
+<p class="p-2 text-white/60">W</p>
+<p class="p-2 text-white/60">T</p>
+<p class="p-2 text-white/60">F</p>
+<p class="p-2 text-white/60">S</p>
+<div class="col-start-3 p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">1</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">2</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">3</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">4</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white">5</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">6</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">7</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">8</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">9</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">10</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">11</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">12</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">13</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">14</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">15</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">16</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">17</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">18</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">19</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">20</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">21</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">22</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">23</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">24</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">25</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">26</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">27</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">28</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">29</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">30</button></div>
+<div class="p-1"><button class="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white/10">31</button></div>
+</div>
+</div>
+<p class="mt-2 text-center text-sm text-white/60">Times calculated for Makkah (auto-updated)</p>
+</section>
+<section>
+<h2 class="text-2xl font-bold">Quiet Hours</h2>
+<div class="mt-4 space-y-2">
+<div class="flex items-center justify-between rounded-lg bg-white/5 p-4">
+<p class="text-base font-medium">Notification Preview</p>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-white/10 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-white/10 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/50"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="fixed inset-x-0 bottom-0 border-t border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm pb-safe">
+<nav class="flex items-center justify-around px-4 pt-2 pb-4">
+<a class="flex flex-col items-center gap-1 text-white/60" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 256 256"><path d="M240,126.63A112.44,112.44,0,0,0,51.75,53.75a111.56,111.56,0,0,0-35.7,72.88A16,16,0,0,0,32,144h88v56a32,32,0,0,0,64,0,8,8,0,0,0-16,0,16,16,0,0,1-32,0V144h88a16,16,0,0,0,16-17.37ZM32,128l0,0a96.15,96.15,0,0,1,76.2-85.89C96.48,58,81.85,86.11,80.17,128Zm64.15,0c1.39-30.77,10.53-52.81,18.3-66.24A106.44,106.44,0,0,1,128,43.16a106.31,106.31,0,0,1,13.52,18.6C154.8,84.7,159,109.28,159.82,128Zm79.65,0c-1.68-41.89-16.31-70-28-85.94A96.07,96.07,0,0,1,224,128Z"></path></svg>
+<span class="text-xs font-medium">Umrah</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/60" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"></path></svg>
+<span class="text-xs font-medium">Qibla</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/60" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 256 256"><path d="M224,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h64a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"></path></svg>
+<span class="text-xs font-medium">Qur'an</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm56,112H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48a8,8,0,0,1,0,16Z"></path></svg>
+<span class="text-xs font-bold">Salat</span>
+</a>
+</nav>
+</footer>
+</div>
+
+</body></html>

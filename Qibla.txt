@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Qibla Compass</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#169c4c",
+              "background-light": "#f6f8f7",
+              "background-dark": "#112118",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+<style>
+      .kaaba-marker {
+        transform-origin: center 160px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white antialiased">
+<div class="flex flex-col h-screen">
+<header class="flex items-center justify-between p-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-20">
+<button class="p-2 rounded-full text-white/80 dark:text-white/80 hover:bg-primary/20">
+<span class="material-symbols-outlined"> arrow_back </span>
+</button>
+<h1 class="text-lg font-bold text-white/90 dark:text-white/90">Qibla</h1>
+<div class="w-10"></div> 
+</header>
+<main class="flex-grow flex flex-col items-center justify-center pt-16 pb-4 px-4 text-center">
+<div class="relative w-80 h-80 flex items-center justify-center mb-6">
+<div class="absolute w-full h-full rounded-full bg-primary/10 dark:bg-primary/20 border-2 border-primary/20 dark:border-primary/30"></div>
+<div class="absolute w-64 h-64 rounded-full bg-background-light dark:bg-background-dark flex items-center justify-center">
+<div class="absolute top-1 text-sm font-bold text-primary">N</div>
+</div>
+<div class="absolute w-full h-full">
+<div class="kaaba-marker" style="transform: rotate(45deg);">
+<div class="relative w-full h-full flex justify-center">
+<img alt="Kaaba Icon" class="h-10 w-10 mt-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM0-n6z8NV6oN_3gQHDMgIUTO9dDSu2oKKFnL6y76EjLK9ysaD4cSg1vqIhXTePPqgO1vX_sfy79FmEn1npcZGNdcrD34D2sNi1w8OK7WBUNo7dussffy8eZVOLU4PE36XKV2YA3srFKYGMIJt3iGpbg38EBP68Y9QMWykyLfYFrGLKzm_ZUif-yGwnjlNRyRpi6xJUcKeRybPI_K_4Q2ldjzzxvql-y9qOK7tT8xM2hran1J3Sb7Ey0C7a4oo7yTJ0PGVCZW9dOE"/>
+</div>
+</div>
+</div>
+<div class="z-10 flex flex-col items-center">
+<div class="text-5xl font-bold text-white tracking-tight">270°</div>
+<div class="text-sm text-white/70 dark:text-white/70">Towards Kaaba</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-4 mb-8">
+<div class="flex items-center gap-2 rounded-full bg-primary/20 dark:bg-primary/30 px-4 py-1.5">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-sm font-medium text-white/90">Accuracy: High</span>
+</div>
+</div>
+<div class="w-full max-w-sm flex flex-col gap-4">
+<button class="w-full flex items-center justify-center gap-2 h-12 px-6 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined"> aod </span>
+<span>AR View</span>
+</button>
+<button class="w-full flex items-center justify-center h-12 px-6 bg-primary/20 dark:bg-primary/30 text-white font-bold rounded-lg hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+              Recalibrate
+            </button>
+</div>
+</main>
+<footer class="p-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm sticky bottom-0">
+<div class="bg-cover bg-center rounded-lg h-32" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjcl-QAFaJkKdaX8lftBnyAalqTO7IuQCNS5dOyep2BYgoJp_9q2rRTwaXQ8KsTICxuMd03uitj0Z0RWXJ0XyRp9mpvFJdrTxjmtntvFaZ99IOVTtVGcp472QMIz-XWyn-8csD-j0v6jCQQyTPernMo2-UdVAh8y563JozMPxSj9wLVowwf3tXP7lxnyYNJeHniCf8NiuNwL4_oGYgC2NNpAMnztSzYP8LnddxXV71l2TQFxkTAemEh3s34etcE1npvzTO-VoGYyc");'>
+<div class="w-full h-full bg-black/30 rounded-lg flex items-center justify-center">
+<div class="text-center text-white">
+<p class="font-semibold">Low sensor accuracy</p>
+<p class="text-sm opacity-80">Using map for direction</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>

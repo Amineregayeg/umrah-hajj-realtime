@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Umrah Companion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#169c4c",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112118",
+                        "charcoal": "#333333", // Added for text
+                        "gold": "#D4AF37", // Added for accents
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .kaaba-container {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #A8E063, #56AB2F);
+            border-radius: 1.5rem;display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .kaaba-silhouette {
+            fill: #D4AF37;}
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="flex flex-col h-screen justify-center items-center p-6 text-center">
+<div class="kaaba-container mb-6">
+<svg class="kaaba-silhouette" height="60" viewBox="0 0 24 24" width="60" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.5 10.25a.75.75 0 0 0-1 0L12 17.59l-7.5-7.34a.75.75 0 0 0-1 1.12l8 7.75c.14.13.33.21.53.21s.39-.08.53-.21l8-7.75a.75.75 0 0 0-.03-1.12zM3 10.25a.75.75 0 0 1 1-1.12L12 17.59l7.5-7.34a.75.75 0 0 1 1 1.12l-8 7.75a1.75 1.75 0 0 1-2.06 0L3 11.37z" stroke="none" stroke-width="0"></path>
+<path d="M21 7.25H3a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1z" fill="#D4AF37"></path>
+<path d="M19 4H5a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z" fill="#D4AF37"></path>
+</svg>
+</div>
+<h1 class="text-3xl font-bold text-charcoal dark:text-background-light mb-2">Umrah Companion</h1>
+<p class="text-lg text-charcoal/80 dark:text-background-light/80 mb-10">Your guided journey begins here.</p>
+<a class="w-full max-w-sm bg-primary text-white font-bold py-4 px-8 rounded-xl text-lg hover:bg-opacity-90 transition-colors duration-300 shadow-lg shadow-primary/20" href="#">
+            Start
+        </a>
+</div>
+
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Umrah Guide Download</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#169c4c",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112118",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen justify-between max-w-md mx-auto">
+<div class="p-4">
+<header class="flex items-center justify-center relative mb-6">
+<button class="absolute left-0 text-gray-800 dark:text-gray-200">
+<svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+</button>
+<h1 class="text-xl font-bold text-gray-900 dark:text-gray-100">Download Guide</h1>
+</header>
+<p class="text-center text-gray-700 dark:text-gray-300 mb-8">Choose your preferred guide quality. A calm, sacred aesthetic with Umrah Green, Mint gradient, Gold accents.</p>
+<div class="space-y-4">
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex-grow">
+<h2 class="font-bold text-lg text-gray-900 dark:text-gray-100">Lite <span class="font-normal text-gray-600 dark:text-gray-400">(150 MB)</span></h2>
+<p class="text-sm text-gray-600 dark:text-gray-400">AR/EN/FR | System voice</p>
+</div>
+<button class="bg-primary text-white font-bold py-2 px-4 rounded-full text-sm">
+                            Download
+                        </button>
+</div>
+</div>
+<div class="bg-white/50 dark:bg-black/20 p-4 rounded-xl border border-primary shadow-lg">
+<div class="flex items-center gap-4 mb-3">
+<div class="flex-grow">
+<h2 class="font-bold text-lg text-gray-900 dark:text-gray-100">HQ <span class="font-normal text-gray-600 dark:text-gray-400">(1 GB)</span></h2>
+<p class="text-sm text-gray-600 dark:text-gray-400">AR/EN/FR | Piper voice</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary/20 dark:bg-primary/30 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+<svg class="text-white" fill="currentColor" height="20" viewBox="0 0 256 256" width="20"><path d="M208,88H152V32a8,8,0,0,0-16,0V88H80a8,8,0,0,0-5.66,13.66l64,64a8,8,0,0,0,11.32,0l64-64A8,8,0,0,0,208,88Zm-85.66,69.66L128,152l5.66-5.66L128,140.69ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
+</div>
+</div>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+</div>
+<div class="flex justify-between text-xs font-medium text-gray-500 dark:text-gray-400 mt-1">
+<span>Downloading...</span>
+<span>20%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700">
+<button class="w-full bg-primary/50 text-white font-bold py-3 px-4 rounded-xl text-center" disabled="">
+                Continue when complete
+            </button>
+<div class="h-5"></div>
+</div>
+</div>
+
+</body></html>

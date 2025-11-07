@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy Settings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#169c4c",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112118",
+                        "content-light": "#1f2923",
+                        "content-dark": "#e1e3e2",
+                        "subtle-light": "#6b7280",
+                        "subtle-dark": "#9ca3af",
+                        "accent": "#d4af37"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.75rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .toggle-bg:after {
+            content: '';
+            @apply absolute top-0.5 left-0.5 bg-white border border-gray-300 rounded-full h-6 w-6 transition-all;
+        }
+        input:checked + .toggle-bg:after {
+            @apply transform translate-x-full;
+        }
+        input:checked + .toggle-bg {
+            @apply bg-primary;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen justify-between p-4">
+<div class="flex-grow">
+<header class="pt-6 pb-8">
+<h1 class="text-3xl font-bold text-center text-content-light dark:text-content-dark">
+                    Your Privacy Settings
+                </h1>
+</header>
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Crash reports</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Help us improve the app by sending crash reports.</p>
+</div>
+<div class="flex items-center">
+<input checked="" class="hidden" id="crash-reports" type="checkbox"/>
+<label class="relative cursor-pointer" for="crash-reports">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Anonymous analytics</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Help us understand how the app is used.</p>
+</div>
+<div class="flex items-center">
+<input checked="" class="hidden" id="analytics" type="checkbox"/>
+<label class="relative cursor-pointer" for="analytics">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Upload transcripts</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Help us improve speech recognition.</p>
+</div>
+<div class="flex items-center">
+<input class="hidden" id="transcripts" type="checkbox"/>
+<label class="relative cursor-pointer" for="transcripts">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Upload audio samples</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Help us improve speech recognition.</p>
+</div>
+<div class="flex items-center">
+<input class="hidden" id="audio-samples" type="checkbox"/>
+<label class="relative cursor-pointer" for="audio-samples">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Background location</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Allow the app to use your location in the background.</p>
+</div>
+<div class="flex items-center">
+<input class="hidden" id="background-location" type="checkbox"/>
+<label class="relative cursor-pointer" for="background-location">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white/50 dark:bg-black/20 p-4 rounded-lg">
+<div>
+<h3 class="font-semibold text-content-light dark:text-content-dark">Email updates</h3>
+<p class="text-sm text-subtle-light dark:text-subtle-dark">Receive updates and news via email.</p>
+</div>
+<div class="flex items-center">
+<input class="hidden" id="email-updates" type="checkbox"/>
+<label class="relative cursor-pointer" for="email-updates">
+<div class="toggle-bg bg-gray-200 dark:bg-gray-700 w-12 h-7 rounded-full"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="pb-4">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-primary/90 transition-colors">
+                Accept &amp; Continue
+            </button>
+<a class="block text-center mt-4 text-accent hover:underline" href="#">
+                View detailed privacy terms
+            </a>
+</div>
+</div>
+
+</body></html>

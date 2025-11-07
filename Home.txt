@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Umrah Guide</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#169c4c",
+            "background-light": "#f6f8f7",
+            "background-dark": "#112118",
+          },
+          fontFamily: {
+            "display": ["Inter"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .font-display {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white">
+<div class="relative min-h-screen flex flex-col">
+<div class="absolute inset-0 bg-cover bg-center backdrop-blur-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNB4CNn1OX_cqOIxtHAfcKfzJ7YrknC9BgPzcVMQAjAiSCt9STGKZLlkqwtqr3FKjBmjWImIf2wHNKE0bAfovfTRxeS5u1vxStpmkbwnT3dMH7VvMQSHb6AA6PNa5xK8sBZW3Vik7rwH3pl06LeY7zzsU9V1-LgHEAf0XW1F4N8jjKM7sayQc6SXnUr8HTbBtq1MTOF3SZjUzt_vMKmbX122u1vIeEimZsGpBXUbcHW1YiJBsgxBbZFXwLgfKICwnBNctAdncsjzU'); filter: blur(4px);"></div>
+<div class="absolute inset-0 bg-background-dark/70"></div>
+<div class="relative flex-grow flex flex-col justify-between">
+<header class="p-4 flex items-center justify-between z-10">
+<div class="bg-black/20 backdrop-blur-lg rounded-full flex items-center px-4 py-2">
+<svg class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="ml-2 text-sm font-medium text-white">Masjid al-Haram</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center bg-black/20 backdrop-blur-lg rounded-full">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-black/20 backdrop-blur-lg rounded-full">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</header>
+<main class="flex-grow"></main>
+<div class="px-6 pb-12 pt-4 z-10">
+<div class="bg-background-light/10 dark:bg-background-dark/30 backdrop-blur-xl rounded-xl p-6 shadow-2xl">
+<h1 class="text-3xl font-bold text-white text-center">Your Guide to Umrah</h1>
+<p class="text-white/80 text-center mt-2 mb-6">Experience a guided and spiritually fulfilling pilgrimage.</p>
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-lg text-lg hover:bg-primary/90 transition-all duration-200">
+              Start Umrah
+            </button>
+<button class="w-full bg-primary/20 text-white font-medium py-4 rounded-lg hover:bg-primary/30 transition-all duration-200" disabled="">
+              Start Simulation <span class="text-xs opacity-70">(Coming Soon)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

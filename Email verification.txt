@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Email Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#169c4c",
+              "background-light": "#f6f8f7",
+              "background-dark": "#112118",
+              "text-light": "#1f2937",
+              "text-dark": "#e5e7eb",
+              "subtle-light": "#e5e7eb",
+              "subtle-dark": "#374151",
+              "accent-gold": "#d4af37",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex h-screen flex-col">
+<main class="flex-1 px-6 py-8 text-center flex flex-col items-center justify-center">
+<div class="w-48 h-48 mb-8 flex items-center justify-center">
+<svg class="h-40 w-40 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 12h-6l-2 3h-4l-2-3H2"></path>
+<path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+<path d="m9 17 3-3 3 3"></path>
+<path d="M12 14v-4"></path>
+</svg>
+</div>
+<h1 class="text-2xl font-bold text-text-light dark:text-text-dark mb-4">Check your inbox</h1>
+<p class="text-text-light/80 dark:text-text-dark/80 mb-8 max-w-sm">Please check your inbox to verify your email address and continue.</p>
+<div class="w-full max-w-xs space-y-4">
+<button class="w-full rounded-lg bg-primary px-4 py-3 text-sm font-bold text-white shadow-sm transition-opacity hover:opacity-90">Open Mail App</button>
+<button class="w-full rounded-lg bg-primary/20 dark:bg-primary/30 px-4 py-3 text-sm font-bold text-primary transition-opacity hover:opacity-90">Resend Link</button>
+</div>
+</main>
+<footer class="border-t border-subtle-light/50 dark:border-subtle-dark/50 bg-background-light dark:bg-background-dark">
+<nav class="flex justify-around px-4 pb-4 pt-2">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"> home </span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60 transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined"> map </span>
+<span class="text-xs">Map</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60 transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined"> bookmark </span>
+<span class="text-xs">Saved</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60 transition-colors hover:text-primary" href="#">
+<span class="material-symbols-outlined"> person </span>
+<span class="text-xs">Profile</span>
+</a>
+</nav>
+</footer>
+</div>
+
+</body></html>
