@@ -13,9 +13,9 @@ class AuthRepository {
   final SecureStorage _secureStorage;
 
   AuthRepository({
-    required SupabaseClient supabaseClient,
+    required SupabaseClient? supabaseClient,
     required SecureStorage secureStorage,
-  })  : _supabaseClient = supabaseClient,
+  })  : _supabaseClient = supabaseClient!,
         _secureStorage = secureStorage;
 
   /// Get current user from Supabase session

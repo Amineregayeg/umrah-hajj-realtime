@@ -107,9 +107,11 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
           IconButton(
             icon: Icon(Icons.bookmark_border, color: AppColors.textLight),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Bookmarks coming soon')),
-              );
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Bookmarks coming soon')),
+                );
+              }
             },
           ),
         ],
@@ -226,11 +228,13 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
           borderRadius: BorderRadius.circular(12),
           onTap: () {
             // TODO: Navigate to Surah detail screen
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Opening ${surah['nameEn']}...'),
-              ),
-            );
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Opening ${surah['nameEn']}...'),
+                ),
+              );
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -264,7 +268,7 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        surah['nameAr'],
+                        surah['nameAr'] as String,
                         style: TextStyle(
                           color: AppColors.textLight,
                           fontSize: 18,
@@ -273,7 +277,7 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        surah['nameEn'],
+                        surah['nameEn'] as String,
                         style: TextStyle(
                           color: AppColors.textLight.withOpacity(0.6),
                           fontSize: 14,

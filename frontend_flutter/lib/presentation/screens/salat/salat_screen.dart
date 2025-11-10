@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/theme/app_colors.dart';
 
@@ -34,15 +35,12 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Menu coming soon')),
-            );
-          },
+          onPressed: () => _showNavigationDrawer(context),
         ),
         title: const Text('Salat'),
         centerTitle: true,
       ),
+      drawer: _buildNavigationDrawer(context),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -119,7 +117,7 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  prayer['name'],
+                  prayer['name'] as String,
                   style: TextStyle(
                     color: AppColors.textLight,
                     fontSize: 16,
@@ -128,7 +126,7 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  prayer['time'],
+                  prayer['time'] as String,
                   style: TextStyle(
                     color: AppColors.textLight.withOpacity(0.6),
                     fontSize: 14,
@@ -270,15 +268,17 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
 
                 return InkWell(
                   onTap: () {
-                    setState(() {
-                      _currentDay = dayNumber;
-                    });
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Prayer times for day $dayNumber'),
-                        duration: const Duration(seconds: 1),
-                      ),
-                    );
+                    if (mounted) {
+                      setState(() {
+                        _currentDay = dayNumber;
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Prayer times for day $dayNumber'),
+                          duration: const Duration(seconds: 1),
+                        ),
+                      );
+                    }
                   },
                   borderRadius: BorderRadius.circular(8),
                   child: Container(
@@ -352,5 +352,201 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
     return months[month - 1];
+  }
+
+  /// Show navigation drawer
+  void _showNavigationDrawer(BuildContext context) {
+    Scaffold.of(context).openDrawer();
+  }
+
+  /// Build navigation drawer
+  Widget _buildNavigationDrawer(BuildContext context) {
+    return Drawer(
+      child: Container(
+        color: AppColors.backgroundLight,
+        child: SafeArea(
+          child: Column(
+            children: [
+              // Header
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      AppColors.primary,
+                      AppColors.primary.withOpacity(0.8),
+                    ],
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.mosque,
+                      color: AppColors.white,
+                      size: 48,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Umrah & Hajj Guide',
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Prayer Times',
+                      style: TextStyle(
+                        color: AppColors.white.withOpacity(0.9),
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Menu items
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  children: [
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.home_outlined,
+                      title: 'Home',
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/home');
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.explore_outlined,
+                      title: 'Qibla Direction',
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/qibla');
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.menu_book_outlined,
+                      title: 'Quran',
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/quran');
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.access_time,
+                      title: 'Prayer Times',
+                      isSelected: true,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.map_outlined,
+                      title: 'Navigation',
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/map');
+                      },
+                    ),
+                    const Divider(height: 32),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.person_outline,
+                      title: 'Profile',
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.go('/profile');
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.settings_outlined,
+                      title: 'Settings',
+                      onTap: () {
+                        Navigator.pop(context);
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Settings coming soon')),
+                          );
+                        }
+                      },
+                    ),
+                    _buildDrawerItem(
+                      context,
+                      icon: Icons.help_outline,
+                      title: 'Help & Support',
+                      onTap: () {
+                        Navigator.pop(context);
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Help coming soon')),
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+
+              // Footer
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text(
+                  'Version 1.0.0',
+                  style: TextStyle(
+                    color: AppColors.textLight.withOpacity(0.5),
+                    fontSize: 12,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Build drawer menu item
+  Widget _buildDrawerItem(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    bool isSelected = false,
+  }) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: isSelected ? AppColors.primary : AppColors.textLight,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: isSelected ? AppColors.primary : AppColors.textLight,
+          fontSize: 16,
+          fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+        ),
+      ),
+      selected: isSelected,
+      selectedTileColor: AppColors.primary.withOpacity(0.1),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      onTap: onTap,
+    );
   }
 }

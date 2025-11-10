@@ -274,10 +274,13 @@ class HomeScreen extends ConsumerWidget {
               icon: Icons.settings_outlined,
               title: 'Settings',
               onTap: () {
+                final messenger = ScaffoldMessenger.of(context);
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Settings coming soon')),
-                );
+                Future.microtask(() {
+                  messenger.showSnackBar(
+                    const SnackBar(content: Text('Settings coming soon')),
+                  );
+                });
               },
             ),
 
@@ -286,10 +289,13 @@ class HomeScreen extends ConsumerWidget {
               icon: Icons.help_outline,
               title: 'Help & Support',
               onTap: () {
+                final messenger = ScaffoldMessenger.of(context);
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Help coming soon')),
-                );
+                Future.microtask(() {
+                  messenger.showSnackBar(
+                    const SnackBar(content: Text('Help coming soon')),
+                  );
+                });
               },
             ),
 
@@ -298,10 +304,13 @@ class HomeScreen extends ConsumerWidget {
               icon: Icons.info_outline,
               title: 'About',
               onTap: () {
+                final messenger = ScaffoldMessenger.of(context);
                 Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('About coming soon')),
-                );
+                Future.microtask(() {
+                  messenger.showSnackBar(
+                    const SnackBar(content: Text('About coming soon')),
+                  );
+                });
               },
             ),
           ],

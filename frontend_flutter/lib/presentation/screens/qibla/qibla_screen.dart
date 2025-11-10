@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../widgets/common/custom_button.dart';
@@ -33,6 +34,13 @@ class _QiblaScreenState extends ConsumerState<QiblaScreen>
   }
 
   @override
+  void deactivate() {
+    // Stop animation when navigating away
+    _pulseController.stop();
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
     _pulseController.dispose();
     super.dispose();
@@ -50,22 +58,22 @@ class _QiblaScreenState extends ConsumerState<QiblaScreen>
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => context.go('/home'),
         ),
         title: const Text('Qibla'),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              const Spacer(flex: 1),
+              const SizedBox(height: 24),
 
               // Compass display
               _buildCompass(),
 
-              const Spacer(flex: 1),
+              const SizedBox(height: 24),
 
               // Accuracy indicator
               _buildAccuracyIndicator(),
@@ -226,9 +234,11 @@ class _QiblaScreenState extends ConsumerState<QiblaScreen>
           text: 'AR View',
           icon: Icons.view_in_ar,
           onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('AR View coming soon')),
-            );
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('AR View coming soon')),
+              );
+            }
           },
           fullWidth: true,
         ),
@@ -240,12 +250,14 @@ class _QiblaScreenState extends ConsumerState<QiblaScreen>
           text: 'Recalibrate',
           variant: ButtonVariant.outline,
           onPressed: () {
-            setState(() {
-              // TODO: Recalibrate compass
-            });
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Compass recalibrated')),
-            );
+            if (mounted) {
+              setState(() {
+                // TODO: Recalibrate compass
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Compass recalibrated')),
+              );
+            }
           },
           fullWidth: true,
         ),

@@ -7,8 +7,13 @@ import '../../data/repositories/auth_repository.dart';
 import '../../data/sources/local/secure_storage.dart';
 
 /// Provider for Supabase client
-final supabaseClientProvider = Provider<SupabaseClient>((ref) {
-  return Supabase.instance.client;
+final supabaseClientProvider = Provider<SupabaseClient?>((ref) {
+  try {
+    return Supabase.instance.client;
+  } catch (e) {
+    // Supabase not initialized - return null
+    return null;
+  }
 });
 
 /// Provider for SecureStorage
@@ -17,9 +22,14 @@ final secureStorageProvider = Provider<SecureStorage>((ref) {
 });
 
 /// Provider for AuthRepository
-final authRepositoryProvider = Provider<AuthRepository>((ref) {
+final authRepositoryProvider = Provider<AuthRepository?>((ref) {
   final supabaseClient = ref.watch(supabaseClientProvider);
   final secureStorage = ref.watch(secureStorageProvider);
+
+  // Return null if Supabase is not initialized
+  if (supabaseClient == null) {
+    return null;
+  }
 
   return AuthRepository(
     supabaseClient: supabaseClient,
@@ -108,21 +118,29 @@ class AuthState {
 
 /// Auth state notifier
 class AuthNotifier extends StateNotifier<AuthState> {
-  final AuthRepository _authRepository;
+  final AuthRepository? _authRepository;
 
   AuthNotifier(this._authRepository) : super(AuthState.initial()) {
-    // Attempt auto-login on initialization
-    _autoLogin();
+    if (_authRepository != null) {
+      // Attempt auto-login on initialization
+      _autoLogin();
 
-    // Listen to auth state changes from Supabase
-    _listenToAuthChanges();
+      // Listen to auth state changes from Supabase
+      _listenToAuthChanges();
+    } else {
+      // Supabase not initialized - stay unauthenticated
+      AppLogger.w('AuthNotifier: Supabase not initialized - auth disabled');
+      state = AuthState.unauthenticated();
+    }
   }
 
   /// Attempt auto-login with stored session
   Future<void> _autoLogin() async {
+    if (_authRepository == null) return;
+
     state = AuthState.loading();
 
-    final result = await _authRepository.autoLogin();
+    final result = await _authRepository!.autoLogin();
 
     result.fold(
       (failure) {
@@ -143,7 +161,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   /// Listen to Supabase auth state changes
   void _listenToAuthChanges() {
-    _authRepository.authStateChanges.listen((authState) {
+    if (_authRepository == null) return;
+
+    _authRepository!.authStateChanges.listen((authState) {
       final user = authState.session?.user;
 
       if (user != null) {
@@ -161,9 +181,14 @@ class AuthNotifier extends StateNotifier<AuthState> {
     required String email,
     required String password,
   }) async {
+    if (_authRepository == null) {
+      state = AuthState.error(const AuthFailure('Authentication not available'));
+      return;
+    }
+
     state = state.copyWith(isLoading: true, error: null);
 
-    final result = await _authRepository.signInWithEmailPassword(
+    final result = await _authRepository!.signInWithEmailPassword(
       email: email,
       password: password,
     );
@@ -186,9 +211,14 @@ class AuthNotifier extends StateNotifier<AuthState> {
     required String password,
     String? fullName,
   }) async {
+    if (_authRepository == null) {
+      state = AuthState.error(const AuthFailure('Authentication not available'));
+      return;
+    }
+
     state = state.copyWith(isLoading: true, error: null);
 
-    final result = await _authRepository.signUpWithEmailPassword(
+    final result = await _authRepository!.signUpWithEmailPassword(
       email: email,
       password: password,
       fullName: fullName,
@@ -208,9 +238,14 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   /// Sign out current user
   Future<void> signOut() async {
+    if (_authRepository == null) {
+      state = AuthState.unauthenticated();
+      return;
+    }
+
     state = state.copyWith(isLoading: true, error: null);
 
-    final result = await _authRepository.signOut();
+    final result = await _authRepository!.signOut();
 
     result.fold(
       (failure) {
@@ -226,9 +261,17 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   /// Send password reset email
   Future<void> resetPassword(String email) async {
+    if (_authRepository == null) {
+      state = state.copyWith(
+        isLoading: false,
+        error: const AuthFailure('Authentication not available'),
+      );
+      return;
+    }
+
     state = state.copyWith(isLoading: true, error: null);
 
-    final result = await _authRepository.resetPassword(email: email);
+    final result = await _authRepository!.resetPassword(email: email);
 
     result.fold(
       (failure) {
