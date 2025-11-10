@@ -42,44 +42,94 @@ class PlaceholderScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
-        child: Text('$title Screen\n(Coming soon)'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '$title Screen',
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            const Text('(Coming soon in Phase D.5)'),
+            const SizedBox(height: 32),
+            const Text('Navigate to:', style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
+              alignment: WrapAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () => context.go('/home'),
+                  child: const Text('Home'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/qibla'),
+                  child: const Text('Qibla'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/quran'),
+                  child: const Text('Quran'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/salat'),
+                  child: const Text('Prayer Times'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/login'),
+                  child: const Text('Login'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/signup'),
+                  child: const Text('Sign Up'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.go('/splash'),
+                  child: const Text('Splash'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// Router provider with auth guard
+// Router provider - AUTH DISABLED FOR TESTING
 final routerProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authNotifierProvider);
+  // Commenting out auth state watching for testing
+  // final authState = ref.watch(authNotifierProvider);
 
   return GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/home', // Changed to /home for easier testing
     debugLogDiagnostics: true,
-    redirect: (context, state) {
-      final isAuthenticated = authState.isAuthenticated;
-      final isLoading = authState.isLoading;
-
-      final isGoingToLogin = state.matchedLocation == '/login';
-      final isGoingToSignup = state.matchedLocation == '/signup';
-      final isGoingToSplash = state.matchedLocation == '/splash';
-
-      // Show splash while checking auth state
-      if (isLoading && !isGoingToSplash) {
-        return '/splash';
-      }
-
-      // Redirect to login if not authenticated and trying to access protected routes
-      if (!isAuthenticated && !isLoading && !isGoingToLogin && !isGoingToSignup) {
-        return '/login';
-      }
-
-      // Redirect to home if authenticated and trying to access auth screens
-      if (isAuthenticated && (isGoingToLogin || isGoingToSignup || isGoingToSplash)) {
-        return '/home';
-      }
-
-      return null; // No redirect needed
-    },
+    // AUTH GUARD DISABLED - All routes are accessible without login
+    // redirect: (context, state) {
+    //   final isAuthenticated = authState.isAuthenticated;
+    //   final isLoading = authState.isLoading;
+    //
+    //   final isGoingToLogin = state.matchedLocation == '/login';
+    //   final isGoingToSignup = state.matchedLocation == '/signup';
+    //   final isGoingToSplash = state.matchedLocation == '/splash';
+    //
+    //   // Show splash while checking auth state
+    //   if (isLoading && !isGoingToSplash) {
+    //     return '/splash';
+    //   }
+    //
+    //   // Redirect to login if not authenticated and trying to access protected routes
+    //   if (!isAuthenticated && !isLoading && !isGoingToLogin && !isGoingToSignup) {
+    //     return '/login';
+    //   }
+    //
+    //   // Redirect to home if authenticated and trying to access auth screens
+    //   if (isAuthenticated && (isGoingToLogin || isGoingToSignup || isGoingToSplash)) {
+    //     return '/home';
+    //   }
+    //
+    //   return null; // No redirect needed
+    // },
     routes: [
       GoRoute(
         path: '/splash',
