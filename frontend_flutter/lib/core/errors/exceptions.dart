@@ -31,13 +31,13 @@ class CacheException implements Exception {
   String toString() => 'CacheException: $message';
 }
 
-class AuthException implements Exception {
+class AppAuthException implements Exception {
   final String message;
 
-  AuthException({required this.message});
+  AppAuthException({required this.message});
 
   @override
-  String toString() => 'AuthException: $message';
+  String toString() => 'AppAuthException: $message';
 }
 
 class ValidationException implements Exception {

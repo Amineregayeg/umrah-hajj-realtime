@@ -3,21 +3,22 @@ import '../../../core/theme/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? label;
-  final String placeholder;
+  final String? placeholder;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final bool obscureText;
   final int? maxLines;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final VoidCallback? onSuffixIconTap;
   final bool enabled;
   final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
     this.label,
-    required this.placeholder,
+    this.placeholder,
     this.controller,
     this.validator,
     this.keyboardType,
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLines = 1,
     this.prefixIcon,
     this.suffixIcon,
+    this.onSuffixIconTap,
     this.enabled = true,
     this.onChanged,
   });
@@ -104,8 +106,13 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
             contentPadding: const EdgeInsets.all(16),
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                    icon: Icon(suffixIcon),
+                    onPressed: onSuffixIconTap,
+                  )
+                : null,
           ),
         ),
       ],
