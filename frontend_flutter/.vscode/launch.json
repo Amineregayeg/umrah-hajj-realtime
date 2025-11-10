@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter: Run (Development)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define=ENVIRONMENT=development",
+        "--dart-define=API_BASE_URL=https://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=WS_BASE_URL=wss://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=SUPABASE_URL=YOUR_SUPABASE_URL_HERE",
+        "--dart-define=SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY_HERE"
+      ]
+    },
+    {
+      "name": "Flutter: Run (Chrome)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "-d",
+        "chrome",
+        "--dart-define=ENVIRONMENT=development",
+        "--dart-define=API_BASE_URL=https://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=WS_BASE_URL=wss://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=SUPABASE_URL=YOUR_SUPABASE_URL_HERE",
+        "--dart-define=SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY_HERE"
+      ]
+    },
+    {
+      "name": "Flutter: Run (Profile Mode)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define=ENVIRONMENT=staging",
+        "--dart-define=API_BASE_URL=https://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=WS_BASE_URL=wss://psychological-jilli-amineregayeg-1fe35444.koyeb.app",
+        "--dart-define=SUPABASE_URL=YOUR_SUPABASE_URL_HERE",
+        "--dart-define=SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY_HERE"
+      ]
+    }
+  ]
+}
