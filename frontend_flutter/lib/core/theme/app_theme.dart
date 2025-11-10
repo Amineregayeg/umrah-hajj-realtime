@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTheme {
-  static const String fontFamily = 'Inter';
+  // Using default Material font (Roboto) for now
+  // static const String fontFamily = 'Inter';
+  static const String? fontFamily = null;
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
