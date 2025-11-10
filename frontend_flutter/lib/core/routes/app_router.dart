@@ -7,6 +7,7 @@ import '../../presentation/screens/auth/login_screen.dart';
 import '../../presentation/screens/auth/signup_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/qibla/qibla_screen.dart';
+import '../../presentation/screens/quran/quran_screen.dart';
 
 // Placeholder screens (will be implemented in Phase D.5)
 class SplashScreen extends StatelessWidget {
@@ -155,7 +156,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/quran',
-        builder: (context, state) => const PlaceholderScreen(title: 'Quran'),
+        builder: (context, state) => const QuranScreen(),
       ),
       GoRoute(
         path: '/salat',
