@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/theme/app_colors.dart';
 
@@ -94,6 +95,11 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
       ),
       child: Row(
         children: [
+          IconButton(
+            icon: Icon(Icons.arrow_back, color: AppColors.textLight),
+            onPressed: () => context.go('/home'),
+            tooltip: 'Back',
+          ),
           const Spacer(),
           Text(
             'Qur\'an',
@@ -104,6 +110,11 @@ class _QuranScreenState extends ConsumerState<QuranScreen> {
             ),
           ),
           const Spacer(),
+          IconButton(
+            icon: Icon(Icons.home_outlined, color: AppColors.textLight),
+            onPressed: () => context.go('/home'),
+            tooltip: 'Home',
+          ),
           IconButton(
             icon: Icon(Icons.bookmark_border, color: AppColors.textLight),
             onPressed: () {

@@ -62,6 +62,13 @@ class _QiblaScreenState extends ConsumerState<QiblaScreen>
         ),
         title: const Text('Qibla'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home_outlined),
+            onPressed: () => context.go('/home'),
+            tooltip: 'Home',
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

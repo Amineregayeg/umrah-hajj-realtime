@@ -3,12 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/providers/auth_provider.dart';
+import '../../presentation/screens/about/about_screen.dart';
 import '../../presentation/screens/auth/login_screen.dart';
 import '../../presentation/screens/auth/signup_screen.dart';
+import '../../presentation/screens/help/help_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
+import '../../presentation/screens/profile/profile_screen.dart';
+import '../../presentation/screens/profile/personal_info_screen.dart';
+import '../../presentation/screens/profile/security_screen.dart';
+import '../../presentation/screens/profile/language_screen.dart';
+import '../../presentation/screens/profile/saved_items_screen.dart';
 import '../../presentation/screens/qibla/qibla_screen.dart';
 import '../../presentation/screens/quran/quran_screen.dart';
 import '../../presentation/screens/salat/salat_screen.dart';
+import '../../presentation/screens/settings/settings_screen.dart';
 
 // Placeholder screens (will be implemented in Phase D.5)
 class SplashScreen extends StatelessWidget {
@@ -170,8 +178,35 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/profile',
-        builder: (context, state) =>
-            const PlaceholderScreen(title: 'Profile'),
+        builder: (context, state) => const ProfileScreen(),
+      ),
+      GoRoute(
+        path: '/profile/personal-info',
+        builder: (context, state) => const PersonalInfoScreen(),
+      ),
+      GoRoute(
+        path: '/profile/security',
+        builder: (context, state) => const SecurityScreen(),
+      ),
+      GoRoute(
+        path: '/profile/language',
+        builder: (context, state) => const LanguageScreen(),
+      ),
+      GoRoute(
+        path: '/profile/saved-items',
+        builder: (context, state) => const SavedItemsScreen(),
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: '/help',
+        builder: (context, state) => const HelpScreen(),
+      ),
+      GoRoute(
+        path: '/about',
+        builder: (context, state) => const AboutScreen(),
       ),
     ],
   );

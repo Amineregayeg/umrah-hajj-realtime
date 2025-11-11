@@ -39,6 +39,13 @@ class _SalatScreenState extends ConsumerState<SalatScreen> {
         ),
         title: const Text('Salat'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home_outlined),
+            onPressed: () => context.go('/home'),
+            tooltip: 'Home',
+          ),
+        ],
       ),
       drawer: _buildNavigationDrawer(context),
       body: ListView(
