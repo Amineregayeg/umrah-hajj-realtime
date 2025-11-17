@@ -1,6 +1,6 @@
 import { Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { JWTPayload, jwtVerify, createRemoteJWKSet, createSecretKey } from 'jose';
+import { JWTPayload, jwtVerify, createRemoteJWKSet } from 'jose';
 import { WebSocket } from 'ws';
 import { IncomingMessage } from 'http';
 import { parse } from 'url';

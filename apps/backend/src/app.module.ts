@@ -18,6 +18,7 @@ import { SecurityModule } from './security/security.module';
 import { SecurityInitService } from './shared/utils/security-init.util';
 import { FeatureFlagsModule } from './shared/config/feature-flags.module';
 import { UmrahModule } from './umrah/umrah.module';
+import { RealtimeModule } from './ai-realtime/realtime.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { UmrahModule } from './umrah/umrah.module';
     QuranModule,
     AIModule,
     UmrahModule,
+    RealtimeModule,
     HealthModule,
     MetricsModule,
   ],

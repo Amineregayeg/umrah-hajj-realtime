@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { FeatureFlagsService } from '../../shared/config/feature-flags.service';
 import { KnowledgeSearchService } from './knowledge-search.service';
 
-interface RealtimeSessionResponse {
+export interface RealtimeSessionResponse {
   sessionId: string;
   websocketUrl: string;
   ephemeralToken: string;
@@ -109,9 +109,14 @@ export class AIRealtimeService {
         throw new BadRequestException('Failed to create AI session');
       }
 
-      const sessionData = await response.json();
+      const sessionData = await response.json() as {
+        id: string;
+        websocket_url: string;
+        client_secret?: { value: string };
+        expires_at: number;
+      };
 
-      const result = {
+      const result: RealtimeSessionResponse = {
         sessionId: sessionData.id,
         websocketUrl: sessionData.websocket_url,
         ephemeralToken: sessionData.client_secret?.value || '',

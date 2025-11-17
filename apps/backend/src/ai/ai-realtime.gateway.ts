@@ -46,7 +46,7 @@ export class AIRealtimeGateway
   server: Server;
 
   private readonly logger = new Logger(AIRealtimeGateway.name);
-  private readonly allowedOrigins: string[] = [];
+  private allowedOrigins: string[] = [];
 
   // Track active sessions: userId -> OpenAI WebSocket connection
   private activeSessions = new Map<string, WebSocket>();

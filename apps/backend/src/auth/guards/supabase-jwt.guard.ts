@@ -6,7 +6,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { jwtVerify, createRemoteJWKSet, JWTPayload, createSecretKey } from 'jose';
+import { jwtVerify, createRemoteJWKSet, JWTPayload } from 'jose';
 
 @Injectable()
 export class SupabaseJwtGuard implements CanActivate {
