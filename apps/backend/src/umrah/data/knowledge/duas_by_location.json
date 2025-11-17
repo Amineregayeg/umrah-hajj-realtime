@@ -1,0 +1,363 @@
+{
+  "locations": [
+    {
+      "id": "entering_haram",
+      "name": {
+        "en": "Entering the Haram",
+        "ar": "دخول الحرم",
+        "fr": "Entrée dans le Haram"
+      },
+      "context": "Upon entering Masjid al-Haram through any gate",
+      "duas": [
+        {
+          "arabic": "بِسْمِ اللَّهِ، وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+          "transliteration": "Bismillāh, wa-ṣ-ṣalātu wa-s-salāmu 'alá rasūlillāh. Allāhumma-ftaḥ lī abwāba raḥmatik",
+          "translation": {
+            "en": "In the name of Allah, and peace and blessings be upon the Messenger of Allah. O Allah, open for me the doors of Your mercy.",
+            "ar": "باسم الله، والصلاة والسلام على رسول الله. اللهم افتح لي أبواب رحمتك.",
+            "fr": "Au nom d'Allah, et que la paix et les bénédictions soient sur le Messager d'Allah. Ô Allah, ouvre-moi les portes de Ta miséricorde."
+          },
+          "type": "general_entry"
+        }
+      ]
+    },
+    {
+      "id": "first_sight_of_kaaba",
+      "name": {
+        "en": "First Sight of the Kaaba",
+        "ar": "أول رؤية للكعبة",
+        "fr": "Première vue de la Kaaba"
+      },
+      "context": "When you see the Kaaba for the first time",
+      "duas": [
+        {
+          "arabic": "اللَّهُ أَكْبَرُ، اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً",
+          "transliteration": "Allāhu Akbar. Allāhumma zid hādhā-l-bayta tashrīfan wa ta'ẓīman wa takrīman wa mahābah",
+          "translation": {
+            "en": "Allah is the Greatest. O Allah, increase this House in honor, greatness, dignity, and reverence.",
+            "ar": "الله أكبر. اللهم زد هذا البيت تشريفاً وتعظيماً وتكريماً ومهابة.",
+            "fr": "Allah est le plus Grand. Ô Allah, augmente l'honneur, la grandeur, la dignité et la révérence de cette Maison."
+          },
+          "type": "kaaba_sighting",
+          "notes": "This is a moment to make personal supplications; duas are accepted when first seeing the Kaaba"
+        }
+      ]
+    },
+    {
+      "id": "ihram_entry",
+      "name": {
+        "en": "Entering Ihram at Miqat",
+        "ar": "الدخول في الإحرام عند الميقات",
+        "fr": "Entrée en Ihram au Miqat"
+      },
+      "context": "When entering the state of ihram at the miqat",
+      "duas": [
+        {
+          "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ",
+          "transliteration": "Labbayk Allāhumma labbayk, labbayka lā sharīka laka labbayk. Inna-l-ḥamda wa-n-ni'mata laka wa-l-mulk, lā sharīka lak",
+          "translation": {
+            "en": "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Verily all praise, grace, and sovereignty belong to You. You have no partner.",
+            "ar": "لبيك اللهم لبيك، لبيك لا شريك لك لبيك، إن الحمد والنعمة لك والملك، لا شريك لك.",
+            "fr": "Me voici, ô Allah, me voici. Me voici, Tu n'as pas d'associé, me voici. En vérité, toute louange, grâce et souveraineté T'appartiennent. Tu n'as pas d'associé."
+          },
+          "type": "talbiyah",
+          "notes": "Recite frequently throughout ihram, especially when changing locations, after prayers, or when ascending/descending"
+        },
+        {
+          "arabic": "اللَّهُمَّ إِنِّي أُرِيدُ الْعُمْرَةَ فَيَسِّرْهَا لِي وَتَقَبَّلْهَا مِنِّي",
+          "transliteration": "Allāhumma innī urīdu-l-'umrata fa-yassir-hā lī wa taqabbal-hā minnī",
+          "translation": {
+            "en": "O Allah, I intend to perform Umrah, so make it easy for me and accept it from me.",
+            "ar": "اللهم إني أريد العمرة فيسرها لي وتقبلها مني.",
+            "fr": "Ô Allah, j'ai l'intention d'accomplir l'Umrah, alors facilite-la pour moi et accepte-la de moi."
+          },
+          "type": "niyyah",
+          "notes": "Intention for Umrah; for Hajj, replace 'al-'umrata' with 'al-ḥajj'"
+        }
+      ]
+    },
+    {
+      "id": "black_stone_istilam",
+      "name": {
+        "en": "At the Black Stone (Istilam)",
+        "ar": "عند الحجر الأسود (الاستلام)",
+        "fr": "À la Pierre Noire (Istilam)"
+      },
+      "context": "Starting each circuit of Tawaf at the Black Stone",
+      "duas": [
+        {
+          "arabic": "بِسْمِ اللَّهِ، اللَّهُ أَكْبَر",
+          "transliteration": "Bismillāh, Allāhu Akbar",
+          "translation": {
+            "en": "In the name of Allah, Allah is the Greatest.",
+            "ar": "بسم الله، الله أكبر.",
+            "fr": "Au nom d'Allah, Allah est le plus Grand."
+          },
+          "type": "istilam",
+          "notes": "Say this when facing, touching, kissing, or pointing toward the Black Stone at the start of each circuit"
+        }
+      ]
+    },
+    {
+      "id": "during_tawaf",
+      "name": {
+        "en": "During Tawaf",
+        "ar": "أثناء الطواف",
+        "fr": "Pendant le Tawaf"
+      },
+      "context": "While circling the Kaaba",
+      "duas": [
+        {
+          "arabic": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَر",
+          "transliteration": "Subḥānallāh, wa-l-ḥamdu lillāh, wa lā ilāha illallāh, wa Allāhu Akbar",
+          "translation": {
+            "en": "Glory be to Allah, and all praise is due to Allah, and there is no deity except Allah, and Allah is the Greatest.",
+            "ar": "سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر.",
+            "fr": "Gloire à Allah, et toute louange est due à Allah, et il n'y a de divinité qu'Allah, et Allah est le plus Grand."
+          },
+          "type": "general_dhikr"
+        },
+        {
+          "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+          "transliteration": "Rabbanā ātinā fī-d-dunyā ḥasanatan wa fī-l-ākhirati ḥasanatan wa qinā 'adhāba-n-nār",
+          "translation": {
+            "en": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+            "ar": "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.",
+            "fr": "Notre Seigneur, donne-nous du bien dans ce monde et du bien dans l'au-delà, et protège-nous du châtiment du Feu."
+          },
+          "type": "quran_dua",
+          "source": "Quran 2:201",
+          "location": "Between Rukn Yamani and Black Stone",
+          "notes": "Especially recommended between the Yemenite Corner (Rukn Yamani) and the Black Stone"
+        }
+      ]
+    },
+    {
+      "id": "rukn_yamani",
+      "name": {
+        "en": "At Rukn al-Yamani (Yemenite Corner)",
+        "ar": "عند الركن اليماني",
+        "fr": "Au Rukn al-Yamani (Coin Yéménite)"
+      },
+      "context": "When passing the southern corner of the Kaaba",
+      "duas": [
+        {
+          "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+          "transliteration": "Rabbanā ātinā fī-d-dunyā ḥasanatan wa fī-l-ākhirati ḥasanatan wa qinā 'adhāba-n-nār",
+          "translation": {
+            "en": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+            "ar": "ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار.",
+            "fr": "Notre Seigneur, donne-nous du bien dans ce monde et du bien dans l'au-delà, et protège-nous du châtiment du Feu."
+          },
+          "type": "quran_dua",
+          "source": "Quran 2:201",
+          "notes": "Recite between Rukn Yamani and Black Stone. Touch Rukn Yamani if possible without pushing, but do not kiss it."
+        }
+      ]
+    },
+    {
+      "id": "after_tawaf_prayer",
+      "name": {
+        "en": "After Tawaf (2 Rakah Prayer)",
+        "ar": "بعد الطواف (صلاة ركعتين)",
+        "fr": "Après le Tawaf (Prière de 2 Rakah)"
+      },
+      "context": "After completing 7 circuits of Tawaf, pray 2 rakah near Maqam Ibrahim if possible",
+      "duas": [
+        {
+          "arabic": "وَاتَّخِذُوا مِن مَّقَامِ إِبْرَاهِيمَ مُصَلًّى",
+          "transliteration": "Wa-ttakhidhū min maqāmi Ibrāhīma muṣallá",
+          "translation": {
+            "en": "And take the Station of Ibrahim as a place of prayer.",
+            "ar": "واتخذوا من مقام إبراهيم مصلى.",
+            "fr": "Et prenez la Station d'Ibrahim comme lieu de prière."
+          },
+          "type": "quran_recitation",
+          "source": "Quran 2:125",
+          "notes": "Recite upon reaching Maqam Ibrahim area. If crowded, pray anywhere in the Haram."
+        }
+      ],
+      "recommended_surahs": {
+        "first_rakah": "Surah al-Kafirun (109)",
+        "second_rakah": "Surah al-Ikhlas (112)",
+        "notes": "These are recommended but not obligatory; any surahs are valid"
+      }
+    },
+    {
+      "id": "zamzam_drinking",
+      "name": {
+        "en": "Drinking Zamzam Water",
+        "ar": "شرب ماء زمزم",
+        "fr": "Boire l'eau de Zamzam"
+      },
+      "context": "After the 2 rakah prayer following Tawaf, drink Zamzam water",
+      "duas": [
+        {
+          "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا وَاسِعًا، وَشِفَاءً مِنْ كُلِّ دَاءٍ",
+          "transliteration": "Allāhumma innī as'aluka 'ilman nāfi'an, wa rizqan wāsi'an, wa shifā'an min kulli dā'",
+          "translation": {
+            "en": "O Allah, I ask You for beneficial knowledge, abundant provision, and healing from every illness.",
+            "ar": "اللهم إني أسألك علماً نافعاً، ورزقاً واسعاً، وشفاءً من كل داء.",
+            "fr": "Ô Allah, je Te demande une connaissance bénéfique, une provision abondante, et la guérison de toute maladie."
+          },
+          "type": "zamzam_dua",
+          "notes": "Face the Kaaba while drinking if possible. You can make personal supplications as well."
+        }
+      ]
+    },
+    {
+      "id": "safa_arrival",
+      "name": {
+        "en": "Upon Reaching Safa",
+        "ar": "عند الوصول إلى الصفا",
+        "fr": "En arrivant à Safa"
+      },
+      "context": "Starting Sa'i at the hill of Safa",
+      "duas": [
+        {
+          "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ",
+          "transliteration": "Inna-ṣ-Ṣafā wa-l-Marwata min sha'ā'iri-llāh",
+          "translation": {
+            "en": "Indeed, Safa and Marwah are among the symbols of Allah.",
+            "ar": "إن الصفا والمروة من شعائر الله.",
+            "fr": "En vérité, Safa et Marwah sont parmi les symboles d'Allah."
+          },
+          "type": "quran_recitation",
+          "source": "Quran 2:158",
+          "notes": "Recite upon first reaching Safa before starting Sa'i"
+        },
+        {
+          "arabic": "نَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ",
+          "transliteration": "Nabda'u bimā bada'allāhu bih",
+          "translation": {
+            "en": "We begin with what Allah began with.",
+            "ar": "نبدأ بما بدأ الله به.",
+            "fr": "Nous commençons par ce avec quoi Allah a commencé."
+          },
+          "type": "hadith_statement",
+          "notes": "Said before ascending Safa for the first time"
+        },
+        {
+          "arabic": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ، أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ",
+          "transliteration": "Allāhu Akbar, Allāhu Akbar, Allāhu Akbar. Lā ilāha illallāhu waḥdahu lā sharīka lah, lahu-l-mulku wa lahu-l-ḥamdu wa huwa 'alá kulli shay'in qadīr. Lā ilāha illallāhu waḥdah, anjaza wa'dah, wa naṣara 'abdah, wa hazama-l-aḥzāba waḥdah",
+          "translation": {
+            "en": "Allah is the Greatest (3x). There is no deity except Allah alone, with no partner. To Him belongs sovereignty and praise, and He is capable of all things. There is no deity except Allah alone, He fulfilled His promise, supported His servant, and defeated the confederates alone.",
+            "ar": "الله أكبر (3 مرات). لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير، لا إله إلا الله وحده، أنجز وعده، ونصر عبده، وهزم الأحزاب وحده.",
+            "fr": "Allah est le plus Grand (3x). Il n'y a de divinité qu'Allah seul, sans associé. À Lui appartiennent la souveraineté et la louange, et Il est capable de toute chose. Il n'y a de divinité qu'Allah seul, Il a accompli Sa promesse, soutenu Son serviteur, et vaincu les confédérés seul."
+          },
+          "type": "dhikr_at_safa",
+          "notes": "Face the Kaaba and recite this 3 times at Safa, making personal dua between each repetition"
+        }
+      ]
+    },
+    {
+      "id": "during_sai",
+      "name": {
+        "en": "During Sa'i",
+        "ar": "أثناء السعي",
+        "fr": "Pendant le Sa'i"
+      },
+      "context": "While walking between Safa and Marwah",
+      "duas": [
+        {
+          "arabic": "رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ",
+          "transliteration": "Rabbi-ghfir wa-rḥam, innaka anta-l-a'azzu-l-akram",
+          "translation": {
+            "en": "My Lord, forgive and have mercy, for You are the Most Mighty, the Most Generous.",
+            "ar": "رب اغفر وارحم، إنك أنت الأعز الأكرم.",
+            "fr": "Mon Seigneur, pardonne et aie pitié, car Tu es le Plus Puissant, le Plus Généreux."
+          },
+          "type": "general_dua"
+        },
+        {
+          "arabic": "Personal supplications in any language",
+          "transliteration": "N/A",
+          "translation": {
+            "en": "There are no fixed duas for Sa'i. Engage in dhikr, Quran recitation, and personal supplications throughout.",
+            "ar": "لا توجد أدعية ثابتة للسعي. انشغل بالذكر وتلاوة القرآن والدعاء الشخصي طوال الوقت.",
+            "fr": "Il n'y a pas de duas fixes pour le Sa'i. Engagez-vous dans le dhikr, la récitation du Coran et les supplications personnelles tout au long."
+          },
+          "type": "personal_dua",
+          "notes": "Sa'i is a time for personal reflection and supplication"
+        }
+      ]
+    },
+    {
+      "id": "marwah_arrival",
+      "name": {
+        "en": "Upon Reaching Marwah",
+        "ar": "عند الوصول إلى المروة",
+        "fr": "En arrivant à Marwah"
+      },
+      "context": "At the end of each lap at Marwah hill",
+      "duas": [
+        {
+          "arabic": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+          "transliteration": "Allāhu Akbar, Allāhu Akbar, Allāhu Akbar. Lā ilāha illallāhu waḥdahu lā sharīka lah, lahu-l-mulku wa lahu-l-ḥamdu wa huwa 'alá kulli shay'in qadīr",
+          "translation": {
+            "en": "Allah is the Greatest (3x). There is no deity except Allah alone, with no partner. To Him belongs sovereignty and praise, and He is capable of all things.",
+            "ar": "الله أكبر (3 مرات). لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.",
+            "fr": "Allah est le plus Grand (3x). Il n'y a de divinité qu'Allah seul, sans associé. À Lui appartiennent la souveraineté et la louange, et Il est capable de toute chose."
+          },
+          "type": "dhikr_at_marwah",
+          "notes": "Same as at Safa - face the Kaaba and recite, making personal dua"
+        }
+      ]
+    },
+    {
+      "id": "after_halq_taqsir",
+      "name": {
+        "en": "After Hair Cutting (Halq/Taqsir)",
+        "ar": "بعد الحلق أو التقصير",
+        "fr": "Après la coupe de cheveux (Halq/Taqsir)"
+      },
+      "context": "After completing the hair cutting ritual",
+      "duas": [
+        {
+          "arabic": "الْحَمْدُ لِلَّهِ الَّذِي قَضَى عَنَّا نُسُكَنَا",
+          "transliteration": "Al-ḥamdu lillāhi-lladhī qaḍá 'annā nusukanā",
+          "translation": {
+            "en": "All praise is due to Allah who has enabled us to complete our rites.",
+            "ar": "الحمد لله الذي قضى عنا نسكنا.",
+            "fr": "Toute louange est due à Allah qui nous a permis de compléter nos rites."
+          },
+          "type": "completion_dua"
+        },
+        {
+          "arabic": "اللَّهُمَّ تَقَبَّلْ مِنِّي وَاغْفِرْ لِي",
+          "transliteration": "Allāhumma taqabbal minnī wa-ghfir lī",
+          "translation": {
+            "en": "O Allah, accept from me and forgive me.",
+            "ar": "اللهم تقبل مني واغفر لي.",
+            "fr": "Ô Allah, accepte de moi et pardonne-moi."
+          },
+          "type": "acceptance_dua"
+        }
+      ]
+    }
+  ],
+  "general_guidance": {
+    "no_fixed_duas_requirement": {
+      "en": "There are no absolutely fixed duas required for Umrah. The duas provided are based on authentic hadiths and are highly recommended (mustahabb), but personal supplications in any language are also accepted.",
+      "ar": "لا توجد أدعية ثابتة مطلوبة للعمرة بشكل مطلق. الأدعية المقدمة تستند إلى أحاديث صحيحة وموصى بها بشدة (مستحب)، لكن الأدعية الشخصية بأي لغة مقبولة أيضاً.",
+      "fr": "Il n'y a pas de duas absolument fixes requises pour l'Umrah. Les duas fournies sont basées sur des hadiths authentiques et sont fortement recommandées (mustahabb), mais les supplications personnelles dans n'importe quelle langue sont également acceptées."
+    },
+    "personal_supplications": {
+      "en": "You may make personal supplications (dua) in your own language at any time during Umrah. Times of special acceptance include: during Tawaf, at Safa and Marwah, when drinking Zamzam, and between the Yemenite Corner and Black Stone.",
+      "ar": "يمكنك الدعاء الشخصي بلغتك الخاصة في أي وقت أثناء العمرة. أوقات القبول الخاصة تشمل: أثناء الطواف، عند الصفا والمروة، عند شرب ماء زمزم، وبين الركن اليماني والحجر الأسود.",
+      "fr": "Vous pouvez faire des supplications personnelles (dua) dans votre propre langue à tout moment pendant l'Umrah. Les moments d'acceptation spéciaux incluent : pendant le Tawaf, à Safa et Marwah, en buvant Zamzam, et entre le Coin Yéménite et la Pierre Noire."
+    },
+    "quran_recitation": {
+      "en": "Reciting Quran during Tawaf and Sa'i is highly recommended. Any surah or verse is appropriate.",
+      "ar": "تلاوة القرآن أثناء الطواف والسعي موصى بها بشدة. أي سورة أو آية مناسبة.",
+      "fr": "La récitation du Coran pendant le Tawaf et le Sa'i est fortement recommandée. Toute sourate ou verset est approprié."
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "totalLocations": 12,
+    "source": "Consolidated from ritual_steps.json and haram_zones.json",
+    "notes": "All duas are transliterated and translated into English, Arabic, and French. Personal supplications are encouraged throughout all rituals."
+  }
+}

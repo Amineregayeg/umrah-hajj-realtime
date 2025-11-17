@@ -47,6 +47,7 @@
     "audit:deps": "pnpm audit --prod",
     "audit:deps:fix": "pnpm audit --fix",
     "security:check-config": "node -e \"require('./scripts/security-audit.js'); new (require('./scripts/security-audit.js'))().validateConfiguration()\"",
+    "validate:kb": "node validate-kb.js",
     "prestart:prod": "npm run security:audit:prod"
   },
   "dependencies": {

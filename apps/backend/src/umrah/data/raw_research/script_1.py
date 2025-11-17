@@ -1,0 +1,328 @@
+
+# Create structured gate information based on research
+import json
+
+gates_data = {
+    "gates": [
+        {
+            "id": "gate_1",
+            "number": 1,
+            "arabic_name": "باب الملك عبدالعزيز",
+            "english_name": "King Abdul Aziz Gate / Bab Malik",
+            "side": "west",
+            "nearest_zones": ["mataf_outer", "yemenite_corner"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Direct entry to outer Mataf area for wheelchair users"
+            },
+            "notes": "Main reference gate (Gate 1), modern square design, close to hotels",
+            "sources": ["web:21", "web:28"]
+        },
+        {
+            "id": "gate_5",
+            "number": 5,
+            "arabic_name": "باب أجياد",
+            "english_name": "Bab Ajyad",
+            "side": "southeast",
+            "nearest_zones": ["upper_haram", "main_prayer_area"],
+            "accessibility": {
+                "wheelchair_friendly": False,
+                "elevators_nearby": True,
+                "notes": "Electric escalators to upper floors via gates 7-8"
+            },
+            "notes": "Small single portal, part of initial Saudi expansion",
+            "sources": ["web:28"]
+        },
+        {
+            "id": "gate_12",
+            "number": 12,
+            "arabic_name": "باب الصفا",
+            "english_name": "Bab Safa / Al-Safa Gate",
+            "side": "north",
+            "nearest_zones": ["safa", "masa_start"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Scooter service available for elderly"
+            },
+            "notes": "Direct access to Masa'a (Sa'i) starting point at Safa, access to upper floors",
+            "sources": ["web:28", "web:29"]
+        },
+        {
+            "id": "gate_13",
+            "number": 13,
+            "arabic_name": "باب قبيس",
+            "english_name": "Bab Qubais",
+            "side": "south",
+            "nearest_zones": ["safa_vicinity"],
+            "accessibility": {
+                "wheelchair_friendly": False,
+                "elevators_nearby": False,
+                "notes": "Standard access"
+            },
+            "notes": "Key entry point near beginning of Jabl e Safa",
+            "sources": ["web:28", "web:32"]
+        },
+        {
+            "id": "gate_25",
+            "number": 25,
+            "arabic_name": "باب المدعى",
+            "english_name": "Bab Al-Mud'ah",
+            "side": "north",
+            "nearest_zones": ["saee_area_ground"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": False,
+                "notes": "Direct access to ground floor Sa'i"
+            },
+            "notes": "Direct access to Saee area ground floor; common exit after Umrah completion",
+            "sources": ["web:24"]
+        },
+        {
+            "id": "gate_26_27",
+            "number": "26-27",
+            "arabic_name": "باب قريش",
+            "english_name": "Bab Quraysh",
+            "side": "north",
+            "nearest_zones": ["masa_vicinity"],
+            "accessibility": {
+                "wheelchair_friendly": False,
+                "elevators_nearby": False,
+                "notes": "Standard access"
+            },
+            "notes": "Near Masa'a area",
+            "sources": ["web:24"]
+        },
+        {
+            "id": "gate_68",
+            "number": 68,
+            "arabic_name": None,
+            "english_name": "Gate 68 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:31"]
+        },
+        {
+            "id": "gate_74",
+            "number": 74,
+            "arabic_name": "باب أبو بكر",
+            "english_name": "Bab Abu Bakr / Gate 74 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:27", "web:31"]
+        },
+        {
+            "id": "gate_79",
+            "number": 79,
+            "arabic_name": "باب الملك فهد",
+            "english_name": "King Fahd Gate / Bab Al-Fahad",
+            "side": "east",
+            "nearest_zones": ["mataf_mezzanine", "outer_prayer_area_east"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Access to mezzanine and upper mataf (wheelchair level)"
+            },
+            "notes": "Major entrance opposite Abraj Al Bait Towers, connects to mezzanine/first floor mataf for wheelchairs",
+            "sources": ["web:21", "web:22", "web:27", "web:28", "web:31", "web:78"]
+        },
+        {
+            "id": "gate_84",
+            "number": 84,
+            "arabic_name": "باب جابر بن عبدالله",
+            "english_name": "Bab Jabir bin Abdullah (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:27", "web:31"]
+        },
+        {
+            "id": "gate_89",
+            "number": 89,
+            "arabic_name": None,
+            "english_name": "Gate 89 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:31"]
+        },
+        {
+            "id": "gate_90",
+            "number": 90,
+            "arabic_name": None,
+            "english_name": "Gate 90 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:31"]
+        },
+        {
+            "id": "gate_93",
+            "number": 93,
+            "arabic_name": None,
+            "english_name": "Gate 93 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:31"]
+        },
+        {
+            "id": "gate_94",
+            "number": 94,
+            "arabic_name": None,
+            "english_name": "Gate 94 (Wheelchair Designated)",
+            "side": "king_fahd_expansion",
+            "nearest_zones": ["king_fahd_area"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Designated for wheelchair users with special ramps"
+            },
+            "notes": "One of 8 designated wheelchair gates",
+            "sources": ["web:22", "web:31"]
+        },
+        {
+            "id": "gate_100",
+            "number": 100,
+            "arabic_name": "باب الملك عبدالله",
+            "english_name": "King Abdullah Gate",
+            "side": "northwest",
+            "nearest_zones": ["king_abdullah_prayer_area", "mataf_via_corridor"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Large gate with corridor to Mataf"
+            },
+            "notes": "One of the biggest gates, main entrance to King Abdullah Prayer Area Extension, triple-arched with minarets",
+            "sources": ["web:24", "web:28", "web:30"]
+        },
+        {
+            "id": "gate_marwah",
+            "number": "Marwah Gate",
+            "arabic_name": "باب المروة",
+            "english_name": "Bab Marwah / Al-Marwah Gate",
+            "side": "northeast",
+            "nearest_zones": ["marwah", "masa_end"],
+            "accessibility": {
+                "wheelchair_friendly": True,
+                "elevators_nearby": True,
+                "notes": "Electric escalators for upper access, wheelchair bridge"
+            },
+            "notes": "Largest gates with escalators, direct connection to Marwah area of Mas'a, exit point after Sa'i",
+            "sources": ["web:28", "web:32"]
+        }
+    ],
+    "zones": [
+        {
+            "id": "mataf",
+            "name": "Mataf (Tawaf Area)",
+            "description": "Open flat area surrounding Kaaba where Tawaf is performed",
+            "levels": ["ground", "mezzanine", "first_floor", "upper_floors"],
+            "capacity_notes": "Ground level most crowded; upper levels (especially first floor/mezzanine for wheelchairs) more spacious"
+        },
+        {
+            "id": "safa",
+            "name": "Safa",
+            "description": "Starting point of Sa'i, hill at southern end of Masa'a",
+            "nearest_gates": ["gate_12", "gate_13"],
+            "levels": ["ground", "first", "second", "third"]
+        },
+        {
+            "id": "marwah",
+            "name": "Marwah",
+            "description": "Ending point of Sa'i, hill at northern end of Masa'a",
+            "nearest_gates": ["gate_marwah"],
+            "levels": ["ground", "first", "second", "third"]
+        },
+        {
+            "id": "masa",
+            "name": "Masa'a (Sa'i Corridor)",
+            "description": "Corridor between Safa and Marwah for Sa'i ritual, approx 450m one-way",
+            "distance": "450 meters one-way, 3.15 km total for 7 laps",
+            "floors": 4,
+            "green_lights": "Two green markers (Milayn al-Akhdharayn) ~50m apart where men run",
+            "notes": "Ground floor has inclined path; upper floors flat. Third floor has scooter rental (50 SAR)"
+        },
+        {
+            "id": "black_stone",
+            "name": "Hajar al-Aswad (Black Stone)",
+            "description": "Starting/ending point of each Tawaf circuit, on eastern corner of Kaaba",
+            "notes": "Istilam (touching/kissing/gesturing) is Sunnah; should not push or harm others"
+        },
+        {
+            "id": "rukn_yamani",
+            "name": "Rukn al-Yamani (Yemenite Corner)",
+            "description": "Southern corner of Kaaba, touched (not kissed) during Tawaf if possible"
+        },
+        {
+            "id": "maqam_ibrahim",
+            "name": "Maqam Ibrahim (Station of Ibrahim)",
+            "description": "Location for 2 rakah prayer after Tawaf",
+            "notes": "Preferred location but can pray anywhere in Haram if crowded"
+        }
+    ],
+    "floor_levels": [
+        {
+            "level": "ground",
+            "description": "Same level as Kaaba, most crowded, direct Mataf access",
+            "notes": "Masa'a ground floor has inclined path toward Safa/Marwah hills"
+        },
+        {
+            "level": "mezzanine",
+            "description": "Direct level from major gates (King Fahd Gate 79, King Abdul Aziz Gate 1)",
+            "notes": "Requires stairs/escalators down to reach ground Mataf; Tawaf available during Hajj season"
+        },
+        {
+            "level": "first_floor",
+            "description": "Upper level accessible via escalators and ramps",
+            "notes": "More spacious, upper Mataf bridge dedicated for wheelchairs; can perform Tawaf here"
+        },
+        {
+            "level": "upper_floors",
+            "description": "Second and higher floors accessible via elevators",
+            "notes": "Prayer areas; Tawaf may be available during peak times"
+        }
+    ]
+}
+
+# Save as formatted JSON
+with open('haram_gates_zones.json', 'w', encoding='utf-8') as f:
+    json.dump(gates_data, f, ensure_ascii=False, indent=2)
+
+print("Haram gates and zones JSON created successfully!")
+print(f"\nTotal gates documented: {len(gates_data['gates'])}")
+print(f"Total zones documented: {len(gates_data['zones'])}")
+print(f"Wheelchair-designated gates: {sum(1 for g in gates_data['gates'] if g['accessibility']['wheelchair_friendly'])}")

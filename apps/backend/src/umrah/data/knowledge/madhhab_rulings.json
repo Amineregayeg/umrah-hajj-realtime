@@ -1,0 +1,360 @@
+{
+  "topics": [
+    {
+      "id": "wudu_for_tawaf",
+      "question": "Is wudu (ablution) required before performing Tawaf?",
+      "category": "tawaf",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Wajib (obligatory) but not a pillar. Tawaf is valid without it, but a penalty (Dam/Badanah - sacrifice) is required if omitted.",
+          "evidence": "Based on Hanafi fiqh principles distinguishing between pillars (arkan) and obligations (wajibat).",
+          "practicalGuidance": "Make wudu before starting Tawaf. If you forget or lose wudu and complete Tawaf, the Tawaf is valid but you must offer a sacrifice (dam) as expiation.",
+          "penalty": "Dam (sacrifice of a sheep) required if Tawaf done without wudu"
+        },
+        "shafii": {
+          "ruling": "Condition (pillar) for validity of Tawaf. Tawaf is invalid without wudu.",
+          "evidence": "Hadith: 'Tawaf around the House is like prayer, except that Allah has permitted speech in it.'",
+          "practicalGuidance": "You MUST have wudu before starting Tawaf. If you lose wudu during Tawaf, exit immediately, renew wudu, and restart from the beginning.",
+          "penalty": "Tawaf must be repeated from beginning if done without wudu"
+        },
+        "maliki": {
+          "ruling": "Condition for validity. Tawaf is invalid without wudu.",
+          "evidence": "Similar to Shafi'i position based on analogy with prayer.",
+          "practicalGuidance": "Wudu is required before Tawaf. If wudu breaks during Tawaf, restart from the beginning after renewing wudu.",
+          "penalty": "Tawaf must be repeated from beginning"
+        },
+        "hanbali": {
+          "ruling": "Condition for validity. Tawaf is invalid without wudu.",
+          "evidence": "Tawaf is considered a form of worship requiring purity.",
+          "practicalGuidance": "Maintain wudu throughout Tawaf. If you need to use the restroom, exit, renew wudu, and restart.",
+          "penalty": "Tawaf must be repeated from beginning"
+        }
+      },
+      "ibn_taymiyah_view": {
+        "ruling": "Not required; preferred but not a condition for validity.",
+        "notes": "Ibn Taymiyah held a minority view that wudu is recommended but not obligatory for Tawaf."
+      },
+      "summary": "MAJORITY VIEW: Wudu is required (Shafi'i, Maliki, Hanbali). HANAFI: Valid without wudu but penalty required. Always recommended to have wudu to avoid scholarly disagreement."
+    },
+    {
+      "id": "menstruation_tawaf",
+      "question": "Can a menstruating woman perform Tawaf?",
+      "category": "tawaf",
+      "genderSpecific": "female",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Tawaf is valid but Dam (sacrifice) is required. Some Hanafi scholars permit it with excuse (e.g., departing flight, group leaving).",
+          "evidence": "Hanafi madhab treats wudu as wajib, not a pillar, so Tawaf is valid but requires expiation.",
+          "practicalGuidance": "If you have no choice (flight departure, group leaving), you may perform Tawaf but must sacrifice a sheep (dam) afterward. Consult a qualified scholar for your specific situation.",
+          "penalty": "Dam (sacrifice of a sheep) required"
+        },
+        "shafii": {
+          "ruling": "Invalid Tawaf. Must wait until menstruation ends and purity is restored, then perform Tawaf.",
+          "evidence": "Menstruation invalidates the state of purity required for Tawaf.",
+          "practicalGuidance": "You MUST wait until your menstruation ends. After ghusl (ritual bath), you can perform Tawaf. Plan your Umrah timing accordingly.",
+          "penalty": "Tawaf is invalid and must be performed after purity is restored"
+        },
+        "maliki": {
+          "ruling": "Invalid Tawaf. Must wait for purity.",
+          "evidence": "Purity is a condition for Tawaf validity.",
+          "practicalGuidance": "Wait until menstruation ends, perform ghusl, then do Tawaf. Adjust your travel plans if needed.",
+          "penalty": "Tawaf must be repeated after achieving purity"
+        },
+        "hanbali": {
+          "ruling": "Invalid Tawaf. Must wait for purity.",
+          "evidence": "Consistent with the requirement of purity for Tawaf.",
+          "practicalGuidance": "Do not perform Tawaf during menstruation. Wait, do ghusl, then complete the ritual.",
+          "penalty": "Tawaf must be performed after purity is restored"
+        }
+      },
+      "ibn_taymiyah_view": {
+        "ruling": "Valid with excuse; no penalty if necessary (e.g., group departing, no return possible).",
+        "notes": "Ibn Taymiyah's view provides flexibility for women who have no other option."
+      },
+      "summary": "MAJORITY VIEW: Wait for purity before Tawaf. HANAFI: Can do with necessity but requires sacrifice. ALWAYS consult a scholar for your specific situation - this is a complex issue.",
+      "safetyNote": "This is a sensitive issue. Women should consult qualified female scholars or trusted male scholars with female intermediaries for personalized guidance."
+    },
+    {
+      "id": "raml_in_tawaf",
+      "question": "Is Raml (brisk walking/light jogging) required during Tawaf?",
+      "category": "tawaf",
+      "genderSpecific": "male",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Sunnah (recommended) for men in the first 3 circuits of Tawaf.",
+          "evidence": "Prophet Muhammad (pbuh) performed Raml to show strength to the pagans of Mecca.",
+          "practicalGuidance": "Men should walk briskly (not running, just faster pace) during the first 3 circuits. In the last 4 circuits, walk normally. If crowded, walk normally to avoid harm."
+        },
+        "shafii": {
+          "ruling": "Sunnah for men in the first 3 circuits.",
+          "evidence": "Consistent with Prophetic practice.",
+          "practicalGuidance": "Same as Hanafi - brisk walk for first 3, normal for last 4. Safety takes priority."
+        },
+        "maliki": {
+          "ruling": "Sunnah for men in the first 3 circuits.",
+          "evidence": "Sunnah of the Prophet (pbuh).",
+          "practicalGuidance": "Perform Raml in first 3 circuits if space allows. If crowded, omit to avoid pushing."
+        },
+        "hanbali": {
+          "ruling": "Sunnah for men in the first 3 circuits.",
+          "evidence": "Prophetic tradition.",
+          "practicalGuidance": "Do Raml in first 3 circuits when safe. Not required in crowded conditions."
+        }
+      },
+      "summary": "ALL MADHAHIB AGREE: Raml is Sunnah (not obligatory) for men in first 3 circuits. Women do NOT perform Raml - they walk normally throughout all 7 circuits.",
+      "safetyNote": "Do NOT push others while doing Raml. If the Mataf is crowded, omit Raml entirely and walk normally. Safety is more important than this Sunnah."
+    },
+    {
+      "id": "idtiba_in_tawaf",
+      "question": "Is Idtiba (exposing right shoulder) required during Tawaf?",
+      "category": "tawaf",
+      "genderSpecific": "male",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Sunnah for men during Tawaf.",
+          "evidence": "Prophetic practice.",
+          "practicalGuidance": "Men should place the Ihram cloth under the right armpit and over the left shoulder, exposing the right shoulder during all 7 circuits of Tawaf. Cover both shoulders when praying the 2 rakah after Tawaf."
+        },
+        "shafii": {
+          "ruling": "Sunnah for men during Tawaf.",
+          "evidence": "Sunnah of the Prophet (pbuh).",
+          "practicalGuidance": "Same as Hanafi. Uncover right shoulder for Tawaf, cover for prayer."
+        },
+        "maliki": {
+          "ruling": "Sunnah for men during Tawaf.",
+          "evidence": "Prophetic tradition.",
+          "practicalGuidance": "Expose right shoulder during all 7 circuits. Remember to cover before prayer."
+        },
+        "hanbali": {
+          "ruling": "Sunnah for men during Tawaf.",
+          "evidence": "Consistent with Sunnah.",
+          "practicalGuidance": "Perform Idtiba throughout Tawaf. Cover shoulders for subsequent prayer."
+        }
+      },
+      "summary": "ALL MADHAHIB AGREE: Idtiba is Sunnah (recommended) for men during Tawaf. Women do NOT perform Idtiba - they remain fully covered.",
+      "femaleGuidance": "Women should maintain proper covering throughout Umrah. Idtiba does not apply to women."
+    },
+    {
+      "id": "purity_for_sai",
+      "question": "Is wudu or purity required for Sa'i?",
+      "category": "sai",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Not required. Sa'i can be performed in any state (with or without wudu, even during menstruation).",
+          "evidence": "Sa'i is not considered an act of worship requiring purity like prayer or Tawaf.",
+          "practicalGuidance": "You can do Sa'i without wudu. However, having wudu is always better and recommended."
+        },
+        "shafii": {
+          "ruling": "Not required.",
+          "evidence": "Sa'i does not require the same level of purity as Tawaf.",
+          "practicalGuidance": "Wudu is not necessary for Sa'i, but it's good to have."
+        },
+        "maliki": {
+          "ruling": "Not required.",
+          "evidence": "Consistent with the nature of Sa'i as distinct from prayer-like worship.",
+          "practicalGuidance": "You can perform Sa'i without wudu."
+        },
+        "hanbali": {
+          "ruling": "Not required.",
+          "evidence": "Sa'i does not require purity.",
+          "practicalGuidance": "Wudu not necessary for Sa'i."
+        }
+      },
+      "summary": "ALL MADHAHIB AGREE: Wudu is NOT required for Sa'i. Menstruating women CAN perform Sa'i. This makes planning easier for women pilgrims.",
+      "practicalNote": "This is one of the mercies of Allah - women can complete Sa'i even during menstruation, unlike Tawaf."
+    },
+    {
+      "id": "women_running_sai",
+      "question": "Do women need to run between the green lights during Sa'i?",
+      "category": "sai",
+      "genderSpecific": "female",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Not required. Women walk normally throughout all 7 laps of Sa'i.",
+          "evidence": "Running is specific to men, based on the historical context of Hajar's search for water.",
+          "practicalGuidance": "Women should walk at a comfortable, normal pace throughout the entire Sa'i, including between the green markers."
+        },
+        "shafii": {
+          "ruling": "Not required. Women walk normally.",
+          "evidence": "Same - women are not required to run.",
+          "practicalGuidance": "Walk normally throughout Sa'i. Do not run between green lights."
+        },
+        "maliki": {
+          "ruling": "Not required. Women walk normally.",
+          "evidence": "Consistent with modesty and the nature of women's worship.",
+          "practicalGuidance": "Maintain normal walking pace for all 7 laps."
+        },
+        "hanbali": {
+          "ruling": "Not required. Women walk normally.",
+          "evidence": "Women's practice differs from men's in this Sunnah.",
+          "practicalGuidance": "Walk normally. No running required."
+        }
+      },
+      "summary": "ALL MADHAHIB AGREE: Women do NOT run during Sa'i. Walk normally throughout all 7 laps. Only men run lightly between the two green markers."
+    },
+    {
+      "id": "entering_ihram_miqat",
+      "question": "Is it obligatory to enter Ihram from the Miqat?",
+      "category": "ihram",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Wajib (obligatory). If someone passes the Miqat without entering Ihram, they must return to enter Ihram. If they don't return, a Dam (sacrifice) is required.",
+          "evidence": "Prophet's command to enter Ihram at specific geographical points (Miqat).",
+          "practicalGuidance": "Enter Ihram before crossing your Miqat point. If you forget, return if possible. If you've traveled too far, you must pay Dam (sacrifice a sheep in Makkah for the poor).",
+          "penalty": "Dam required if Ihram not entered at Miqat and person doesn't return"
+        },
+        "shafii": {
+          "ruling": "Wajib. Dam required if omitted without return.",
+          "evidence": "Miqat points are divinely legislated boundaries.",
+          "practicalGuidance": "Same as Hanafi - enter Ihram at Miqat or return. If unable to return, pay Dam.",
+          "penalty": "Dam required"
+        },
+        "maliki": {
+          "ruling": "Wajib. Dam required if omitted without return.",
+          "evidence": "Miqat is a legislated boundary for Ihram.",
+          "practicalGuidance": "Enter Ihram before your Miqat. If you miss it and cannot return, pay Dam.",
+          "penalty": "Dam required"
+        },
+        "hanbali": {
+          "ruling": "Wajib. Dam required if omitted without return.",
+          "evidence": "Consistent with Prophetic designation of Miqat points.",
+          "practicalGuidance": "Be aware of your Miqat point based on your direction of approach. Enter Ihram before crossing it.",
+          "penalty": "Dam required"
+        }
+      },
+      "ibn_taymiyah_view": {
+        "ruling": "Same as majority - Wajib to enter Ihram at Miqat.",
+        "notes": "No significant difference on this issue."
+      },
+      "summary": "ALL MADHAHIB AGREE: Entering Ihram at the Miqat is obligatory (Wajib). Missing it requires returning or paying Dam (sacrifice).",
+      "miqatPoints": {
+        "dhul_hulayfah": "For those coming from Madinah direction",
+        "juhfah": "For those from Syria, Egypt, North Africa",
+        "qarn_al_manazil": "For those from Najd, Riyadh direction",
+        "yalamlam": "For those from Yemen direction",
+        "dhat_irq": "For those from Iraq direction"
+      }
+    },
+    {
+      "id": "tawaf_prayer_2_rakah",
+      "question": "Is the 2 rakah prayer after Tawaf obligatory?",
+      "category": "tawaf",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Wajib (obligatory). Can be prayed anywhere in the Haram if the area near Maqam Ibrahim is crowded.",
+          "evidence": "Command in Quran: 'Take the Station of Ibrahim as a place of prayer' (2:125).",
+          "practicalGuidance": "After completing Tawaf, pray 2 rakah. Preferred location is behind Maqam Ibrahim, but if crowded, pray anywhere in the Haram. If you forget, pray them when you remember.",
+          "penalty": "If intentionally omitted, some scholars say Dam may be required"
+        },
+        "shafii": {
+          "ruling": "Mustahabb (recommended), not wajib. Should be prayed near Maqam Ibrahim if possible.",
+          "evidence": "Quranic verse is interpreted as recommendation, not obligation.",
+          "practicalGuidance": "Strongly recommended to pray 2 rakah after Tawaf. Try to pray near Maqam Ibrahim if not crowded.",
+          "penalty": "No penalty if omitted, but missing a great reward"
+        },
+        "maliki": {
+          "ruling": "Wajib. Can be prayed anywhere in the Haram.",
+          "evidence": "Similar to Hanafi position.",
+          "practicalGuidance": "Pray 2 rakah after Tawaf. Near Maqam Ibrahim is best, but anywhere in Haram is acceptable.",
+          "penalty": "If omitted, may require expiation"
+        },
+        "hanbali": {
+          "ruling": "Mustahabb (recommended).",
+          "evidence": "Sunnah of the Prophet (pbuh).",
+          "practicalGuidance": "Recommended to pray 2 rakah after Tawaf, preferably near Maqam Ibrahim.",
+          "penalty": "No penalty, but missing Sunnah reward"
+        }
+      },
+      "summary": "HANAFI & MALIKI: Wajib (obligatory). SHAFI'I & HANBALI: Mustahabb (recommended). To be safe and follow all opinions, always pray the 2 rakah after Tawaf.",
+      "safetyNote": "Do NOT obstruct walkways while praying. Find a clear space or pray in designated prayer areas to avoid blocking pilgrims performing Tawaf."
+    },
+    {
+      "id": "wudu_breaks_during_tawaf",
+      "question": "What should I do if my wudu breaks during Tawaf?",
+      "category": "tawaf",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Resume from where you stopped after renewing wudu. No need to restart from the beginning.",
+          "evidence": "Hanafi madhab allows continuation after renewal of wudu.",
+          "practicalGuidance": "If you need to use the restroom during Tawaf: (1) Exit the Mataf, (2) Use facilities, (3) Make wudu, (4) Return and continue from the same circuit/point where you left off. Count your circuits carefully."
+        },
+        "shafii": {
+          "ruling": "Restart Tawaf from the beginning after renewing wudu.",
+          "evidence": "Breaking wudu invalidates the continuous state required for Tawaf.",
+          "practicalGuidance": "If wudu breaks during Tawaf: (1) Exit immediately, (2) Renew wudu, (3) Start Tawaf again from circuit 1 at the Black Stone. All previous circuits are invalid."
+        },
+        "maliki": {
+          "ruling": "Restart from the beginning after wudu.",
+          "evidence": "Similar to Shafi'i - wudu must be maintained throughout.",
+          "practicalGuidance": "Must restart from beginning if wudu breaks. Plan bathroom visits before starting Tawaf."
+        },
+        "hanbali": {
+          "ruling": "Restart from the beginning after wudu.",
+          "evidence": "Continuous purity required for valid Tawaf.",
+          "practicalGuidance": "Restart from circuit 1 if wudu breaks. Always use restroom before beginning Tawaf to avoid this situation."
+        }
+      },
+      "ibn_taymiyah_view": {
+        "ruling": "Can continue if excuse exists (e.g., medical condition, incontinence).",
+        "notes": "Provides flexibility for those with medical excuses."
+      },
+      "summary": "HANAFI: Continue from where you stopped. MAJORITY (Shafi'i, Maliki, Hanbali): Restart from beginning. Practical advice: Always use restroom before starting Tawaf to avoid this issue entirely.",
+      "safetyNote": "If following Hanafi madhab, mark your position mentally before exiting so you can resume correctly. If following other madhahib, be prepared to restart - this is why it's important to use facilities beforehand."
+    },
+    {
+      "id": "halq_taqsir_hair_cutting",
+      "question": "Is cutting/shaving hair (Halq/Taqsir) obligatory for Umrah?",
+      "category": "completion",
+      "rulings": {
+        "hanafi": {
+          "ruling": "Wajib (obligatory). If omitted, Dam (sacrifice) is required.",
+          "evidence": "Halq/Taqsir is one of the final acts to exit Ihram.",
+          "practicalGuidance": "Men: Complete shaving (Halq) is better, but trimming (Taqsir) of at least fingertip-length from all over the head is acceptable. Women: Trim a fingertip-length from the end of hair (do not shave). If you forget or delay, you must pay Dam.",
+          "penalty": "Dam required if intentionally omitted"
+        },
+        "shafii": {
+          "ruling": "Pillar (Rukn) of Umrah. Umrah is invalid without it.",
+          "evidence": "Essential component of completing Umrah.",
+          "practicalGuidance": "You MUST cut or shave hair to complete Umrah and exit Ihram. Umrah is not valid without this step. Men can shave or trim; women must trim only.",
+          "penalty": "Umrah is invalid without Halq/Taqsir"
+        },
+        "maliki": {
+          "ruling": "Wajib. Dam required if omitted.",
+          "evidence": "Obligatory act of Umrah.",
+          "practicalGuidance": "Men should shave or trim hair. Women trim only. If omitted, Dam is required.",
+          "penalty": "Dam required"
+        },
+        "hanbali": {
+          "ruling": "Wajib. Dam required if omitted.",
+          "evidence": "Necessary to exit Ihram properly.",
+          "practicalGuidance": "Complete Halq (shaving) or Taqsir (trimming) after Sa'i. Men: shaving is better. Women: trim a small amount.",
+          "penalty": "Dam required"
+        }
+      },
+      "summary": "ALL MADHAHIB: Halq/Taqsir is required (Wajib or Rukn). MEN: Shaving entire head is more rewarding, but trimming is acceptable. WOMEN: Only trim a small amount - NEVER shave. This is the final step to exit Ihram and complete Umrah.",
+      "genderSpecificGuidance": {
+        "male": "Shaving (Halq) the entire head is more rewarding than trimming (Taqsir). However, both are valid. Shave or trim hair from all over the head, not just one area.",
+        "female": "Women MUST NOT shave their heads. Only trim about a fingertip's length (1-2 cm) from the ends of the hair. This can be done discreetly."
+      }
+    }
+  ],
+  "glossary": {
+    "dam": "Sacrifice of a sheep or goat distributed to the poor in Makkah as expiation for missing a wajib (obligation) in Hajj/Umrah",
+    "wajib": "Obligatory act; omitting it requires expiation (Dam) but doesn't invalidate the ritual",
+    "rukn": "Pillar/essential component; omitting it invalidates the ritual entirely",
+    "sunnah": "Recommended act following the Prophet's practice; omitting it has no penalty but loses reward",
+    "mustahabb": "Recommended/preferred act",
+    "halq": "Complete shaving of the head (for men)",
+    "taqsir": "Trimming/shortening of hair",
+    "raml": "Brisk walking/light jogging in first 3 circuits of Tawaf (men only)",
+    "idtiba": "Exposing the right shoulder during Tawaf (men only)"
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "totalTopics": 11,
+    "source": "Perplexity export - madhhab_differences_umrah_hajj.csv",
+    "disclaimer": "These rulings are based on classical fiqh positions. For specific personal situations, especially complex cases, consult qualified scholars. This is educational guidance, not a fatwa.",
+    "notes": "All madhahib represent valid scholarly opinions within Sunni Islam. Pilgrims should follow their own madhab or consult scholars for guidance when differences exist."
+  }
+}

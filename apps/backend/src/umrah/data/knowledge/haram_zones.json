@@ -1,0 +1,310 @@
+{
+  "zones": [
+    {
+      "id": "mataf",
+      "name": {
+        "en": "Mataf (Tawaf Area)",
+        "ar": "المطاف",
+        "fr": "Mataf (Zone de Tawaf)"
+      },
+      "description": {
+        "en": "Open flat area surrounding the Kaaba where Tawaf is performed. Multiple levels available with varying crowd densities.",
+        "ar": "منطقة مسطحة مفتوحة تحيط بالكعبة حيث يتم أداء الطواف. تتوفر مستويات متعددة بكثافة سكانية متفاوتة.",
+        "fr": "Zone plate ouverte entourant la Kaaba où le Tawaf est effectué. Plusieurs niveaux disponibles avec des densités de foule variables."
+      },
+      "type": "ritual_area",
+      "levels": [
+        {
+          "level": "ground",
+          "description": "Same level as Kaaba, most crowded, direct Mataf access",
+          "accessibility": "full",
+          "crowdLevel": "very_high"
+        },
+        {
+          "level": "mezzanine",
+          "description": "Direct level from major gates (King Fahd Gate 79, King Abdul Aziz Gate 1)",
+          "accessibility": "stairs_escalators",
+          "crowdLevel": "high",
+          "notes": "Requires stairs/escalators down to reach ground Mataf; Tawaf available during Hajj season"
+        },
+        {
+          "level": "first_floor",
+          "description": "Upper level accessible via escalators and ramps",
+          "accessibility": "wheelchair_friendly",
+          "crowdLevel": "medium",
+          "notes": "More spacious, upper Mataf bridge dedicated for wheelchairs; can perform Tawaf here"
+        },
+        {
+          "level": "upper_floors",
+          "description": "Second and higher floors accessible via elevators",
+          "accessibility": "elevator",
+          "crowdLevel": "low",
+          "notes": "Prayer areas; Tawaf may be available during peak times"
+        }
+      ],
+      "capacity": "High capacity across multiple floors",
+      "safetyNotes": [
+        "Ground level most crowded; upper levels more spacious",
+        "Wheelchair users should use first floor/mezzanine for more space",
+        "Follow staff instructions during peak hours"
+      ]
+    },
+    {
+      "id": "safa",
+      "name": {
+        "en": "Safa",
+        "ar": "الصفا",
+        "fr": "Safa"
+      },
+      "description": {
+        "en": "Starting point of Sa'i ritual, hill at southern end of Masa'a corridor. Pilgrims begin the seven laps between Safa and Marwah here.",
+        "ar": "نقطة البداية لطقوس السعي، تل في الطرف الجنوبي من ممر المسعى. يبدأ الحجاج الأشواط السبعة بين الصفا والمروة هنا.",
+        "fr": "Point de départ du rituel de Sa'i, colline à l'extrémité sud du corridor Masa'a. Les pèlerins commencent ici les sept tours entre Safa et Marwah."
+      },
+      "type": "ritual_point",
+      "nearestGates": ["bab_safa", "bab_qubais"],
+      "levels": ["ground", "first", "second", "third"],
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "duas": [
+        {
+          "context": "Upon reaching Safa",
+          "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ",
+          "transliteration": "Inna as-Safa wa al-Marwah min sha'a'ir Allah",
+          "translation": "Indeed, Safa and Marwah are among the symbols of Allah",
+          "source": "Quran 2:158"
+        }
+      ],
+      "safetyNotes": [
+        "Start Sa'i facing the Kaaba",
+        "Recite the prescribed dua before beginning",
+        "Be patient in crowded areas"
+      ]
+    },
+    {
+      "id": "marwah",
+      "name": {
+        "en": "Marwah",
+        "ar": "المروة",
+        "fr": "Marwah"
+      },
+      "description": {
+        "en": "Ending point of Sa'i ritual, hill at northern end of Masa'a corridor. After reaching Marwah for the seventh time, the Sa'i is complete.",
+        "ar": "نقطة نهاية طقوس السعي، تل في الطرف الشمالي من ممر المسعى. بعد الوصول إلى المروة للمرة السابعة، يكتمل السعي.",
+        "fr": "Point final du rituel de Sa'i, colline à l'extrémité nord du corridor Masa'a. Après avoir atteint Marwah pour la septième fois, le Sa'i est terminé."
+      },
+      "type": "ritual_point",
+      "nearestGates": ["bab_marwah"],
+      "levels": ["ground", "first", "second", "third"],
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "safetyNotes": [
+        "Exit through Bab Marwah after completing 7 laps",
+        "Wheelchair bridge available for accessibility",
+        "Follow directional signs to avoid confusion"
+      ]
+    },
+    {
+      "id": "masa",
+      "name": {
+        "en": "Masa'a (Sa'i Corridor)",
+        "ar": "المسعى",
+        "fr": "Masa'a (Couloir de Sa'i)"
+      },
+      "description": {
+        "en": "Corridor between Safa and Marwah for performing Sa'i ritual. Approximately 450 meters one-way, pilgrims complete 7 laps totaling 3.15 km.",
+        "ar": "ممر بين الصفا والمروة لأداء طقوس السعي. حوالي 450 مترًا في اتجاه واحد، يكمل الحجاج 7 أشواط بإجمالي 3.15 كم.",
+        "fr": "Couloir entre Safa et Marwah pour effectuer le rituel de Sa'i. Environ 450 mètres aller simple, les pèlerins complètent 7 tours totalisant 3,15 km."
+      },
+      "type": "ritual_corridor",
+      "distance": "450 meters one-way",
+      "totalDistance": "3.15 km for 7 laps",
+      "floors": 4,
+      "greenLights": {
+        "description": "Two green markers (Milayn al-Akhdharayn) approximately 50m apart where men should run",
+        "distance": "50 meters between markers",
+        "applicableTo": "men_only"
+      },
+      "levels": [
+        {
+          "level": "ground",
+          "description": "Ground floor with inclined path toward Safa/Marwah hills",
+          "accessibility": "standard",
+          "crowdLevel": "very_high"
+        },
+        {
+          "level": "first",
+          "description": "First floor - flat surface, less crowded",
+          "accessibility": "escalator_elevator",
+          "crowdLevel": "high"
+        },
+        {
+          "level": "second",
+          "description": "Second floor - flat surface",
+          "accessibility": "escalator_elevator",
+          "crowdLevel": "medium"
+        },
+        {
+          "level": "third",
+          "description": "Third floor - flat surface, scooter rental available (50 SAR)",
+          "accessibility": "escalator_elevator_scooter",
+          "crowdLevel": "low",
+          "services": ["scooter_rental"]
+        }
+      ],
+      "safetyNotes": [
+        "Upper floors are flat and less crowded",
+        "Third floor has scooter rental service (50 SAR)",
+        "Women walk normally throughout - no running required",
+        "Men should run lightly between green markers on all floors",
+        "Stay in your lane to avoid collisions"
+      ]
+    },
+    {
+      "id": "hajar_aswad",
+      "name": {
+        "en": "Hajar al-Aswad (The Black Stone)",
+        "ar": "الحجر الأسود",
+        "fr": "Hajar al-Aswad (La Pierre Noire)"
+      },
+      "description": {
+        "en": "Starting and ending point of each Tawaf circuit, located on the eastern corner of the Kaaba. Istilam (touching, kissing, or gesturing toward it) is Sunnah.",
+        "ar": "نقطة البداية والنهاية لكل دورة طواف، تقع في الركن الشرقي من الكعبة. الاستلام (لمس أو تقبيل أو الإشارة إليه) سنة.",
+        "fr": "Point de départ et d'arrivée de chaque circuit de Tawaf, situé au coin est de la Kaaba. L'Istilam (toucher, embrasser ou faire un geste vers elle) est Sunnah."
+      },
+      "type": "sacred_landmark",
+      "location": "Eastern corner of Kaaba",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "ritualAction": "istilam",
+      "safetyNotes": [
+        "CRITICAL: Do NOT push or harm others to touch the Black Stone",
+        "Pointing and saying 'Bismillah Allahu Akbar' is sufficient if crowded",
+        "Istilam is Sunnah, not obligatory - prioritize safety",
+        "Women should avoid the crowd entirely and gesture from afar",
+        "Follow staff instructions during peak hours"
+      ]
+    },
+    {
+      "id": "rukn_yamani",
+      "name": {
+        "en": "Rukn al-Yamani (Yemenite Corner)",
+        "ar": "الركن اليماني",
+        "fr": "Rukn al-Yamani (Coin Yéménite)"
+      },
+      "description": {
+        "en": "Southern corner of the Kaaba. It is Sunnah to touch it (not kiss it) during Tawaf if possible without harm.",
+        "ar": "الركن الجنوبي من الكعبة. من السنة لمسه (وليس تقبيله) أثناء الطواف إن أمكن دون ضرر.",
+        "fr": "Coin sud de la Kaaba. Il est Sunnah de le toucher (sans l'embrasser) pendant le Tawaf si possible sans danger."
+      },
+      "type": "sacred_landmark",
+      "location": "Southern corner of Kaaba",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "ritualAction": "touch_only",
+      "duas": [
+        {
+          "context": "Between Rukn Yamani and Hajar al-Aswad",
+          "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+          "transliteration": "Rabbana atina fi ad-dunya hasanah wa fi al-akhirati hasanah wa qina adhab an-nar",
+          "translation": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire",
+          "source": "Quran 2:201"
+        }
+      ],
+      "safetyNotes": [
+        "Touch only if no pushing required",
+        "Do NOT kiss the Rukn Yamani (unlike the Black Stone)",
+        "Recite the prescribed dua between this corner and the Black Stone"
+      ]
+    },
+    {
+      "id": "maqam_ibrahim",
+      "name": {
+        "en": "Maqam Ibrahim (Station of Ibrahim)",
+        "ar": "مقام إبراهيم",
+        "fr": "Maqam Ibrahim (Station d'Ibrahim)"
+      },
+      "description": {
+        "en": "Sacred location where Prophet Ibrahim (Abraham) stood while building the Kaaba. Preferred location for the 2 rakah prayer after Tawaf.",
+        "ar": "الموقع المقدس حيث وقف النبي إبراهيم (عليه السلام) أثناء بناء الكعبة. الموقع المفضل لصلاة ركعتين بعد الطواف.",
+        "fr": "Lieu sacré où le Prophète Ibrahim (Abraham) se tenait pendant la construction de la Kaaba. Emplacement préféré pour la prière de 2 rakah après le Tawaf."
+      },
+      "type": "prayer_location",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "ritualAction": "pray_2_rakah",
+      "madhhabGuidance": {
+        "hanafi": "Wajib to pray 2 rakah after Tawaf; can be prayed anywhere in Haram if Maqam area is crowded",
+        "maliki": "Wajib to pray 2 rakah; preferred near Maqam Ibrahim",
+        "shafii": "Mustahabb (recommended); should be near Maqam Ibrahim if possible",
+        "hanbali": "Mustahabb (recommended)"
+      },
+      "safetyNotes": [
+        "Preferred location but can pray anywhere in Haram if crowded",
+        "Do NOT obstruct pathways while praying",
+        "Follow staff instructions for prayer area management"
+      ]
+    }
+  ],
+  "floorLevels": [
+    {
+      "level": "ground",
+      "description": {
+        "en": "Same level as Kaaba, most crowded, direct Mataf access. Masa'a ground floor has inclined path toward Safa/Marwah hills.",
+        "ar": "نفس مستوى الكعبة، الأكثر ازدحامًا، الوصول المباشر إلى المطاف. الطابق الأرضي للمسعى له مسار مائل نحو تلال الصفا والمروة.",
+        "fr": "Même niveau que la Kaaba, le plus encombré, accès direct au Mataf. Le rez-de-chaussée du Masa'a a un chemin incliné vers les collines Safa/Marwah."
+      },
+      "accessibility": "standard",
+      "crowdLevel": "very_high"
+    },
+    {
+      "level": "mezzanine",
+      "description": {
+        "en": "Direct level from major gates (King Fahd Gate 79, King Abdul Aziz Gate 1). Requires stairs/escalators down to reach ground Mataf. Tawaf available during Hajj season.",
+        "ar": "مستوى مباشر من البوابات الرئيسية (باب الملك فهد 79، باب الملك عبدالعزيز 1). يتطلب الدرج / السلالم المتحركة للوصول إلى المطاف الأرضي. الطواف متاح خلال موسم الحج.",
+        "fr": "Niveau direct depuis les portes principales (Porte du Roi Fahd 79, Porte du Roi Abdul Aziz 1). Nécessite des escaliers/escalators pour atteindre le Mataf au sol. Tawaf disponible pendant la saison du Hajj."
+      },
+      "accessibility": "stairs_escalators",
+      "crowdLevel": "high"
+    },
+    {
+      "level": "first_floor",
+      "description": {
+        "en": "Upper level accessible via escalators and ramps. More spacious, upper Mataf bridge dedicated for wheelchairs. Can perform Tawaf here.",
+        "ar": "المستوى العلوي يمكن الوصول إليه عبر السلالم المتحركة والمنحدرات. أكثر اتساعًا، جسر المطاف العلوي مخصص للكراسي المتحركة. يمكن أداء الطواف هنا.",
+        "fr": "Niveau supérieur accessible via escalators et rampes. Plus spacieux, pont supérieur du Mataf dédié aux fauteuils roulants. Peut effectuer le Tawaf ici."
+      },
+      "accessibility": "wheelchair_friendly",
+      "crowdLevel": "medium",
+      "wheelchairAccess": true
+    },
+    {
+      "level": "upper_floors",
+      "description": {
+        "en": "Second and higher floors accessible via elevators. Prayer areas; Tawaf may be available during peak times.",
+        "ar": "الطوابق الثانية والأعلى يمكن الوصول إليها عبر المصاعد. مناطق الصلاة؛ قد يكون الطواف متاحًا خلال أوقات الذروة.",
+        "fr": "Deuxième étage et étages supérieurs accessibles par ascenseurs. Zones de prière; le Tawaf peut être disponible pendant les heures de pointe."
+      },
+      "accessibility": "elevator",
+      "crowdLevel": "low"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "totalZones": 7,
+    "totalFloorLevels": 4,
+    "source": "Perplexity export - haram_gates_zones.json",
+    "notes": "GPS coordinates not available in source data. Marked as null for future enhancement with actual surveyed coordinates."
+  }
+}

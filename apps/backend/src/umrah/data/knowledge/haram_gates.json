@@ -1,0 +1,492 @@
+{
+  "gates": [
+    {
+      "id": "bab_malik",
+      "name": {
+        "en": "King Abdul Aziz Gate (Bab Malik)",
+        "ar": "باب الملك عبدالعزيز",
+        "fr": "Porte du Roi Abdul Aziz"
+      },
+      "number": 1,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "west",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "high",
+      "status": "open",
+      "nearestZones": ["mataf_outer", "yemenite_corner"],
+      "nearbyLandmarks": ["Yemenite Corner", "Outer Mataf"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Main reference gate (Gate 1), modern square design, close to hotels. Direct entry to outer Mataf area for wheelchair users.",
+        "ar": "البوابة المرجعية الرئيسية (البوابة 1)، تصميم مربع حديث، قريب من الفنادق. دخول مباشر إلى منطقة المطاف الخارجي لمستخدمي الكراسي المتحركة.",
+        "fr": "Porte de référence principale (Porte 1), conception carrée moderne, proche des hôtels. Entrée directe vers la zone extérieure du Mataf pour les utilisateurs de fauteuils roulants."
+      }
+    },
+    {
+      "id": "bab_ajyad",
+      "name": {
+        "en": "Bab Ajyad",
+        "ar": "باب أجياد",
+        "fr": "Porte Ajyad"
+      },
+      "number": 5,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "side",
+      "side": "southeast",
+      "accessibility": {
+        "wheelchair": false,
+        "elevator": true,
+        "ramp": false
+      },
+      "crowdLevel": "medium",
+      "status": "open",
+      "nearestZones": ["upper_haram", "main_prayer_area"],
+      "nearbyLandmarks": ["Upper Haram", "Main Prayer Area"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Small single portal, part of initial Saudi expansion. Electric escalators to upper floors via gates 7-8.",
+        "ar": "بوابة صغيرة ذات بوابة واحدة، جزء من التوسعة السعودية الأولية. سلالم كهربائية إلى الطوابق العليا عبر البوابات 7-8.",
+        "fr": "Petit portail simple, partie de l'expansion saoudienne initiale. Escalators électriques vers les étages supérieurs via les portes 7-8."
+      }
+    },
+    {
+      "id": "bab_safa",
+      "name": {
+        "en": "Bab al-Safa (Al-Safa Gate)",
+        "ar": "باب الصفا",
+        "fr": "Porte As-Safa"
+      },
+      "number": 12,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "north",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "very_high",
+      "status": "open",
+      "nearestZones": ["safa", "masa_start"],
+      "nearbyLandmarks": ["Safa Hill", "Masa'a Starting Point"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Direct access to Masa'a (Sa'i) starting point at Safa, access to upper floors. Scooter service available for elderly.",
+        "ar": "الوصول المباشر إلى المسعى نقطة البداية عند الصفا، والوصول إلى الطوابق العليا. خدمة السكوتر متاحة لكبار السن.",
+        "fr": "Accès direct au point de départ du Masa'a (Sa'i) à Safa, accès aux étages supérieurs. Service de scooter disponible pour les personnes âgées."
+      }
+    },
+    {
+      "id": "bab_qubais",
+      "name": {
+        "en": "Bab Qubais",
+        "ar": "باب قبيس",
+        "fr": "Porte Qubais"
+      },
+      "number": 13,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "side",
+      "side": "south",
+      "accessibility": {
+        "wheelchair": false,
+        "elevator": false,
+        "ramp": false
+      },
+      "crowdLevel": "medium",
+      "status": "open",
+      "nearestZones": ["safa_vicinity"],
+      "nearbyLandmarks": ["Jabal Safa"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Key entry point near beginning of Jabal Safa. Standard access without special accommodations.",
+        "ar": "نقطة دخول رئيسية بالقرب من بداية جبل الصفا. وصول قياسي بدون تسهيلات خاصة.",
+        "fr": "Point d'entrée clé près du début de Jabal Safa. Accès standard sans aménagements spéciaux."
+      }
+    },
+    {
+      "id": "bab_mudah",
+      "name": {
+        "en": "Bab Al-Mud'ah",
+        "ar": "باب المدعى",
+        "fr": "Porte Al-Mud'ah"
+      },
+      "number": 25,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "north",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": false,
+        "ramp": true
+      },
+      "crowdLevel": "high",
+      "status": "open",
+      "nearestZones": ["saee_area_ground"],
+      "nearbyLandmarks": ["Sa'i Ground Floor"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Direct access to Sa'i area ground floor. Common exit after Umrah completion.",
+        "ar": "وصول مباشر إلى منطقة السعي في الطابق الأرضي. مخرج شائع بعد إتمام العمرة.",
+        "fr": "Accès direct au rez-de-chaussée de la zone de Sa'i. Sortie commune après l'achèvement de l'Umrah."
+      }
+    },
+    {
+      "id": "bab_quraysh",
+      "name": {
+        "en": "Bab Quraysh",
+        "ar": "باب قريش",
+        "fr": "Porte Quraysh"
+      },
+      "number": "26-27",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "side",
+      "side": "north",
+      "accessibility": {
+        "wheelchair": false,
+        "elevator": false,
+        "ramp": false
+      },
+      "crowdLevel": "medium",
+      "status": "open",
+      "nearestZones": ["masa_vicinity"],
+      "nearbyLandmarks": ["Masa'a Area"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Near Masa'a area. Combined gates 26-27 for pilgrim access.",
+        "ar": "بالقرب من منطقة المسعى. البوابات المدمجة 26-27 لدخول الحجاج.",
+        "fr": "Près de la zone Masa'a. Portes combinées 26-27 pour l'accès des pèlerins."
+      }
+    },
+    {
+      "id": "gate_68_wheelchair",
+      "name": {
+        "en": "Gate 68 (Wheelchair Designated)",
+        "ar": "البوابة 68 (مخصصة للكراسي المتحركة)",
+        "fr": "Porte 68 (Réservée aux Fauteuils Roulants)"
+      },
+      "number": 68,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access for disabled pilgrims.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة وإمكانية الوصول ذات الأولوية للحجاج ذوي الإعاقة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales et accès prioritaire pour les pèlerins handicapés."
+      }
+    },
+    {
+      "id": "bab_abu_bakr",
+      "name": {
+        "en": "Bab Abu Bakr / Gate 74 (Wheelchair Designated)",
+        "ar": "باب أبو بكر / البوابة 74",
+        "fr": "Porte Abu Bakr / Porte 74"
+      },
+      "number": 74,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "bab_king_fahd",
+      "name": {
+        "en": "King Fahd Gate (Bab Al-Fahad)",
+        "ar": "باب الملك فهد",
+        "fr": "Porte du Roi Fahd"
+      },
+      "number": 79,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "east",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "very_high",
+      "status": "open",
+      "nearestZones": ["mataf_mezzanine", "outer_prayer_area_east"],
+      "nearbyLandmarks": ["Abraj Al Bait Towers", "Mezzanine Mataf"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Major entrance opposite Abraj Al Bait Towers. Connects to mezzanine/first floor mataf for wheelchairs. One of the most prominent gates.",
+        "ar": "المدخل الرئيسي المقابل لأبراج البيت. يربط بالميزانين / الطابق الأول للمطاف للكراسي المتحركة.",
+        "fr": "Entrée majeure en face des tours Abraj Al Bait. Se connecte au mezzanine/premier étage du mataf pour fauteuils roulants."
+      }
+    },
+    {
+      "id": "bab_jabir",
+      "name": {
+        "en": "Bab Jabir bin Abdullah (Wheelchair Designated)",
+        "ar": "باب جابر بن عبدالله",
+        "fr": "Porte Jabir bin Abdullah"
+      },
+      "number": 84,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "gate_89_wheelchair",
+      "name": {
+        "en": "Gate 89 (Wheelchair Designated)",
+        "ar": "البوابة 89 (مخصصة للكراسي المتحركة)",
+        "fr": "Porte 89 (Réservée aux Fauteuils Roulants)"
+      },
+      "number": 89,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "gate_90_wheelchair",
+      "name": {
+        "en": "Gate 90 (Wheelchair Designated)",
+        "ar": "البوابة 90 (مخصصة للكراسي المتحركة)",
+        "fr": "Porte 90 (Réservée aux Fauteuils Roulants)"
+      },
+      "number": 90,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "gate_93_wheelchair",
+      "name": {
+        "en": "Gate 93 (Wheelchair Designated)",
+        "ar": "البوابة 93 (مخصصة للكراسي المتحركة)",
+        "fr": "Porte 93 (Réservée aux Fauteuils Roulants)"
+      },
+      "number": 93,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "gate_94_wheelchair",
+      "name": {
+        "en": "Gate 94 (Wheelchair Designated)",
+        "ar": "البوابة 94 (مخصصة للكراسي المتحركة)",
+        "fr": "Porte 94 (Réservée aux Fauteuils Roulants)"
+      },
+      "number": 94,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "wheelchair",
+      "side": "king_fahd_expansion",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "low",
+      "status": "open",
+      "nearestZones": ["king_fahd_area"],
+      "nearbyLandmarks": ["King Fahd Expansion"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of 8 designated wheelchair gates with special ramps and priority access.",
+        "ar": "واحدة من 8 بوابات مخصصة للكراسي المتحركة مع منحدرات خاصة.",
+        "fr": "Une des 8 portes désignées pour fauteuils roulants avec rampes spéciales."
+      }
+    },
+    {
+      "id": "bab_king_abdullah",
+      "name": {
+        "en": "King Abdullah Gate",
+        "ar": "باب الملك عبدالله",
+        "fr": "Porte du Roi Abdullah"
+      },
+      "number": 100,
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "northwest",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "high",
+      "status": "open",
+      "nearestZones": ["king_abdullah_prayer_area", "mataf_via_corridor"],
+      "nearbyLandmarks": ["King Abdullah Prayer Area Extension"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "One of the biggest gates, main entrance to King Abdullah Prayer Area Extension. Triple-arched with minarets and corridor to Mataf.",
+        "ar": "واحدة من أكبر البوابات، المدخل الرئيسي لتوسعة مصلى الملك عبدالله. ثلاثية الأقواس مع المآذن وممر إلى المطاف.",
+        "fr": "Une des plus grandes portes, entrée principale de l'extension de la zone de prière du Roi Abdullah. Triple arche avec minarets et corridor vers le Mataf."
+      }
+    },
+    {
+      "id": "bab_marwah",
+      "name": {
+        "en": "Bab al-Marwah (Al-Marwah Gate)",
+        "ar": "باب المروة",
+        "fr": "Porte Al-Marwah"
+      },
+      "number": "Marwah Gate",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "type": "main",
+      "side": "northeast",
+      "accessibility": {
+        "wheelchair": true,
+        "elevator": true,
+        "ramp": true
+      },
+      "crowdLevel": "very_high",
+      "status": "open",
+      "nearestZones": ["marwah", "masa_end"],
+      "nearbyLandmarks": ["Marwah Hill", "Sa'i Exit Point"],
+      "operatingHours": "24/7",
+      "description": {
+        "en": "Largest gates with escalators. Direct connection to Marwah area of Masa'a. Exit point after Sa'i with wheelchair bridge access.",
+        "ar": "أكبر البوابات مع السلالم المتحركة. اتصال مباشر بمنطقة المروة في المسعى. نقطة الخروج بعد السعي مع جسر الكراسي المتحركة.",
+        "fr": "Les plus grandes portes avec escalators. Connexion directe à la zone Marwah du Masa'a. Point de sortie après Sa'i avec accès au pont pour fauteuils roulants."
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "totalGates": 16,
+    "wheelchairDesignatedGates": 8,
+    "source": "Perplexity export - haram_gates_zones.json",
+    "notes": "GPS coordinates not available in source data. Marked as null for future enhancement."
+  }
+}

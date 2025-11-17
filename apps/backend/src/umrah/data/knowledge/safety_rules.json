@@ -1,0 +1,440 @@
+{
+  "general": [
+    {
+      "id": "avoid_pushing_black_stone",
+      "description": {
+        "en": "CRITICAL: Do NOT push or harm others to touch the Black Stone. Pointing and saying 'Bismillah Allahu Akbar' is sufficient if crowded.",
+        "ar": "هام جداً: لا تدفع أو تؤذي الآخرين للمس الحجر الأسود. الإشارة وقول 'بسم الله الله أكبر' كافية إذا كان الزحام.",
+        "fr": "CRITIQUE: NE poussez PAS et ne blessez pas les autres pour toucher la Pierre Noire. Pointer et dire 'Bismillah Allahu Akbar' suffit en cas de foule."
+      },
+      "contexts": ["tawaf", "black_stone"],
+      "severity": "critical",
+      "category": "crowd_safety"
+    },
+    {
+      "id": "istilam_safety_priority",
+      "description": {
+        "en": "Istilam (touching/kissing the Black Stone) is Sunnah, not obligatory - prioritize safety over ritual. Women should avoid the crowd entirely and gesture from afar.",
+        "ar": "الاستلام (لمس أو تقبيل الحجر الأسود) سنة وليس واجباً - أعط الأولوية للسلامة على الطقوس. يجب على النساء تجنب الزحام تماماً والإشارة من بعيد.",
+        "fr": "L'Istilam (toucher/embrasser la Pierre Noire) est Sunnah, pas obligatoire - privilégiez la sécurité au rituel. Les femmes doivent éviter complètement la foule et faire un geste de loin."
+      },
+      "contexts": ["tawaf", "black_stone"],
+      "severity": "high",
+      "category": "crowd_safety",
+      "genderSpecific": {
+        "female": "Avoid the Black Stone crowd area entirely; gesture from a safe distance"
+      }
+    },
+    {
+      "id": "rukn_yamani_no_force",
+      "description": {
+        "en": "Touch Rukn al-Yamani (Yemenite Corner) only if no pushing required. Do NOT kiss it (unlike the Black Stone).",
+        "ar": "المس الركن اليماني فقط إذا لم يتطلب الأمر دفعاً. لا تقبله (على عكس الحجر الأسود).",
+        "fr": "Touchez le Rukn al-Yamani (Coin Yéménite) uniquement si aucune poussée n'est nécessaire. NE l'embrassez PAS (contrairement à la Pierre Noire)."
+      },
+      "contexts": ["tawaf", "rukn_yamani"],
+      "severity": "medium",
+      "category": "crowd_safety"
+    },
+    {
+      "id": "follow_staff_instructions",
+      "description": {
+        "en": "Follow staff instructions during peak hours. Haram authorities manage crowd flow for your safety.",
+        "ar": "اتبع تعليمات الموظفين خلال ساعات الذروة. تدير سلطات الحرم تدفق الحشود من أجل سلامتك.",
+        "fr": "Suivez les instructions du personnel pendant les heures de pointe. Les autorités du Haram gèrent le flux de foule pour votre sécurité."
+      },
+      "contexts": ["all"],
+      "severity": "high",
+      "category": "crowd_safety"
+    },
+    {
+      "id": "upper_floors_less_crowded",
+      "description": {
+        "en": "Upper floors (first floor, mezzanine, second floor) are less crowded than ground level. Use them for more comfortable Tawaf and Sa'i.",
+        "ar": "الطوابق العليا (الطابق الأول، الميزانين، الطابق الثاني) أقل ازدحاماً من المستوى الأرضي. استخدمها للطواف والسعي بشكل أكثر راحة.",
+        "fr": "Les étages supérieurs (premier étage, mezzanine, deuxième étage) sont moins encombrés que le rez-de-chaussée. Utilisez-les pour un Tawaf et Sa'i plus confortables."
+      },
+      "contexts": ["tawaf", "sai"],
+      "severity": "low",
+      "category": "crowd_management"
+    },
+    {
+      "id": "wheelchair_users_first_floor",
+      "description": {
+        "en": "Wheelchair users should use first floor/mezzanine for more space. Upper Mataf bridge is dedicated for wheelchairs.",
+        "ar": "يجب على مستخدمي الكراسي المتحركة استخدام الطابق الأول/الميزانين للحصول على مساحة أكبر. جسر المطاف العلوي مخصص للكراسي المتحركة.",
+        "fr": "Les utilisateurs de fauteuils roulants doivent utiliser le premier étage/mezzanine pour plus d'espace. Le pont supérieur du Mataf est dédié aux fauteuils roulants."
+      },
+      "contexts": ["tawaf", "accessibility"],
+      "severity": "high",
+      "category": "accessibility"
+    },
+    {
+      "id": "masa_stay_in_lane",
+      "description": {
+        "en": "Stay in your lane during Sa'i to avoid collisions. Do not switch lanes abruptly in crowded areas.",
+        "ar": "ابق في مسارك أثناء السعي لتجنب الاصطدامات. لا تبدل المسارات فجأة في المناطق المزدحمة.",
+        "fr": "Restez dans votre voie pendant le Sa'i pour éviter les collisions. Ne changez pas de voie brusquement dans les zones bondées."
+      },
+      "contexts": ["sai", "masa"],
+      "severity": "medium",
+      "category": "crowd_safety"
+    },
+    {
+      "id": "men_run_green_markers_only",
+      "description": {
+        "en": "Men should run lightly between the two green markers (Milayn al-Akhdharayn) during Sa'i, approximately 50 meters. Women walk normally throughout - no running required.",
+        "ar": "يجب على الرجال الركض بخفة بين العلامتين الخضراويين (الميلين الأخضرين) أثناء السعي، حوالي 50 متراً. النساء يمشين بشكل طبيعي طوال الوقت - لا حاجة للركض.",
+        "fr": "Les hommes doivent courir légèrement entre les deux marqueurs verts (Milayn al-Akhdharayn) pendant le Sa'i, environ 50 mètres. Les femmes marchent normalement tout au long - pas besoin de courir."
+      },
+      "contexts": ["sai"],
+      "severity": "low",
+      "category": "ritual_practice",
+      "genderSpecific": {
+        "male": "Run lightly between green markers for approximately 50 meters",
+        "female": "Walk normally throughout the entire Sa'i - no running required"
+      }
+    },
+    {
+      "id": "do_not_obstruct_pathways",
+      "description": {
+        "en": "Do NOT obstruct pathways while praying or resting. Use designated prayer areas and rest zones.",
+        "ar": "لا تسد الممرات أثناء الصلاة أو الراحة. استخدم مناطق الصلاة والراحة المخصصة.",
+        "fr": "NE bloquez PAS les passages en priant ou en vous reposant. Utilisez les zones de prière et de repos désignées."
+      },
+      "contexts": ["all"],
+      "severity": "medium",
+      "category": "crowd_safety"
+    },
+    {
+      "id": "exit_through_marwah",
+      "description": {
+        "en": "Exit through Bab Marwah after completing 7 laps of Sa'i. Follow directional signs to avoid confusion.",
+        "ar": "اخرج من باب المروة بعد إكمال 7 أشواط من السعي. اتبع اللافتات الاتجاهية لتجنب الالتباس.",
+        "fr": "Sortez par Bab Marwah après avoir complété 7 tours de Sa'i. Suivez les panneaux directionnels pour éviter toute confusion."
+      },
+      "contexts": ["sai", "marwah"],
+      "severity": "low",
+      "category": "navigation"
+    },
+    {
+      "id": "be_patient_in_crowded_areas",
+      "description": {
+        "en": "Be patient in crowded areas. Hajj and Umrah are acts of worship - rushing can lead to accidents and harm.",
+        "ar": "كن صبوراً في المناطق المزدحمة. الحج والعمرة أعمال عبادة - الاستعجال يمكن أن يؤدي إلى حوادث وأذى.",
+        "fr": "Soyez patient dans les zones bondées. Le Hajj et l'Umrah sont des actes de culte - se précipiter peut entraîner des accidents et des blessures."
+      },
+      "contexts": ["all"],
+      "severity": "high",
+      "category": "crowd_safety"
+    }
+  ],
+  "heat": [
+    {
+      "id": "stay_hydrated",
+      "description": {
+        "en": "Stay well-hydrated, especially during summer months. Zamzam water is freely available throughout the Haram.",
+        "ar": "ابق رطباً جيداً، خاصة خلال أشهر الصيف. ماء زمزم متاح مجاناً في جميع أنحاء الحرم.",
+        "fr": "Restez bien hydraté, surtout pendant les mois d'été. L'eau de Zamzam est disponible gratuitement dans tout le Haram."
+      },
+      "contexts": ["all"],
+      "severity": "critical",
+      "category": "health"
+    },
+    {
+      "id": "avoid_peak_sun_hours",
+      "description": {
+        "en": "Avoid performing outdoor rituals during peak sun hours (12pm-3pm) if possible. Early morning or evening times are cooler.",
+        "ar": "تجنب أداء الطقوس في الهواء الطلق خلال ساعات الذروة الشمسية (12 ظهراً - 3 مساءً) إن أمكن. أوقات الصباح الباكر أو المساء أكثر برودة.",
+        "fr": "Évitez d'effectuer des rituels en plein air pendant les heures de soleil de pointe (12h-15h) si possible. Les heures du matin ou du soir sont plus fraîches."
+      },
+      "contexts": ["ihram", "outdoor_rituals"],
+      "severity": "high",
+      "category": "health"
+    },
+    {
+      "id": "use_umbrella_shade",
+      "description": {
+        "en": "Use an umbrella or parasol for shade when outdoors, especially in ihram. White or light-colored umbrellas are recommended.",
+        "ar": "استخدم مظلة للظل عندما تكون في الخارج، خاصة في الإحرام. يوصى بالمظلات البيضاء أو الفاتحة اللون.",
+        "fr": "Utilisez un parapluie ou une ombrelle pour l'ombre lorsque vous êtes à l'extérieur, surtout en ihram. Les parapluies blancs ou de couleur claire sont recommandés."
+      },
+      "contexts": ["ihram", "outdoor_rituals"],
+      "severity": "medium",
+      "category": "health"
+    },
+    {
+      "id": "recognize_heat_exhaustion_symptoms",
+      "description": {
+        "en": "Recognize heat exhaustion symptoms: dizziness, nausea, excessive sweating, weakness. Seek medical help immediately if you experience these.",
+        "ar": "تعرف على أعراض الإنهاك الحراري: الدوخة، الغثيان، التعرق المفرط، الضعف. اطلب المساعدة الطبية فوراً إذا واجهت هذه الأعراض.",
+        "fr": "Reconnaissez les symptômes d'épuisement par la chaleur : étourdissements, nausées, transpiration excessive, faiblesse. Consultez immédiatement un médecin si vous ressentez ces symptômes."
+      },
+      "contexts": ["all"],
+      "severity": "critical",
+      "category": "health"
+    }
+  ],
+  "accessibility": [
+    {
+      "id": "wheelchair_designated_gates",
+      "description": {
+        "en": "8 gates are designated for wheelchair users: Gates 68, 74, 79, 84, 89, 90, 93, 94. These have special ramps and elevators.",
+        "ar": "8 بوابات مخصصة لمستخدمي الكراسي المتحركة: البوابات 68، 74، 79، 84، 89، 90، 93، 94. لديها منحدرات ومصاعد خاصة.",
+        "fr": "8 portes sont désignées pour les utilisateurs de fauteuils roulants : Portes 68, 74, 79, 84, 89, 90, 93, 94. Elles ont des rampes et des ascenseurs spéciaux."
+      },
+      "contexts": ["accessibility", "gates"],
+      "severity": "high",
+      "category": "accessibility"
+    },
+    {
+      "id": "wheelchair_bridge_marwah",
+      "description": {
+        "en": "Wheelchair bridge available at Marwah for accessible Sa'i. Upper floors of Masa'a are flat and more comfortable.",
+        "ar": "جسر الكراسي المتحركة متاح في المروة للسعي الميسر. الطوابق العليا من المسعى مسطحة وأكثر راحة.",
+        "fr": "Pont pour fauteuils roulants disponible à Marwah pour un Sa'i accessible. Les étages supérieurs du Masa'a sont plats et plus confortables."
+      },
+      "contexts": ["accessibility", "sai"],
+      "severity": "high",
+      "category": "accessibility"
+    },
+    {
+      "id": "scooter_rental_third_floor",
+      "description": {
+        "en": "Scooter rental service available on third floor of Masa'a (50 SAR). Useful for elderly or those with mobility challenges.",
+        "ar": "خدمة تأجير السكوتر متاحة في الطابق الثالث من المسعى (50 ريال). مفيدة لكبار السن أو ذوي التحديات الحركية.",
+        "fr": "Service de location de scooter disponible au troisième étage du Masa'a (50 SAR). Utile pour les personnes âgées ou ayant des difficultés de mobilité."
+      },
+      "contexts": ["accessibility", "sai"],
+      "severity": "medium",
+      "category": "accessibility"
+    },
+    {
+      "id": "elevators_for_upper_floors",
+      "description": {
+        "en": "Elevators are available for accessing upper floors (second floor and above). Use them to reach less crowded prayer areas.",
+        "ar": "المصاعد متاحة للوصول إلى الطوابق العليا (الطابق الثاني وما فوق). استخدمها للوصول إلى مناطق الصلاة الأقل ازدحاماً.",
+        "fr": "Des ascenseurs sont disponibles pour accéder aux étages supérieurs (deuxième étage et au-dessus). Utilisez-les pour accéder aux zones de prière moins encombrées."
+      },
+      "contexts": ["accessibility", "navigation"],
+      "severity": "medium",
+      "category": "accessibility"
+    }
+  ],
+  "health": [
+    {
+      "id": "consult_doctor_before_travel",
+      "description": {
+        "en": "Consult your doctor before travel if you have chronic health conditions. Carry necessary medications in original packaging.",
+        "ar": "استشر طبيبك قبل السفر إذا كان لديك حالات صحية مزمنة. احمل الأدوية الضرورية في عبواتها الأصلية.",
+        "fr": "Consultez votre médecin avant de voyager si vous avez des problèmes de santé chroniques. Transportez les médicaments nécessaires dans leur emballage d'origine."
+      },
+      "contexts": ["pre_travel"],
+      "severity": "high",
+      "category": "health"
+    },
+    {
+      "id": "medical_services_available",
+      "description": {
+        "en": "Medical services and first aid stations are available throughout the Haram. Do not hesitate to seek help if needed.",
+        "ar": "الخدمات الطبية ومحطات الإسعافات الأولية متوفرة في جميع أنحاء الحرم. لا تتردد في طلب المساعدة إذا لزم الأمر.",
+        "fr": "Des services médicaux et des postes de premiers soins sont disponibles dans tout le Haram. N'hésitez pas à demander de l'aide si nécessaire."
+      },
+      "contexts": ["all"],
+      "severity": "high",
+      "category": "health"
+    },
+    {
+      "id": "no_medical_diagnosis_from_ai",
+      "description": {
+        "en": "AI LIMITATION: This guide cannot provide medical diagnosis or prescriptions. Seek professional medical help for any health concerns.",
+        "ar": "قيد الذكاء الاصطناعي: لا يمكن لهذا الدليل تقديم تشخيص طبي أو وصفات طبية. اطلب المساعدة الطبية المهنية لأي مخاوف صحية.",
+        "fr": "LIMITATION IA : Ce guide ne peut pas fournir de diagnostic médical ou de prescriptions. Consultez un professionnel de santé pour toute préoccupation médicale."
+      },
+      "contexts": ["all"],
+      "severity": "critical",
+      "category": "ai_limitations"
+    },
+    {
+      "id": "wear_comfortable_footwear",
+      "description": {
+        "en": "Wear comfortable, breathable footwear. You will walk several kilometers during Tawaf and Sa'i.",
+        "ar": "ارتدِ أحذية مريحة وقابلة للتنفس. ستمشي عدة كيلومترات أثناء الطواف والسعي.",
+        "fr": "Portez des chaussures confortables et respirantes. Vous marcherez plusieurs kilomètres pendant le Tawaf et le Sa'i."
+      },
+      "contexts": ["tawaf", "sai"],
+      "severity": "medium",
+      "category": "health"
+    }
+  ],
+  "ihram": [
+    {
+      "id": "do_not_cut_hair_nails",
+      "description": {
+        "en": "Do NOT cut hair or nails while in ihram. These are prohibited until the ritual hair cutting (halq/taqsir) at the end.",
+        "ar": "لا تقص الشعر أو الأظافر أثناء الإحرام. هذه محظورات حتى قص الشعر الطقسي (الحلق/التقصير) في النهاية.",
+        "fr": "NE coupez PAS les cheveux ou les ongles en état d'ihram. Ceux-ci sont interdits jusqu'à la coupe de cheveux rituelle (halq/taqsir) à la fin."
+      },
+      "contexts": ["ihram"],
+      "severity": "critical",
+      "category": "ihram_prohibitions"
+    },
+    {
+      "id": "avoid_perfumes_scented_products",
+      "description": {
+        "en": "Avoid perfumes, scented soaps, and scented products while in ihram. Use unscented alternatives.",
+        "ar": "تجنب العطور والصابون المعطر والمنتجات المعطرة أثناء الإحرام. استخدم بدائل غير معطرة.",
+        "fr": "Évitez les parfums, savons parfumés et produits parfumés en état d'ihram. Utilisez des alternatives non parfumées."
+      },
+      "contexts": ["ihram"],
+      "severity": "high",
+      "category": "ihram_prohibitions"
+    },
+    {
+      "id": "no_sexual_relations",
+      "description": {
+        "en": "Sexual relations are strictly prohibited during ihram. This includes intimate physical contact.",
+        "ar": "العلاقات الجنسية محظورة بشكل صارم أثناء الإحرام. وهذا يشمل الاتصال الجسدي الحميم.",
+        "fr": "Les relations sexuelles sont strictement interdites pendant l'ihram. Cela inclut les contacts physiques intimes."
+      },
+      "contexts": ["ihram"],
+      "severity": "critical",
+      "category": "ihram_prohibitions"
+    },
+    {
+      "id": "no_hunting",
+      "description": {
+        "en": "Hunting or killing animals is prohibited during ihram, even accidentally harming insects should be avoided if possible.",
+        "ar": "الصيد أو قتل الحيوانات محظور أثناء الإحرام، حتى إيذاء الحشرات عن طريق الخطأ يجب تجنبه إن أمكن.",
+        "fr": "La chasse ou la mise à mort d'animaux est interdite pendant l'ihram, même blesser accidentellement des insectes doit être évité si possible."
+      },
+      "contexts": ["ihram"],
+      "severity": "high",
+      "category": "ihram_prohibitions"
+    },
+    {
+      "id": "male_head_covering_prohibited",
+      "description": {
+        "en": "Men must NOT cover their heads during ihram. Women should cover their hair but NOT their faces (according to majority view).",
+        "ar": "لا يجوز للرجال تغطية رؤوسهم أثناء الإحرام. يجب على النساء تغطية شعرهن ولكن ليس وجوههن (حسب رأي الأغلبية).",
+        "fr": "Les hommes NE doivent PAS couvrir leur tête pendant l'ihram. Les femmes doivent couvrir leurs cheveux mais PAS leur visage (selon l'avis majoritaire)."
+      },
+      "contexts": ["ihram"],
+      "severity": "high",
+      "category": "ihram_prohibitions",
+      "genderSpecific": {
+        "male": "Head must remain uncovered throughout ihram",
+        "female": "Cover hair but not face (majority view); some scholars permit niqab"
+      }
+    }
+  ],
+  "emergency": [
+    {
+      "id": "emergency_contact_numbers",
+      "description": {
+        "en": "Emergency contact numbers in Saudi Arabia: Police 999, Ambulance 997, Civil Defense 998. Haram staff are always available for assistance.",
+        "ar": "أرقام الاتصال في حالات الطوارئ في المملكة العربية السعودية: الشرطة 999، الإسعاف 997، الدفاع المدني 998. موظفو الحرم متاحون دائماً للمساعدة.",
+        "fr": "Numéros d'urgence en Arabie Saoudite : Police 999, Ambulance 997, Protection civile 998. Le personnel du Haram est toujours disponible pour assistance."
+      },
+      "contexts": ["emergency"],
+      "severity": "critical",
+      "category": "emergency"
+    },
+    {
+      "id": "lost_persons_meeting_point",
+      "description": {
+        "en": "If separated from your group, stay calm and go to a designated gate or information desk. Have your hotel address and group leader contact in writing.",
+        "ar": "إذا انفصلت عن مجموعتك، ابق هادئاً واذهب إلى بوابة محددة أو مكتب معلومات. احتفظ بعنوان فندقك ومعلومات الاتصال بقائد المجموعة مكتوبة.",
+        "fr": "Si vous êtes séparé de votre groupe, restez calme et allez à une porte désignée ou un bureau d'information. Ayez l'adresse de votre hôtel et le contact du chef de groupe par écrit."
+      },
+      "contexts": ["emergency", "navigation"],
+      "severity": "high",
+      "category": "emergency"
+    },
+    {
+      "id": "keep_valuables_secure",
+      "description": {
+        "en": "Keep valuables secure and minimal. Use hotel safes for passports and large sums of money. Carry only essentials in the Haram.",
+        "ar": "احتفظ بالأشياء الثمينة آمنة وبحد أدنى. استخدم خزائن الفنادق لجوازات السفر والمبالغ الكبيرة من المال. احمل الضروريات فقط في الحرم.",
+        "fr": "Gardez les objets de valeur en sécurité et au minimum. Utilisez les coffres-forts d'hôtel pour les passeports et les grosses sommes d'argent. Ne transportez que l'essentiel dans le Haram."
+      },
+      "contexts": ["all"],
+      "severity": "medium",
+      "category": "security"
+    }
+  ],
+  "women": [
+    {
+      "id": "menstruation_cannot_perform_tawaf",
+      "description": {
+        "en": "Women who are menstruating cannot perform Tawaf according to the majority view (Shafi'i, Maliki, Hanbali). Must wait until purification. Hanafi view permits with penalty (Dam).",
+        "ar": "لا يمكن للنساء الحائضات أداء الطواف حسب رأي الأغلبية (الشافعي، المالكي، الحنبلي). يجب الانتظار حتى الطهارة. الرأي الحنفي يسمح مع الكفارة (الدم).",
+        "fr": "Les femmes qui ont leurs menstruations ne peuvent pas effectuer le Tawaf selon l'avis majoritaire (Shafi'i, Maliki, Hanbali). Doivent attendre jusqu'à la purification. L'avis Hanafi permet avec pénalité (Dam)."
+      },
+      "contexts": ["tawaf", "menstruation"],
+      "severity": "high",
+      "category": "women_health",
+      "madhhabDifferences": {
+        "hanafi": "Valid Tawaf but Dam (sacrifice) required",
+        "shafii": "Invalid Tawaf; must repeat when pure",
+        "maliki": "Invalid Tawaf; must repeat when pure",
+        "hanbali": "Invalid Tawaf; must repeat when pure"
+      }
+    },
+    {
+      "id": "menstruation_can_perform_sai",
+      "description": {
+        "en": "Women who are menstruating CAN perform Sa'i. Purity is not required for Sa'i according to all four madhahib.",
+        "ar": "يمكن للنساء الحائضات أداء السعي. الطهارة غير مطلوبة للسعي حسب المذاهب الأربعة.",
+        "fr": "Les femmes qui ont leurs menstruations PEUVENT effectuer le Sa'i. La pureté n'est pas requise pour le Sa'i selon les quatre madhahib."
+      },
+      "contexts": ["sai", "menstruation"],
+      "severity": "medium",
+      "category": "women_health"
+    },
+    {
+      "id": "women_no_running_in_sai",
+      "description": {
+        "en": "Women walk normally throughout Sa'i - no running required between green markers. Running is only for men.",
+        "ar": "تمشي النساء بشكل طبيعي طوال السعي - لا حاجة للركض بين العلامات الخضراء. الركض فقط للرجال.",
+        "fr": "Les femmes marchent normalement tout au long du Sa'i - pas besoin de courir entre les marqueurs verts. La course est seulement pour les hommes."
+      },
+      "contexts": ["sai"],
+      "severity": "low",
+      "category": "ritual_practice"
+    },
+    {
+      "id": "women_avoid_black_stone_crowd",
+      "description": {
+        "en": "Women should avoid the Black Stone crowd area entirely and gesture from a safe distance. Safety takes priority.",
+        "ar": "يجب على النساء تجنب منطقة الزحام عند الحجر الأسود تماماً والإشارة من مسافة آمنة. السلامة لها الأولوية.",
+        "fr": "Les femmes doivent éviter complètement la zone de foule de la Pierre Noire et faire un geste depuis une distance sûre. La sécurité est prioritaire."
+      },
+      "contexts": ["tawaf", "black_stone"],
+      "severity": "high",
+      "category": "women_safety"
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "totalRules": 33,
+    "categories": [
+      "crowd_safety",
+      "crowd_management",
+      "accessibility",
+      "health",
+      "ihram_prohibitions",
+      "emergency",
+      "security",
+      "women_health",
+      "women_safety",
+      "ritual_practice",
+      "navigation",
+      "ai_limitations"
+    ],
+    "severityLevels": ["critical", "high", "medium", "low"],
+    "source": "Consolidated from ritual_steps.json, haram_zones.json, haram_gates.json, and Perplexity research",
+    "notes": "This file centralizes all safety, health, accessibility, and crowd management rules. Gender-specific guidance included where applicable. Madhhab differences noted for sensitive issues like menstruation."
+  }
+}

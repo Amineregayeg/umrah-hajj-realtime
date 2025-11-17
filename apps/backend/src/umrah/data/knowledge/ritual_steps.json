@@ -1,0 +1,486 @@
+{
+  "umrah": {
+    "steps": [
+      {
+        "id": "ihram",
+        "order": 1,
+        "title": {
+          "en": "Enter Ihram",
+          "ar": "الإحرام",
+          "fr": "Entrer en Ihram"
+        },
+        "description": {
+          "en": "State of consecration. Perform ghusl (ritual bath), wear ihram garments, make niyyah (intention) at the Miqat, and recite Talbiyah.",
+          "ar": "حالة الإحرام. أداء الغسل، ارتداء ملابس الإحرام، النية عند الميقات، وتلاوة التلبية.",
+          "fr": "État de consécration. Effectuer le ghusl (bain rituel), porter les vêtements d'Ihram, faire la niyyah (intention) au Miqat, et réciter la Talbiyah."
+        },
+        "genderSpecific": {
+          "male": "Men wear two white unstitched cloths: Izar (lower garment wrapping around waist) and Rida (upper garment over left shoulder). Head must remain uncovered throughout Ihram. Sandals that don't cover the heel and toes are required.",
+          "female": "Women wear modest clothing covering entire body except face and hands. Face covering during Ihram is debated among scholars - majority say face should remain uncovered, but some allow it if not touching the face. Regular modest clothes are acceptable; no specific color or style required."
+        },
+        "madhhabDifferences": {
+          "hanafi": "Ghusl is Sunnah (recommended), not required. Niyyah can be made before reaching Miqat. Emphasizes intention in the heart.",
+          "maliki": "Ghusl is required. Niyyah must be made at the Miqat boundary. Verbal declaration of intention is emphasized.",
+          "shafii": "Similar to Maliki. Emphasizes verbal Talbiyah immediately after niyyah. Ghusl is Sunnah.",
+          "hanbali": "Ghusl is Sunnah. Niyyah at Miqat required. Both internal intention and verbal declaration recommended."
+        },
+        "duas": [
+          {
+            "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ",
+            "transliteration": "Labbayk Allāhumma labbayk, labbayka lā sharīka laka labbayk, inna al-ḥamda wa an-ni'mata laka wa al-mulk, lā sharīka lak",
+            "translation": "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Verily, all praise, grace and dominion belong to You. You have no partner.",
+            "context": "Talbiyah - recite frequently and loudly (men) or softly (women) throughout Ihram state, especially when entering Haram, after prayers, at elevated places"
+          }
+        ],
+        "safetyNotes": [
+          "Do NOT cut hair, nails, or use perfumes while in Ihram",
+          "Avoid all forms of intimacy with spouse",
+          "Do NOT hunt or harm land animals",
+          "Men: Keep head uncovered at all times",
+          "If you need to scratch your head/body, do so gently to avoid removing hair",
+          "Use unscented soap and toiletries only"
+        ],
+        "prohibitions": [
+          "Cutting hair or nails",
+          "Using perfume or scented products",
+          "Sexual relations or intimate talk with spouse",
+          "Covering the head (men) or face with cloth touching it (women - debated)",
+          "Wearing sewn garments (men)",
+          "Hunting land animals",
+          "Killing insects (except harmful ones like mosquitoes, fleas)",
+          "Marriage contracts (performing or witnessing)",
+          "Arguing or fighting"
+        ],
+        "miqatPoints": {
+          "dhul_hulayfah": "For those coming from Madinah (approx. 18km from Madinah)",
+          "juhfah": "For those from Syria, Egypt, North Africa",
+          "qarn_al_manazil": "For those from Najd, Riyadh, UAE direction (approx. 94km from Makkah)",
+          "yalamlam": "For those from Yemen, South direction",
+          "dhat_irq": "For those from Iraq direction"
+        }
+      },
+      {
+        "id": "entering_haram",
+        "order": 2,
+        "title": {
+          "en": "Enter Masjid al-Haram",
+          "ar": "دخول المسجد الحرام",
+          "fr": "Entrer dans Masjid al-Haram"
+        },
+        "description": {
+          "en": "Enter the Sacred Mosque with the right foot first, reciting the prescribed dua. Approach the Kaaba with humility and awe.",
+          "ar": "ادخل المسجد الحرام بالقدم اليمنى أولاً، مع تلاوة الدعاء المقرر. اقترب من الكعبة بتواضع وخشوع.",
+          "fr": "Entrez dans la Mosquée Sacrée avec le pied droit en premier, en récitant le dua prescrit. Approchez-vous de la Kaaba avec humilité et révérence."
+        },
+        "duas": [
+          {
+            "arabic": "بِسْمِ اللَّهِ، وَالصَّلاَةُ وَالسَّلاَمُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+            "transliteration": "Bismillāh, wa aṣ-ṣalātu wa as-salāmu 'alā rasūlillāh. Allāhumma iftaḥ lī abwāba raḥmatik",
+            "translation": "In the name of Allah, and peace and blessings be upon the Messenger of Allah. O Allah, open for me the doors of Your mercy.",
+            "context": "When entering any mosque, including Masjid al-Haram"
+          },
+          {
+            "arabic": "اللَّهُمَّ إِنَّكَ أَنْتَ السَّلاَمُ، وَمِنْكَ السَّلاَمُ، فَحَيِّنَا رَبَّنَا بِالسَّلاَمِ",
+            "transliteration": "Allāhumma anta as-salām wa minka as-salām, fa ḥayyinā rabbanā bi as-salām",
+            "translation": "O Allah, You are Peace, and from You comes peace. So greet us, our Lord, with peace.",
+            "context": "Additional dua when entering Haram"
+          }
+        ],
+        "safetyNotes": [
+          "Choose a gate appropriate for your mobility (wheelchair gates if needed)",
+          "Follow crowd flow - do not push against the stream",
+          "Keep personal belongings secure",
+          "Stay hydrated - drink Zamzam water available throughout the Haram",
+          "If feeling overwhelmed by crowd, move to outer prayer areas which are less dense"
+        ]
+      },
+      {
+        "id": "tawaf",
+        "order": 3,
+        "title": {
+          "en": "Perform Tawaf",
+          "ar": "الطواف",
+          "fr": "Effectuer le Tawaf"
+        },
+        "description": {
+          "en": "Circle the Kaaba 7 times counterclockwise, starting and ending each circuit at the Black Stone (Hajar al-Aswad). This is the central ritual of Umrah.",
+          "ar": "الطواف حول الكعبة 7 مرات عكس اتجاه عقارب الساعة، بدءًا وانتهاءً بكل دورة عند الحجر الأسود. هذا هو الطقس المركزي للعمرة.",
+          "fr": "Faire le tour de la Kaaba 7 fois dans le sens antihoraire, en commençant et en terminant chaque circuit à la Pierre Noire (Hajar al-Aswad). C'est le rituel central de l'Umrah."
+        },
+        "genderSpecific": {
+          "male": "Men perform Raml (brisk walking, shoulders moving, like a warrior's gait) in the first 3 circuits only. In circuits 4-7, walk normally. Also perform Idtiba (expose right shoulder by placing ihram cloth under right armpit and over left shoulder) throughout all 7 circuits. Cover both shoulders when praying 2 rakah after Tawaf.",
+          "female": "Women walk normally at a comfortable pace throughout all 7 circuits. No Raml (brisk walk) or Idtiba (shoulder exposure) for women. Maintain full covering and modesty. Avoid crowded areas near the Black Stone - gesture from afar."
+        },
+        "madhhabDifferences": {
+          "hanafi": "Wudu is Wajib (obligatory) but not a pillar. If you do Tawaf without wudu, it's valid but Dam (sacrifice) is required. If wudu breaks during Tawaf, you can continue from where you stopped after renewing wudu.",
+          "maliki": "Wudu is a condition for validity. Tawaf without wudu is invalid. If wudu breaks, you must restart from beginning after renewing wudu.",
+          "shafii": "Wudu is a condition (pillar) for validity - Tawaf is invalid without it. If wudu breaks during Tawaf, restart from the beginning after renewing wudu. Tawaf is likened to prayer in requiring purity.",
+          "hanbali": "Wudu is required for validity. If broken, restart from beginning. Similar to Shafi'i position."
+        },
+        "stepByStep": [
+          {
+            "step": 1,
+            "action": "Face the Black Stone (Hajar al-Aswad)",
+            "details": "Position yourself so the Black Stone is on your right side to begin Tawaf. Raise hands as in prayer and recite Takbir.",
+            "dua": {
+              "arabic": "بِسْمِ اللَّهِ، اللَّهُ أَكْبَر",
+              "transliteration": "Bismillāh, Allāhu Akbar",
+              "translation": "In the name of Allah, Allah is the Greatest"
+            }
+          },
+          {
+            "step": 2,
+            "action": "Perform Istilam (if possible)",
+            "details": "If no crowd: Kiss the Black Stone. If some crowd: Touch it with your hand and kiss your hand. If very crowded: Point toward it from afar with your right hand. DO NOT push others.",
+            "dua": {
+              "arabic": "بِسْمِ اللَّهِ، اللَّهُ أَكْبَر",
+              "transliteration": "Bismillāh, Allāhu Akbar",
+              "translation": "In the name of Allah, Allah is the Greatest"
+            }
+          },
+          {
+            "step": 3,
+            "action": "Begin circling counterclockwise",
+            "details": "Keep the Kaaba on your left. Complete one full circuit until you return to the Black Stone. Men: Raml in first 3 circuits. Women: walk normally.",
+            "notes": "Make dua in any language throughout Tawaf. There are no specific required duas except at Black Stone and between Rukn Yamani and Black Stone."
+          },
+          {
+            "step": 4,
+            "action": "Touch Rukn Yamani (if possible)",
+            "details": "At the Yemenite Corner (southern corner of Kaaba), touch it with your right hand if possible without pushing. Do NOT kiss it. If crowded, skip it - no pointing/gesture needed.",
+            "notes": "No specific dua at Rukn Yamani itself."
+          },
+          {
+            "step": 5,
+            "action": "Recite dua between Rukn Yamani and Black Stone",
+            "details": "This section of Tawaf has a prescribed dua from the Quran.",
+            "dua": {
+              "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+              "transliteration": "Rabbanā ātinā fi ad-dunyā ḥasanah wa fi al-ākhirati ḥasanah wa qinā 'adhāb an-nār",
+              "translation": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire",
+              "source": "Quran 2:201"
+            }
+          },
+          {
+            "step": 6,
+            "action": "Return to Black Stone",
+            "details": "One circuit is complete. Say Allahu Akbar and point/touch Black Stone again. Repeat for 7 circuits total.",
+            "notes": "Count carefully. Some people use counter beads or digital counters. If you lose count, restart or continue from uncertain number with extra circuits."
+          }
+        ],
+        "duas": [
+          {
+            "arabic": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلاَ إِلَهَ إِلاَّ اللَّهُ، وَاللَّهُ أَكْبَرُ، وَلاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
+            "transliteration": "Subḥān Allāh, wa al-ḥamdu lillāh, wa lā ilāha illā Allāh, wa Allāhu akbar, wa lā ḥawla wa lā quwwata illā billāh",
+            "translation": "Glory be to Allah, and all praise to Allah, and there is no god but Allah, and Allah is the Greatest, and there is no power or strength except with Allah",
+            "context": "General dhikr to recite during Tawaf"
+          },
+          {
+            "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ",
+            "transliteration": "Allāhumma innī as'aluka al-'afwa wa al-'āfiyah fi ad-dunyā wa al-ākhirah",
+            "translation": "O Allah, I ask You for forgiveness and well-being in this world and the Hereafter",
+            "context": "General dua during Tawaf"
+          }
+        ],
+        "safetyNotes": [
+          "CRITICAL: Do NOT push or harm others to reach the Black Stone. Pointing from afar is sufficient.",
+          "Ground level Mataf is extremely crowded. Wheelchair users and elderly should use upper levels (first floor/mezzanine).",
+          "If you feel dizzy or unwell, exit the Mataf immediately to outer areas.",
+          "Stay in your lane/orbit - don't cut across to shorten the circuit.",
+          "If crowd stops moving, stop with it. Do not push.",
+          "Women should avoid the Black Stone area entirely during peak hours - gesture from outer circuits.",
+          "If wudu breaks, exit immediately according to your madhab's ruling.",
+          "Drink water before starting - Tawaf takes 20-40 minutes depending on crowd."
+        ],
+        "crowdManagement": {
+          "ground_level": "Most crowded. Only for able-bodied pilgrims comfortable with dense crowds.",
+          "mezzanine": "Less crowded. Accessible from major gates (Gate 79, Gate 1). Good for moderate crowd tolerance.",
+          "first_floor": "Wheelchair-friendly. Less crowded. Bridge dedicated for wheelchairs. Highly recommended for elderly and disabled.",
+          "upper_floors": "Least crowded during non-Hajj times. May not always have Tawaf area open - check with staff."
+        }
+      },
+      {
+        "id": "tawaf_prayer",
+        "order": 4,
+        "title": {
+          "en": "Pray 2 Rakah After Tawaf",
+          "ar": "صلاة ركعتين بعد الطواف",
+          "fr": "Prier 2 Rakah Après le Tawaf"
+        },
+        "description": {
+          "en": "After completing 7 circuits of Tawaf, pray 2 rakah (units of prayer). Preferred location is behind Maqam Ibrahim, but can pray anywhere in the Haram if crowded.",
+          "ar": "بعد إتمام 7 أشواط من الطواف، صلِّ ركعتين. الموقع المفضل خلف مقام إبراهيم، لكن يمكن الصلاة في أي مكان في الحرم إذا كان مزدحمًا.",
+          "fr": "Après avoir complété 7 circuits de Tawaf, priez 2 rakah (unités de prière). L'emplacement préféré est derrière Maqam Ibrahim, mais vous pouvez prier n'importe où dans le Haram s'il y a foule."
+        },
+        "madhhabDifferences": {
+          "hanafi": "Wajib (obligatory). Can be prayed anywhere in the Haram. If intentionally omitted, Dam may be required according to some scholars.",
+          "maliki": "Wajib. Can be prayed anywhere in the Haram. Maqam Ibrahim preferred but not required.",
+          "shafii": "Mustahabb (strongly recommended), not wajib. Should be prayed near Maqam Ibrahim if possible.",
+          "hanbali": "Mustahabb (recommended). No penalty if omitted but missing great reward."
+        },
+        "stepByStep": [
+          {
+            "step": 1,
+            "action": "Cover shoulders (men)",
+            "details": "Men who did Idtiba during Tawaf must now cover both shoulders by placing the ihram cloth over both shoulders properly.",
+            "notes": "Women remain fully covered as they were during Tawaf."
+          },
+          {
+            "step": 2,
+            "action": "Find a prayer space",
+            "details": "First choice: Behind Maqam Ibrahim (if space available). Second choice: Anywhere in the Haram that doesn't block walkways or Tawaf area.",
+            "notes": "Do NOT pray in the Tawaf area itself or in walkways - move to designated prayer areas."
+          },
+          {
+            "step": 3,
+            "action": "Pray 2 rakah",
+            "details": "First rakah: Recite Surah Al-Kafirun (109) after Al-Fatihah. Second rakah: Recite Surah Al-Ikhlas (112) after Al-Fatihah. Can recite any other surah if you don't know these.",
+            "notes": "Pray these 2 rakah as you would any voluntary prayer. Make dua after completing the prayer."
+          }
+        ],
+        "duas": [
+          {
+            "arabic": "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ",
+            "transliteration": "Rabbanā taqabbal minnā innaka anta as-samī' al-'alīm",
+            "translation": "Our Lord, accept this from us. Indeed, You are the All-Hearing, the All-Knowing",
+            "context": "After completing the 2 rakah prayer"
+          }
+        ],
+        "safetyNotes": [
+          "Do NOT pray in walkways or Tawaf paths - you will block other pilgrims",
+          "If Maqam Ibrahim area is crowded, don't force your way - pray elsewhere",
+          "Move to outer prayer areas or upper floors for more space",
+          "Women should pray in designated women's sections if available"
+        ]
+      },
+      {
+        "id": "zamzam",
+        "order": 5,
+        "title": {
+          "en": "Drink Zamzam Water",
+          "ar": "شرب ماء زمزم",
+          "fr": "Boire de l'Eau de Zamzam"
+        },
+        "description": {
+          "en": "After the 2 rakah prayer, drink Zamzam water. It is Sunnah to drink your fill while standing, facing the Kaaba, and making dua.",
+          "ar": "بعد صلاة الركعتين، اشرب ماء زمزم. من السنة أن تشرب بقدر ما تشاء واقفًا، متجهًا نحو الكعبة، وتدعو.",
+          "fr": "Après la prière de 2 rakah, buvez de l'eau de Zamzam. Il est Sunnah de boire à satiété en se tenant debout, face à la Kaaba, et en faisant des duas."
+        },
+        "duas": [
+          {
+            "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا وَاسِعًا، وَشِفَاءً مِنْ كُلِّ دَاءٍ",
+            "transliteration": "Allāhumma innī as'aluka 'ilman nāfi'an, wa rizqan wāsi'an, wa shifā'an min kulli dā'",
+            "translation": "O Allah, I ask You for beneficial knowledge, abundant provision, and healing from every disease",
+            "context": "While drinking Zamzam water"
+          }
+        ],
+        "notes": "Zamzam water is available throughout the Haram in designated coolers and dispensers. You can also take some back to your accommodation."
+      },
+      {
+        "id": "sai",
+        "order": 6,
+        "title": {
+          "en": "Perform Sa'i Between Safa and Marwah",
+          "ar": "السعي بين الصفا والمروة",
+          "fr": "Effectuer le Sa'i Entre Safa et Marwah"
+        },
+        "description": {
+          "en": "Walk 7 laps between the hills of Safa and Marwah, starting at Safa and ending at Marwah. Each one-way trip counts as one lap. Total distance: approximately 3.15 km.",
+          "ar": "المشي 7 أشواط بين تلال الصفا والمروة، بدءًا من الصفا وانتهاءً بالمروة. كل رحلة باتجاه واحد تُحسب شوطًا واحدًا. المسافة الإجمالية: حوالي 3.15 كم.",
+          "fr": "Marchez 7 tours entre les collines de Safa et Marwah, en commençant à Safa et en terminant à Marwah. Chaque trajet aller compte comme un tour. Distance totale : environ 3,15 km."
+        },
+        "genderSpecific": {
+          "male": "Men should run lightly (not full sprint - light jog/trot) between the two green markers (Milayn al-Akhdharayn) which are about 50 meters apart. This applies to all 7 laps and all floor levels. Walk normally before and after the green markers.",
+          "female": "Women walk at a normal, comfortable pace throughout all 7 laps. No running between green markers. Maintain modesty and avoid crowded areas if needed."
+        },
+        "madhhabDifferences": {
+          "hanafi": "Wudu NOT required for Sa'i. Can be performed in any state. Even menstruating women can do Sa'i. This is agreed upon by all madhahib.",
+          "maliki": "Same - wudu not required.",
+          "shafii": "Same - wudu not required.",
+          "hanbali": "Same - wudu not required."
+        },
+        "stepByStep": [
+          {
+            "step": 1,
+            "action": "Go to Safa",
+            "details": "Exit the Mataf area and head to Safa hill. Enter through Bab al-Safa (Gate 12) or nearby gates. Safa is marked with signs. You'll see a platform/elevated area.",
+            "notes": "Safa is the starting point - it's at the southern end of the Masa'a corridor."
+          },
+          {
+            "step": 2,
+            "action": "Face the Kaaba at Safa",
+            "details": "Climb onto the Safa platform and face the Kaaba (even if you can't see it, face that direction). Raise your hands and recite the prescribed dua.",
+            "dua": {
+              "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ",
+              "transliteration": "Inna aṣ-Ṣafā wa al-Marwah min sha'ā'ir Allāh",
+              "translation": "Indeed, Safa and Marwah are among the symbols of Allah",
+              "source": "Quran 2:158",
+              "notes": "Recite this only at the very first time at Safa (before lap 1), not at every lap."
+            }
+          },
+          {
+            "step": 3,
+            "action": "Recite dhikr and dua at Safa",
+            "details": "Raise hands and recite Takbir, Tahlil, and make dua while facing Kaaba direction.",
+            "dua": {
+              "arabic": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+              "transliteration": "Allāhu akbar, Allāhu akbar, Allāhu akbar, lā ilāha illā Allāh waḥdahu lā sharīka lah, lahu al-mulk wa lahu al-ḥamd, wa huwa 'alā kulli shay'in qadīr",
+              "translation": "Allah is the Greatest (3x). There is no god but Allah alone, with no partner. To Him belongs the dominion and to Him belongs all praise, and He has power over all things",
+              "context": "Recite 3 times, then make personal dua"
+            }
+          },
+          {
+            "step": 4,
+            "action": "Walk toward Marwah (Lap 1)",
+            "details": "Descend from Safa and walk toward Marwah. Stay in your lane. Men: run lightly between green markers. Women: walk normally throughout.",
+            "notes": "The corridor is about 450 meters one-way. Upper floors are less crowded and flat."
+          },
+          {
+            "step": 5,
+            "action": "Run between green lights (men only)",
+            "details": "When you see the first green marker/light, begin light jogging/trotting. When you see the second green marker (about 50m later), return to normal walking.",
+            "notes": "This commemorates Hajar's desperate search for water for baby Ismail. Women do NOT run."
+          },
+          {
+            "step": 6,
+            "action": "Reach Marwah (Lap 1 complete)",
+            "details": "Climb onto Marwah platform, face Kaaba direction, raise hands and recite the same dhikr and dua as you did at Safa.",
+            "notes": "First lap complete. Now you need to return to Safa for lap 2."
+          },
+          {
+            "step": 7,
+            "action": "Repeat 7 laps total",
+            "details": "Lap 1: Safa→Marwah. Lap 2: Marwah→Safa. Lap 3: Safa→Marwah. Lap 4: Marwah→Safa. Lap 5: Safa→Marwah. Lap 6: Marwah→Safa. Lap 7: Safa→Marwah (END).",
+            "notes": "You END at Marwah after the 7th lap. Each one-way journey counts as one lap."
+          }
+        ],
+        "duas": [
+          {
+            "arabic": "رَبِّ اغْفِرْ وَارْحَمْ إِنَّكَ أَنْتَ الأَعَزُّ الأَكْرَمُ",
+            "transliteration": "Rabbi ighfir wa irḥam innaka anta al-a'azzu al-akram",
+            "translation": "My Lord, forgive and have mercy, for You are the Most Mighty, the Most Generous",
+            "context": "General dua to recite during Sa'i"
+          }
+        ],
+        "safetyNotes": [
+          "Upper floors (especially 3rd floor) are less crowded and flat - recommended for elderly, wheelchair users",
+          "Third floor has scooter rental service (50 SAR) for elderly/disabled",
+          "Stay in your lane - don't cut across the corridor diagonally",
+          "Men: Don't run too fast - light jog only. Don't push others.",
+          "If tired, rest on the sides of the corridor - don't stop in the middle",
+          "Drink water stations available throughout Masa'a",
+          "Ground floor has inclined path at Safa/Marwah hills - upper floors are flat"
+        ],
+        "floorRecommendations": {
+          "ground": "Most crowded. Inclined path at hills. For able-bodied only.",
+          "first": "Less crowded, flat surface. Good balance of accessibility and crowd.",
+          "second": "Less crowded, flat surface.",
+          "third": "Least crowded, flat surface. Scooter rental available. Best for elderly/disabled."
+        }
+      },
+      {
+        "id": "halq_taqsir",
+        "order": 7,
+        "title": {
+          "en": "Halq or Taqsir (Hair Cutting)",
+          "ar": "الحلق أو التقصير",
+          "fr": "Halq ou Taqsir (Coupe de Cheveux)"
+        },
+        "description": {
+          "en": "The final step of Umrah. Men can either shave their entire head (Halq - more rewarding) or trim hair from all over the head (Taqsir). Women trim a small amount from the ends of their hair.",
+          "ar": "الخطوة الأخيرة من العمرة. يمكن للرجال إما حلق رأسهم بالكامل (الحلق - أكثر أجرًا) أو قص الشعر من جميع أنحاء الرأس (التقصير). تقوم النساء بقص كمية صغيرة من أطراف شعرهن.",
+          "fr": "La dernière étape de l'Umrah. Les hommes peuvent soit raser entièrement leur tête (Halq - plus récompensant) soit couper les cheveux de toute la tête (Taqsir). Les femmes coupent une petite quantité des extrémités de leurs cheveux."
+        },
+        "genderSpecific": {
+          "male": "OPTION 1 (Better): Halq - Complete shaving of entire head. OPTION 2: Taqsir - Trim at least a fingertip's length (1-2 cm) from hair all over the head, not just one spot. Shaving is 27 times more rewarding according to hadith, but both are valid.",
+          "female": "Women MUST NOT shave their heads - this is prohibited. Only perform Taqsir: Trim approximately a fingertip's length (1-2 cm) from the ends of the hair. Can be done discreetly by gathering hair and cutting the ends. Some women do this in groups for convenience."
+        },
+        "madhhabDifferences": {
+          "hanafi": "Wajib (obligatory). If intentionally omitted, Dam (sacrifice) required. Halq is better than Taqsir for men.",
+          "maliki": "Wajib. Dam required if omitted. Men: Halq recommended. Women: Taqsir only.",
+          "shafii": "Rukn (pillar) - Umrah is INVALID without it. Must be performed to complete Umrah and exit Ihram. Halq superior to Taqsir for men.",
+          "hanbali": "Wajib. Dam required if omitted. Halq is more rewarding."
+        },
+        "stepByStep": [
+          {
+            "step": 1,
+            "action": "Exit Masa'a after completing Sa'i",
+            "details": "After finishing lap 7 at Marwah, exit through Bab Marwah or nearby gates.",
+            "notes": "Hair cutting can be done inside Haram or outside. Many pilgrims go to nearby barber shops."
+          },
+          {
+            "step": 2,
+            "action": "Men: Choose Halq or Taqsir",
+            "details": "Halq (shaving): Go to barber shop or use clippers. Entire head shaved completely. Taqsir (trimming): Trim at least fingertip length from all over head. Don't just cut one lock - must be from all over.",
+            "notes": "Barber shops near Marwah gate offer services (usually 10-30 SAR). You can also do it yourself with clippers/scissors."
+          },
+          {
+            "step": 3,
+            "action": "Women: Perform Taqsir",
+            "details": "Gather hair (or have someone help), cut about 1-2 cm from the ends. Must be actual cutting, not just touching scissors to hair. Can be done privately in hotel/accommodation.",
+            "notes": "Some women do this in groups at the hotel for ease and modesty."
+          }
+        ],
+        "duas": [
+          {
+            "arabic": "الْحَمْدُ لِلَّهِ الَّذِي قَضَى عَنَّا نُسُكَنَا",
+            "transliteration": "Alḥamdu lillāhi alladhī qaḍā 'annā nusukānā",
+            "translation": "All praise is due to Allah who enabled us to complete our rituals",
+            "context": "After completing Halq/Taqsir"
+          }
+        ],
+        "locationOptions": {
+          "inside_haram": "Some barbers operate inside or very near the Haram exits",
+          "outside_haram": "Many barber shops in the streets surrounding the Haram. More private and comfortable.",
+          "hotel": "Women typically do Taqsir at their accommodation for privacy. Men can also trim/shave at hotel."
+        },
+        "safetyNotes": [
+          "Use clean, sanitized equipment to avoid skin infections",
+          "If using barber shops, ensure they use clean blades/clippers",
+          "Women: Maintain privacy and modesty while cutting hair",
+          "After hair cutting, you have exited Ihram - all prohibitions are lifted"
+        ],
+        "afterCompletion": {
+          "status": "Umrah is now complete! You have exited Ihram state.",
+          "permissionsRestored": [
+            "Can wear normal clothes (remove Ihram garments)",
+            "Can use perfumes and scented products",
+            "Can cut nails",
+            "Can trim beard/mustache",
+            "Marital relations restored",
+            "All Ihram prohibitions are lifted"
+          ],
+          "recommendations": [
+            "Make dua for acceptance of your Umrah",
+            "Offer voluntary prayers in the Haram",
+            "Continue Tawaf (voluntary) as much as possible",
+            "Drink Zamzam water",
+            "Visit historical sites in Makkah if time permits",
+            "Make dua for yourself, family, and the Muslim Ummah"
+          ]
+        }
+      }
+    ],
+    "summary": {
+      "totalSteps": 7,
+      "minimumDuration": "2-4 hours depending on crowd levels",
+      "physicalRequirements": "Ability to walk approximately 7-8 km total (Tawaf ~3km + Sa'i ~3.15km)",
+      "crowdAvoidance": "Best times: After Isha until Fajr (least crowded). Worst times: After Maghrib and Jumu'ah (most crowded).",
+      "accessibility": "Wheelchair accessible. Use upper Mataf levels and upper Masa'a floors. Scooter rental available on 3rd floor of Masa'a."
+    }
+  },
+  "hajj": {
+    "note": "Hajj steps will be added in future version. This requires extensive documentation of Mina, Arafat, Muzdalifah, Jamarat, and additional Tawaf rituals.",
+    "steps": []
+  },
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-11-17",
+    "source": "Compiled from existing knowledge base (umrah_basics.md) and Perplexity export data (madhhab_differences, gates_zones)",
+    "contributors": "Backend AI system integration",
+    "disclaimer": "This is educational guidance based on classical Islamic scholarship. For personal situations, especially complex fiqh issues, consult qualified scholars. Madhahib differences are presented fairly - pilgrims should follow their own madhab or seek scholarly guidance.",
+    "languages": ["en", "ar", "fr"],
+    "totalSteps": 7,
+    "estimatedReadTime": "45 minutes for complete guide"
+  }
+}
