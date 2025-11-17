@@ -6,7 +6,8 @@
     "deleteOutDir": true,
     "assets": [
       "**/*.json",
-      { "include": "../public/**/*", "outDir": "./public" }
+      { "include": "../public/**/*", "outDir": "./public" },
+      { "include": "umrah/data/**/*.json", "outDir": "./dist" }
     ],
     "watchAssets": true
   }

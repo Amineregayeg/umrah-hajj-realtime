@@ -11,7 +11,8 @@
   },
   "scripts": {
     "preinstall": "node -e \"const v=process.version.slice(1).split('.')[0]; if(v!=='20') { console.error('❌ Node.js 20.x REQUIRED. Current:', process.version); process.exit(1); }\"",
-    "build": "nest build",
+    "build": "nest build && pnpm run build:copy-assets",
+    "build:copy-assets": "mkdir -p dist/src/umrah/data/knowledge && cp -r src/umrah/data/knowledge/*.json dist/src/umrah/data/knowledge/",
     "build:fast": "tsc --build --incremental",
     "build:clean": "rm -rf dist tsconfig.tsbuildinfo",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
