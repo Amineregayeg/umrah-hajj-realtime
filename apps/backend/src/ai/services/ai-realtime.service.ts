@@ -4,12 +4,11 @@ import { FeatureFlagsService } from '../../shared/config/feature-flags.service';
 import { KnowledgeSearchService } from './knowledge-search.service';
 
 export interface RealtimeSessionResponse {
-  sessionId: string;
   websocketUrl: string;
-  ephemeralToken: string;
-  expiresAt: number;
+  apiKey: string;
   voice: string;
   language: string;
+  model: string;
 }
 
 interface UserContext {
@@ -72,60 +71,22 @@ export class AIRealtimeService {
     }
 
     try {
-      // Build context-aware instructions
-      const instructions = await this.buildInstructions(userContext);
-
       // Select voice based on gender and language
       const voice = this.selectVoice(userContext);
+      const language = userContext.preferredLanguage || 'en';
 
-      // Create ephemeral session with OpenAI
-      const response = await fetch('https://api.openai.com/v1/realtime/sessions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${this.openAIApiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: this.realtimeModel,
-          voice: voice,
-          instructions: instructions,
-          input_audio_transcription: {
-            model: 'whisper-1',
-          },
-          turn_detection: {
-            type: 'server_vad',
-            threshold: 0.5,
-            prefix_padding_ms: 300,
-            silence_duration_ms: 500,
-          },
-          temperature: 0.8,
-          max_response_output_tokens: 4096,
-        }),
-      });
-
-      if (!response.ok) {
-        const error = await response.text();
-        this.logger.error(`OpenAI Realtime API error: ${error}`);
-        throw new BadRequestException('Failed to create AI session');
-      }
-
-      const sessionData = await response.json() as {
-        id: string;
-        websocket_url: string;
-        client_secret?: { value: string };
-        expires_at: number;
-      };
-
+      // TESTING ONLY: Return direct WebSocket connection details
+      // TODO: Switch to WebRTC (ephemeral sessions) before production
       const result: RealtimeSessionResponse = {
-        sessionId: sessionData.id,
-        websocketUrl: sessionData.websocket_url,
-        ephemeralToken: sessionData.client_secret?.value || '',
-        expiresAt: sessionData.expires_at,
+        websocketUrl: `wss://api.openai.com/v1/realtime?model=${this.realtimeModel}`,
+        apiKey: this.openAIApiKey,
         voice: voice,
-        language: userContext.preferredLanguage || 'en',
+        language: language,
+        model: this.realtimeModel,
       };
 
-      this.logger.log(`Created AI Realtime session for user ${userContext.userId}`);
+      this.logger.log(`Created AI Realtime WebSocket config for user ${userContext.userId}`);
+      this.logger.warn('TESTING MODE: Using direct WebSocket with API key (not production-safe)');
 
       return result;
     } catch (error) {
