@@ -213,7 +213,7 @@ export class AIController {
   @Post('realtime/session')
   @ApiOperation({
     summary: 'Create OpenAI Realtime API session for voice chat',
-    description: 'Creates an ephemeral session for real-time voice interaction with AI guide. Feature flag protected.',
+    description: 'Creates an ephemeral session for real-time voice interaction with AI guide. No authentication required for Unity testing.',
   })
   @ApiResponse({
     status: 200,
@@ -234,12 +234,7 @@ export class AIController {
     status: 400,
     description: 'Feature not enabled or invalid request',
   })
-  @ApiResponse({
-    status: 401,
-    description: 'Unauthorized - invalid or missing authentication token',
-  })
-  @ApiBearerAuth()
-  @UseGuards(SupabaseJwtGuard)
+  // AUTH REMOVED FOR UNITY TESTING - Re-enable @ApiBearerAuth() and @UseGuards(SupabaseJwtGuard) for production
   async createRealtimeSession(
     @Request() req: any,
     @Body()
@@ -248,16 +243,14 @@ export class AIController {
       gender?: 'male' | 'female';
       ritualType?: 'umrah' | 'hajj';
       madhhab?: string;
+      userId?: string; // Optional userId for testing
     },
   ) {
-    const userId = req.user?.sub;
-    const userEmail = req.user?.email;
+    // Generate test userId if not provided (for Unity testing without auth)
+    const userId = body?.userId || `test-user-${Date.now()}`;
+    const userEmail = 'test@unity.dev';
 
-    if (!userId) {
-      throw new BadRequestException('User ID not found in token');
-    }
-
-    // Check feature flags
+    // Check global feature flag only
     if (!this.featureFlagsService.isAIRealtimeEnabled()) {
       throw new BadRequestException({
         error: 'AI Realtime feature is not enabled',
@@ -266,13 +259,14 @@ export class AIController {
       });
     }
 
-    if (!this.featureFlagsService.isAIEnabledForUser(userId)) {
-      throw new BadRequestException({
-        error: 'AI features not enabled for this user',
-        code: 'USER_NOT_IN_ROLLOUT',
-        message: 'AI features are not available for your account yet.',
-      });
-    }
+    // User rollout check removed for public testing - re-enable for production:
+    // if (!this.featureFlagsService.isAIEnabledForUser(userId)) {
+    //   throw new BadRequestException({
+    //     error: 'AI features not enabled for this user',
+    //     code: 'USER_NOT_IN_ROLLOUT',
+    //     message: 'AI features are not available for your account yet.',
+    //   });
+    // }
 
     try {
       const session = await this.aiRealtimeService.createSession({
@@ -280,7 +274,7 @@ export class AIController {
         gender: body?.gender,
         preferredLanguage: body?.language || 'en',
         madhhab: body?.madhhab,
-        ritualType: body?.ritualType,
+        ritualType: body?.ritualType || 'umrah',
       });
 
       return session;

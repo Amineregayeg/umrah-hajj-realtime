@@ -43,7 +43,7 @@ export class AIRealtimeService {
     private readonly knowledgeSearchService: KnowledgeSearchService,
   ) {
     this.openAIApiKey = this.configService.get<string>('OPENAI_API_KEY', '');
-    this.realtimeModel = this.configService.get<string>('REALTIME_MODEL', 'gpt-4o-realtime-preview-2024-12-17');
+    this.realtimeModel = this.configService.get<string>('REALTIME_MODEL', 'gpt-realtime');
     this.defaultVoice = this.configService.get<string>('REALTIME_VOICE', 'verse');
 
     if (!this.openAIApiKey) {
