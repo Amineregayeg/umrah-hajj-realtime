@@ -191,13 +191,13 @@ export class AIRealtimeGateway
       // Store user context
       this.userContexts.set(userId, {
         language,
-        sessionId: session.sessionId,
+        sessionId: 'websocket-mode', // Not using sessions in WebSocket mode
       });
 
       // Establish WebSocket connection to OpenAI
       const openAiWs = new WebSocket(session.websocketUrl, {
         headers: {
-          Authorization: `Bearer ${session.ephemeralToken}`,
+          Authorization: `Bearer ${session.apiKey}`,
           'OpenAI-Beta': 'realtime=v1',
         },
       });
@@ -229,10 +229,10 @@ export class AIRealtimeGateway
       // Send session info to client
       this.sendMessage(client, {
         type: 'session_created',
-        sessionId: session.sessionId,
+        websocketUrl: session.websocketUrl,
         voice: session.voice,
         language: session.language,
-        expiresAt: session.expiresAt,
+        model: session.model,
       });
     } catch (error) {
       this.logger.error(`Failed to create session: ${error.message}`);
